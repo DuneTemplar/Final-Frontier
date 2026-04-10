@@ -408,7 +408,7 @@
     damage:
       types:
         Blunt: 15
-        Shock: 10
+        Shock: 15
         Structural: 100
     altDisarm: false
     angle: 20
@@ -493,8 +493,8 @@
         path: /Audio/Weapons/Xeno/alien_claw_flesh3.ogg
       damage:
         types:
-          Pierce: 3
-          Shock: 8
+          Pierce: 4
+          Shock: 5
           Structural: 30
       altDisarm: false
       angle: 0
@@ -609,7 +609,7 @@
     damage:
       types:
         Blunt: 20
-        Shock: 20
+        Shock: 10
         Structural: 170
     altDisarm: false
     angle: 0

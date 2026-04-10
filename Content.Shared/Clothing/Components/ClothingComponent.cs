@@ -76,6 +76,12 @@ public sealed partial class ClothingComponent : Component
     /// </summary>
     [DataField]
     public TimeSpan StripDelay = TimeSpan.Zero;
+	
+	/// <summary>
+    /// FinalFrontier: Draggable to equip.
+    /// </summary>
+    [DataField]
+    public bool DragEquip = false;
 }
 
 [Serializable, NetSerializable]

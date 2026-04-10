@@ -76,3 +76,55 @@
     shipType: Ballistic
   - type: ShipGunClass
     shipClass: Light
+    
+# Flares
+
+- type: entity
+  id: WeaponTurretFlare
+  name: DWI K22 Flare Launcher
+  parent: BallisticArtillery
+  description: A small device launching flares to trick heat-seeking systems and confuse the enemy.
+  components:
+  - type: StaticPrice
+    price: 500
+  - type: Sprite
+    sprite: _FinalFrontier/Objects/ShuttleWeapons/flare.rsi
+    layers:
+    - state: space_artillery
+  - type: Appearance
+  - type: AmmoCounter
+  - type: WirelessNetworkConnection
+    range: 700
+  - type: GunSignalControl
+  - type: Gun
+    fireRate: 10
+    recoil: 1
+    projectileSpeed: 90
+    minAngle: 25
+    maxAngle: 250
+    burstCooldown: 40
+    burstFireRate: 10
+    shotsPerBurst: 25
+    selectedMode: Burst
+    availableModes: Burst
+    shootThermalSignature: 10000
+    soundGunshot:
+      path: /Audio/Weapons/Guns/Gunshots/rocket_launcher.ogg
+    soundEmpty:
+      path: /Audio/Weapons/click.ogg
+  - type: SpaceArtillery
+    powerChargeRate: 50
+    powerUsePassive: 60
+    powerUseActive: 0
+  - type: Actions
+  - type: BasicEntityAmmoProvider
+    proto: FlareMissile
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 2500
+  - type: ShipGunType
+    shipType: Ballistic
+  - type: ShipGunClass
+    shipClass: Light

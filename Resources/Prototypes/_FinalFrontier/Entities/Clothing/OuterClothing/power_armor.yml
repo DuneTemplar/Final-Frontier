@@ -11,9 +11,6 @@
     footstepSoundCollection:
       collection: FootstepHeavySuit
   - type: Pullable
-  - type: MultiHandedItem # Mono
-  - type: Item
-    size: Ginormous
   - type: Clothing
     sprite: _FinalFrontier/Clothing/OuterClothing/Suits/clockwork_suit.rsi
     state: equipped-OUTERCLOTHING

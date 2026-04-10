@@ -1,0 +1,749 @@
+# Frame
+
+- type: entity
+  id: BasePowerArmorFrame
+  name: power armor frame
+  components:
+  - type: Sprite
+    noRot: true
+    drawdepth: Items
+    sprite: _FinalFrontier/Clothing/PowerArmor/frame.rsi
+    layers:
+    - state: icon
+    - state: test-chestplate
+      map: ["enum.PowerArmorSlotsVisuals.LayerChestplate"]
+      visible: true
+    - state: test-right-leg
+      map: ["enum.PowerArmorSlotsVisuals.LayerRightLeg"]
+      visible: true
+    - state: test-left-leg
+      map: ["enum.PowerArmorSlotsVisuals.LayerLeftLeg"]
+      visible: true
+    - state: test-right-arm
+      map: ["enum.PowerArmorSlotsVisuals.LayerRightArm"]
+      visible: true
+    - state: test-left-arm
+      map: ["enum.PowerArmorSlotsVisuals.LayerLeftArm"]
+      visible: true
+  - type: Clothing
+    slots:
+    - outerClothing
+    equipSound:
+      collection: GenericEquip
+    dragEquip: true
+    sprite: _FinalFrontier/Clothing/PowerArmor/frame.rsi
+    clothingVisuals:
+      outerClothing:
+      - state: equipped-OUTERCLOTHING
+      - state: test-chestplate
+        map: ["enum.PowerArmorSlotsVisuals.LayerChestplate"]
+        visible: true
+      - state: test-right-leg
+        map: ["enum.PowerArmorSlotsVisuals.LayerRightLeg"]
+        visible: true
+      - state: test-left-leg
+        map: ["enum.PowerArmorSlotsVisuals.LayerLeftLeg"]
+        visible: true
+      - state: test-right-arm
+        map: ["enum.PowerArmorSlotsVisuals.LayerRightArm"]
+        visible: true
+      - state: test-left-arm
+        map: ["enum.PowerArmorSlotsVisuals.LayerLeftArm"]
+        visible: true
+  - type: Geiger
+    attachedToSuit: true
+    showExamine: true # Mono
+    isEnabled: false # Mono
+  - type: Animateable
+  - type: Clickable
+  - type: InteractionOutline
+  - type: MovedByPressure
+  - type: EmitSoundOnCollide
+    sound:
+      collection: WeakHit
+  - type: EmitSoundOnLand
+    sound:
+      path: /Audio/Effects/drop.ogg
+      params:
+        volume: 2
+  - type: DamageOnHighSpeedImpact
+    damage:
+      types:
+        Blunt: 5
+    soundHit:
+      collection: MetalThud
+  - type: CollisionWake
+  - type: Physics
+    bodyType: Dynamic
+    fixedRotation: false
+  - type: Pullable
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "-0.25,-0.25,0.25,0.25"
+        density: 20
+        mask:
+        - ItemMask
+        restitution: 0.3  # fite me
+        friction: 0.2
+  - type: PressureProtection
+    highPressureMultiplier: 0.5
+    lowPressureMultiplier: 1000
+  - type: TemperatureProtection
+    heatingCoefficient: 0.01
+    coolingCoefficient: 0.01
+  - type: ExplosionResistance
+    damageCoefficient: 0.1
+  - type: Armor
+    modifiers:
+      coefficients:
+        Blunt: 0.6
+        Slash: 0.65
+        Piercing: 0.65
+        Heat: 0.5
+        Radiation: 0
+        Shock: 0.05
+  - type: GroupExamine
+  - type: HideLayerClothing
+    slots:
+    - Special
+    - Tail
+    - Wings
+    - Chest
+    - Eyes
+    - RArm
+    - LArm
+    - RHand
+    - LHand
+    - RLeg
+    - LLeg
+    - RFoot
+    - LFoot
+    - LArmExtension
+    - RArmExtension
+  - type: Tag
+    tags:
+    - Hardsuit
+  - type: DragDropTargetable
+  - type: DoAfter
+  - type: ClothingSpeedModifier
+    walkModifier: 1.1
+    sprintModifier: 1
+  - type: HeldSpeedModifier
+  - type: StaminaDamageResistance
+    coefficient: 0.1
+  - type: FootstepModifier
+    footstepSoundCollection:
+      collection: FootstepHeavySuit
+  - type: PowerArmorSlots
+  - type: Appearance
+  - type: GenericVisualizer
+    visuals:
+      enum.PowerArmorSlotsVisuals.ContainsChestplate:
+        enum.PowerArmorSlotsVisuals.LayerChestplate:
+          True: { visible: true }
+          False: { visible: false }
+      enum.PowerArmorSlotsVisuals.ContainsRightArm:
+        enum.PowerArmorSlotsVisuals.LayerRightArm:
+          True: { visible: true }
+          False: { visible: false }
+      enum.PowerArmorSlotsVisuals.ContainsLeftArm:
+        enum.PowerArmorSlotsVisuals.LayerLeftArm:
+          True: { visible: true }
+          False: { visible: false }
+      enum.PowerArmorSlotsVisuals.ContainsRightLeg:
+        enum.PowerArmorSlotsVisuals.LayerRightLeg:
+          True: { visible: true }
+          False: { visible: false }
+      enum.PowerArmorSlotsVisuals.ContainsLeftLeg:
+        enum.PowerArmorSlotsVisuals.LayerLeftLeg:
+          True: { visible: true }
+          False: { visible: false }
+  - type: ContainerContainer
+    containers:
+      Chestplate: !type:ContainerSlot
+      RightLeg: !type:ContainerSlot
+      LeftLeg: !type:ContainerSlot
+      RightArm: !type:ContainerSlot
+      LeftArm: !type:ContainerSlot
+  - type: ItemSlots
+    slots:
+      Chestplate:
+        name: Chestplate
+        #startingItem: BasePowerArmorChestplate
+        insertSound: /Audio/Weapons/Guns/MagIn/hpistol_magin.ogg
+        ejectSound: /Audio/Weapons/Guns/MagOut/sfrifle_magout.ogg
+        priority: 1
+        whitelist:
+          tags:
+          - PowerArmorChestplate
+      RightLeg:
+        name: Right Leg
+        #startingItem: BasePowerArmorRightLeg
+        insertSound: /Audio/Weapons/Guns/MagIn/hpistol_magin.ogg
+        ejectSound: /Audio/Weapons/Guns/MagOut/sfrifle_magout.ogg
+        priority: 1
+        whitelist:
+          tags:
+          - PowerArmorRightLeg
+      LeftLeg:
+        name: Left Leg
+        #startingItem: BasePowerArmorLeftLeg
+        insertSound: /Audio/Weapons/Guns/MagIn/hpistol_magin.ogg
+        ejectSound: /Audio/Weapons/Guns/MagOut/sfrifle_magout.ogg
+        priority: 1
+        whitelist:
+          tags:
+          - PowerArmorLeftLeg
+      RightArm:
+        name: Right Arm
+        #startingItem: BasePowerArmorRightArm
+        insertSound: /Audio/Weapons/Guns/MagIn/hpistol_magin.ogg
+        ejectSound: /Audio/Weapons/Guns/MagOut/sfrifle_magout.ogg
+        priority: 1
+        whitelist:
+          tags:
+          - PowerArmorRightArm
+      LeftArm:
+        name: Left Arm
+        #startingItem: BasePowerArmorLeftArm
+        insertSound: /Audio/Weapons/Guns/MagIn/hpistol_magin.ogg
+        ejectSound: /Audio/Weapons/Guns/MagOut/sfrifle_magout.ogg
+        priority: 1
+        whitelist:
+          tags:
+          - PowerArmorLeftArm
+        
+- type: entity
+  id: KolmerPowerArmorFrame
+  parent: BasePowerArmorFrame
+  name: power armor frame
+  components:
+  - type: ItemSlots
+    slots:
+      Chestplate:
+        name: Chestplate
+        startingItem: PowerArmorChestplateKolmer
+        insertSound: /Audio/Weapons/Guns/MagIn/hpistol_magin.ogg
+        ejectSound: /Audio/Weapons/Guns/MagOut/sfrifle_magout.ogg
+        priority: 1
+        whitelist:
+          tags:
+          - PowerArmorChestplate
+      RightLeg:
+        name: Right Leg
+        startingItem: PowerArmorRightLegKolmer
+        insertSound: /Audio/Weapons/Guns/MagIn/hpistol_magin.ogg
+        ejectSound: /Audio/Weapons/Guns/MagOut/sfrifle_magout.ogg
+        priority: 1
+        whitelist:
+          tags:
+          - PowerArmorRightLeg
+      LeftLeg:
+        name: Left Leg
+        startingItem: PowerArmorLeftLegKolmer
+        insertSound: /Audio/Weapons/Guns/MagIn/hpistol_magin.ogg
+        ejectSound: /Audio/Weapons/Guns/MagOut/sfrifle_magout.ogg
+        priority: 1
+        whitelist:
+          tags:
+          - PowerArmorLeftLeg
+      RightArm:
+        name: Right Arm
+        startingItem: PowerArmorRightArmKolmer
+        insertSound: /Audio/Weapons/Guns/MagIn/hpistol_magin.ogg
+        ejectSound: /Audio/Weapons/Guns/MagOut/sfrifle_magout.ogg
+        priority: 1
+        whitelist:
+          tags:
+          - PowerArmorRightArm
+      LeftArm:
+        name: Left Arm
+        startingItem: PowerArmorLeftArmKolmer
+        insertSound: /Audio/Weapons/Guns/MagIn/hpistol_magin.ogg
+        ejectSound: /Audio/Weapons/Guns/MagOut/sfrifle_magout.ogg
+        priority: 1
+        whitelist:
+          tags:
+          - PowerArmorLeftArm
+          
+- type: entity
+  id: MK1PowerArmorFrame
+  parent: BasePowerArmorFrame
+  name: power armor frame
+  components:
+  - type: ItemSlots
+    slots:
+      Chestplate:
+        name: Chestplate
+        startingItem: PowerArmorChestplateMK1
+        insertSound: /Audio/Weapons/Guns/MagIn/hpistol_magin.ogg
+        ejectSound: /Audio/Weapons/Guns/MagOut/sfrifle_magout.ogg
+        priority: 1
+        whitelist:
+          tags:
+          - PowerArmorChestplate
+      RightLeg:
+        name: Right Leg
+        startingItem: PowerArmorRightLegMK1
+        insertSound: /Audio/Weapons/Guns/MagIn/hpistol_magin.ogg
+        ejectSound: /Audio/Weapons/Guns/MagOut/sfrifle_magout.ogg
+        priority: 1
+        whitelist:
+          tags:
+          - PowerArmorRightLeg
+      LeftLeg:
+        name: Left Leg
+        startingItem: PowerArmorLeftLegMK1
+        insertSound: /Audio/Weapons/Guns/MagIn/hpistol_magin.ogg
+        ejectSound: /Audio/Weapons/Guns/MagOut/sfrifle_magout.ogg
+        priority: 1
+        whitelist:
+          tags:
+          - PowerArmorLeftLeg
+      RightArm:
+        name: Right Arm
+        startingItem: PowerArmorRightArmMK1
+        insertSound: /Audio/Weapons/Guns/MagIn/hpistol_magin.ogg
+        ejectSound: /Audio/Weapons/Guns/MagOut/sfrifle_magout.ogg
+        priority: 1
+        whitelist:
+          tags:
+          - PowerArmorRightArm
+      LeftArm:
+        name: Left Arm
+        startingItem: PowerArmorLeftArmMK1
+        insertSound: /Audio/Weapons/Guns/MagIn/hpistol_magin.ogg
+        ejectSound: /Audio/Weapons/Guns/MagOut/sfrifle_magout.ogg
+        priority: 1
+        whitelist:
+          tags:
+          - PowerArmorLeftArm
+      
+      
+# Test pieces
+
+- type: entity
+  id: BasePowerArmorChestplate
+  parent: BaseItem
+  name: test power armor chestplate
+  components:
+  - type: Sprite
+    noRot: true
+    drawdepth: Mobs
+    sprite: _FinalFrontier/Clothing/PowerArmor/Chestplates/test.rsi
+    state: icon
+  - type: Tag
+    tags:
+    - PowerArmorChestplate
+  - type: PowerArmorPiece
+    path: _FinalFrontier/Clothing/PowerArmor/Chestplates/test.rsi
+  - type: Armor
+    modifiers:
+      coefficients:
+        Blunt: 0.65
+        Slash: 0.65
+        Piercing: 0.65
+        Heat: 0.5
+        Radiation: 0.75
+
+- type: entity
+  id: BasePowerArmorRightArm
+  parent: BaseItem
+  name: test power armor right arm
+  components:
+  - type: Sprite
+    noRot: true
+    drawdepth: Mobs
+    sprite: _FinalFrontier/Clothing/PowerArmor/RightArms/test.rsi
+    state: icon
+  - type: Tag
+    tags:
+    - PowerArmorRightArm
+  - type: PowerArmorPiece
+    path: _FinalFrontier/Clothing/PowerArmor/RightArms/test.rsi
+  - type: Armor
+    modifiers:
+      coefficients:
+        Blunt: 0.85
+        Slash: 0.85
+        Piercing: 0.85
+        Heat: 0.5
+        Radiation: 0.75
+    
+- type: entity
+  id: BasePowerArmorLeftArm
+  parent: BaseItem
+  name: test power armor left arm
+  components:
+  - type: Sprite
+    noRot: true
+    drawdepth: Mobs
+    sprite: _FinalFrontier/Clothing/PowerArmor/LeftArms/test.rsi
+    state: icon
+  - type: Tag
+    tags:
+    - PowerArmorLeftArm
+  - type: PowerArmorPiece
+    path: _FinalFrontier/Clothing/PowerArmor/LeftArms/test.rsi
+  - type: Armor
+    modifiers:
+      coefficients:
+        Blunt: 0.85
+        Slash: 0.85
+        Piercing: 0.85
+        Heat: 0.5
+        Radiation: 0.75
+    
+- type: entity
+  id: BasePowerArmorRightLeg
+  parent: BaseItem
+  name: test power armor right leg
+  components:
+  - type: Sprite
+    noRot: true
+    drawdepth: Mobs
+    sprite: _FinalFrontier/Clothing/PowerArmor/RightLegs/test.rsi
+    state: icon
+  - type: Tag
+    tags:
+    - PowerArmorRightLeg
+  - type: PowerArmorPiece
+    path: _FinalFrontier/Clothing/PowerArmor/RightLegs/test.rsi
+  - type: Armor
+    modifiers:
+      coefficients:
+        Blunt: 0.85
+        Slash: 0.85
+        Piercing: 0.85
+        Heat: 0.5
+        Radiation: 0.75
+    
+- type: entity
+  id: BasePowerArmorLeftLeg
+  parent: BaseItem
+  name: test power armor left leg
+  components:
+  - type: Sprite
+    noRot: true
+    drawdepth: Mobs
+    sprite: _FinalFrontier/Clothing/PowerArmor/LeftLegs/test.rsi
+    state: icon
+  - type: Tag
+    tags:
+    - PowerArmorLeftLeg
+  - type: PowerArmorPiece
+    path: _FinalFrontier/Clothing/PowerArmor/LeftLegs/test.rsi
+  - type: Armor
+    modifiers:
+      coefficients:
+        Blunt: 0.85
+        Slash: 0.85
+        Piercing: 0.85
+        Heat: 0.5
+        Radiation: 0.75
+
+# Kolmer T11 power armor
+
+- type: entity
+  id: PowerArmorChestplateKolmer
+  parent: BasePowerArmorChestplate
+  name: T11 power armor chestplate
+  components:
+  - type: Sprite
+    noRot: true
+    drawdepth: Mobs
+    sprite: _FinalFrontier/Clothing/PowerArmor/Chestplates/kolmer.rsi
+    state: icon
+  - type: Tag
+    tags:
+    - PowerArmorChestplate
+  - type: PowerArmorPiece
+    path: _FinalFrontier/Clothing/PowerArmor/Chestplates/kolmer.rsi
+  - type: Armor
+    modifiers:
+      coefficients:
+        Blunt: 0.6
+        Slash: 0.6
+        Piercing: 0.6
+        Heat: 0.5
+        Radiation: 0.75
+    
+- type: entity
+  id: PowerArmorRightArmKolmer
+  parent: BasePowerArmorRightArm
+  name: T11 power armor right arm
+  components:
+  - type: Sprite
+    noRot: true
+    drawdepth: Mobs
+    sprite: _FinalFrontier/Clothing/PowerArmor/RightArms/kolmer.rsi
+    state: icon
+  - type: Tag
+    tags:
+    - PowerArmorRightArm
+  - type: PowerArmorPiece
+    path: _FinalFrontier/Clothing/PowerArmor/RightArms/kolmer.rsi
+  - type: Armor
+    modifiers:
+      coefficients:
+        Blunt: 0.75
+        Slash: 0.75
+        Piercing: 0.75
+        Heat: 0.5
+        Radiation: 0.75
+    
+- type: entity
+  id: PowerArmorLeftArmKolmer
+  parent: BasePowerArmorLeftArm
+  name: T11 power armor left arm
+  components:
+  - type: Sprite
+    noRot: true
+    drawdepth: Mobs
+    sprite: _FinalFrontier/Clothing/PowerArmor/LeftArms/kolmer.rsi
+    state: icon
+  - type: Tag
+    tags:
+    - PowerArmorLeftArm
+  - type: PowerArmorPiece
+    path: _FinalFrontier/Clothing/PowerArmor/LeftArms/kolmer.rsi
+  - type: Armor
+    modifiers:
+      coefficients:
+        Blunt: 0.75
+        Slash: 0.75
+        Piercing: 0.75
+        Heat: 0.5
+        Radiation: 0.75
+    
+- type: entity
+  id: PowerArmorRightLegKolmer
+  parent: BasePowerArmorRightLeg
+  name: T11 power armor right leg
+  components:
+  - type: Sprite
+    noRot: true
+    drawdepth: Mobs
+    sprite: _FinalFrontier/Clothing/PowerArmor/RightLegs/kolmer.rsi
+    state: icon
+  - type: Tag
+    tags:
+    - PowerArmorRightLeg
+  - type: PowerArmorPiece
+    path: _FinalFrontier/Clothing/PowerArmor/RightLegs/kolmer.rsi
+  - type: Armor
+    modifiers:
+      coefficients:
+        Blunt: 0.75
+        Slash: 0.75
+        Piercing: 0.75
+        Heat: 0.5
+        Radiation: 0.75
+    
+- type: entity
+  id: PowerArmorLeftLegKolmer
+  parent: BasePowerArmorLeftLeg
+  name: T11 power armor left leg
+  components:
+  - type: Sprite
+    noRot: true
+    drawdepth: Mobs
+    sprite: _FinalFrontier/Clothing/PowerArmor/LeftLegs/kolmer.rsi
+    state: icon
+  - type: Tag
+    tags:
+    - PowerArmorLeftLeg
+  - type: PowerArmorPiece
+    path: _FinalFrontier/Clothing/PowerArmor/LeftLegs/kolmer.rsi
+  - type: Armor
+    modifiers:
+      coefficients:
+        Blunt: 0.75
+        Slash: 0.75
+        Piercing: 0.75
+        Heat: 0.5
+        Radiation: 0.75
+      
+- type: entity
+  parent: ClothingHeadHardsuitBase
+  id: ClothingHeadHelmetPowerArmorKolmer
+  name: T-11 power armor helmet
+  components:
+  - type: BreathMask
+  - type: Item
+    size: Normal
+  - type: FlashImmunity
+  - type: IdentityBlocker
+  - type: NightVision
+    flashDurationMultiplier: 0.85
+    isEquipment: true
+  - type: Sprite
+    sprite: _FinalFrontier/Clothing/Head/Hats/kolmer_exosuit.rsi
+  - type: Clothing
+    sprite: _FinalFrontier/Clothing/Head/Hats/kolmer_exosuit.rsi
+  - type: PressureProtection
+    highPressureMultiplier: 0.525
+    lowPressureMultiplier: 10000
+  - type: Armor
+    modifiers:
+      coefficients:
+        Blunt: 0.8
+        Slash: 0.8
+        Piercing: 0.8
+        
+# Mk.1 power armor
+
+- type: entity
+  id: PowerArmorChestplateMK1
+  parent: BasePowerArmorChestplate
+  name: Mk.1 power armor chestplate
+  components:
+  - type: Sprite
+    noRot: true
+    drawdepth: Mobs
+    sprite: _FinalFrontier/Clothing/PowerArmor/Chestplates/mk1.rsi
+    state: icon
+  - type: Tag
+    tags:
+    - PowerArmorChestplate
+  - type: PowerArmorPiece
+    path: _FinalFrontier/Clothing/PowerArmor/Chestplates/mk1.rsi
+  - type: Armor
+    modifiers:
+      coefficients:
+        Blunt: 0.5
+        Slash: 0.5
+        Piercing: 0.5
+        Heat: 0.35
+        Caustic: 0.5
+        Radiation: 0.5
+    
+- type: entity
+  id: PowerArmorRightArmMK1
+  parent: BasePowerArmorRightArm
+  name: Mk.1 power armor right arm
+  components:
+  - type: Sprite
+    noRot: true
+    drawdepth: Mobs
+    sprite: _FinalFrontier/Clothing/PowerArmor/RightArms/mk1.rsi
+    state: icon
+  - type: Tag
+    tags:
+    - PowerArmorRightArm
+  - type: PowerArmorPiece
+    path: _FinalFrontier/Clothing/PowerArmor/RightArms/mk1.rsi
+  - type: Armor
+    modifiers:
+      coefficients:
+        Blunt: 0.7
+        Slash: 0.7
+        Piercing: 0.7
+        Heat: 0.4
+        Caustic: 0.8
+        Radiation: 0.75
+    
+- type: entity
+  id: PowerArmorLeftArmMK1
+  parent: BasePowerArmorLeftArm
+  name: Mk.1 power armor left arm
+  components:
+  - type: Sprite
+    noRot: true
+    drawdepth: Mobs
+    sprite: _FinalFrontier/Clothing/PowerArmor/LeftArms/mk1.rsi
+    state: icon
+  - type: Tag
+    tags:
+    - PowerArmorLeftArm
+  - type: PowerArmorPiece
+    path: _FinalFrontier/Clothing/PowerArmor/LeftArms/mk1.rsi
+  - type: Armor
+    modifiers:
+      coefficients:
+        Blunt: 0.7
+        Slash: 0.7
+        Piercing: 0.7
+        Heat: 0.4
+        Caustic: 0.8
+        Radiation: 0.75
+    
+- type: entity
+  id: PowerArmorRightLegMK1
+  parent: BasePowerArmorRightLeg
+  name: Mk.1 power armor right leg
+  components:
+  - type: Sprite
+    noRot: true
+    drawdepth: Mobs
+    sprite: _FinalFrontier/Clothing/PowerArmor/RightLegs/mk1.rsi
+    state: icon
+  - type: Tag
+    tags:
+    - PowerArmorRightLeg
+  - type: PowerArmorPiece
+    path: _FinalFrontier/Clothing/PowerArmor/RightLegs/mk1.rsi
+  - type: Armor
+    modifiers:
+      coefficients:
+        Blunt: 0.7
+        Slash: 0.7
+        Piercing: 0.7
+        Heat: 0.4
+        Caustic: 0.8
+        Radiation: 0.75
+    
+- type: entity
+  id: PowerArmorLeftLegMK1
+  parent: BasePowerArmorLeftLeg
+  name: Mk.1 power armor left leg
+  components:
+  - type: Sprite
+    noRot: true
+    drawdepth: Mobs
+    sprite: _FinalFrontier/Clothing/PowerArmor/LeftLegs/mk1.rsi
+    state: icon
+  - type: Tag
+    tags:
+    - PowerArmorLeftLeg
+  - type: PowerArmorPiece
+    path: _FinalFrontier/Clothing/PowerArmor/LeftLegs/mk1.rsi
+  - type: Armor
+    modifiers:
+      coefficients:
+        Blunt: 0.7
+        Slash: 0.7
+        Piercing: 0.7
+        Heat: 0.4
+        Caustic: 0.8
+        Radiation: 0.75
+      
+- type: entity
+  parent: ClothingHeadHardsuitBase
+  id: ClothingHeadHelmetPowerArmorMK1
+  name: Mk.1 power armor helmet
+  components:
+  - type: BreathMask
+  - type: Item
+    size: Normal
+  - type: FlashImmunity
+  - type: IdentityBlocker
+  - type: NightVision
+    flashDurationMultiplier: 0.85
+    isEquipment: true
+  - type: Sprite
+    sprite: _FinalFrontier/Clothing/Head/PowerArmor/mk1.rsi
+  - type: Clothing
+    sprite: _FinalFrontier/Clothing/Head/PowerArmor/mk1.rsi
+  - type: PressureProtection
+    highPressureMultiplier: 0.525
+    lowPressureMultiplier: 10000
+  - type: Armor
+    modifiers:
+      coefficients:
+        Blunt: 0.8
+        Slash: 0.8
+        Piercing: 0.8

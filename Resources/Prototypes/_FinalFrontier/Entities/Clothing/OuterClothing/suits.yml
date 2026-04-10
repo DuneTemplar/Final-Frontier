@@ -574,3 +574,74 @@
         Slash: 0.9
         Piercing: 0.9
         Heat: 0.9
+        
+# Kolmer Heavy Assault
+        
+- type: entity
+  parent: ClothingOuterHardsuitBaseNF
+  id: ClothingOuterHardsuitKolmerHeavy
+  name: KR-O heavy assault hardsuit
+  description: A hardsuit manufactured by Kolmer Rifleworks for prolonged combat, practically a walking tank.
+  components:
+  - type: Sprite
+    sprite: _FinalFrontier/Clothing/OuterClothing/Suits/kolmer_heavy.rsi
+  - type: Clothing
+    sprite: _FinalFrontier/Clothing/OuterClothing/Suits/kolmer_heavy.rsi
+  - type: PressureProtection
+    highPressureMultiplier: 0.5
+    lowPressureMultiplier: 1000
+  - type: ExplosionResistance
+    damageCoefficient: 0.50
+  - type: Armor
+    modifiers:
+      coefficients: 
+        Blunt: 0.2
+        Slash: 0.25
+        Piercing: 0.25
+        Heat: 0.5
+        Radiation: 0.05
+        Caustic: 0.8
+        Shock: 0.8
+  - type: ClothingSpeedModifier
+    walkModifier: 0.5
+    sprintModifier: 0.4
+  - type: ToggleableClothing 
+    requiredSlot: outerclothing
+    blockUnequipWhenAttached: false
+    replaceCurrentClothing: true
+    clothingPrototypes:
+      head:  ClothingHeadHelmetHardsuitKolmerHeavy
+      helmetcover: ClothingHeadHelmetCoverBlock
+      helmetattachment: ClothingHeadHelmetAttachmentBlock
+  - type: PirateBountyItem 
+    id: ClothingOuterHardsuitTacsuit
+  - type: StaminaDamageResistance
+    coefficient: 0.65
+
+- type: entity
+  parent: ClothingHeadHardsuitBase
+  id: ClothingHeadHelmetHardsuitKolmerHeavy
+  categories: [ HideSpawnMenu ]
+  name: KR-O heavy assault hardsuit helmet
+  description: The bucketlike helmet of the KR-O heavy assault hardsuit.
+  components:
+  - type: BreathMask
+  - type: FlashImmunity
+  - type: IdentityBlocker
+  - type: NightVision
+    flashDurationMultiplier: 0.85
+    isEquipment: true
+  - type: Sprite
+    sprite: _FinalFrontier/Clothing/OuterClothing/Suits/kolmer_heavy.rsi/kolmer_heavy_helm.rsi
+  - type: Clothing
+    sprite: _FinalFrontier/Clothing/OuterClothing/Suits/kolmer_heavy.rsi/kolmer_heavy_helm.rsi
+  - type: PressureProtection
+    highPressureMultiplier: 0.525
+    lowPressureMultiplier: 10000
+  - type: Armor
+    modifiers:
+      coefficients:
+        Blunt: 0.85
+        Slash: 0.85
+        Piercing: 0.85
+        Heat: 0.9

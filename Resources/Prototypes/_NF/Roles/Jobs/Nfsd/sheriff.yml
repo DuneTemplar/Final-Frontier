@@ -22,9 +22,14 @@
   canBeAntag: false
   guides: [ BasicLore, TransSolarFederation ] # Mono
   accessGroups:
-  - AllAccess
-  access: # Mono
+  - AllAccessMono #Mono Start
+  access:
   - TsfmcEngineering
+  - HeadOfSecurity
+  - Bailiff
+  - Sergeant
+  - Armory
+  - Frontier #Mono End
   special:
   - !type:AddComponentSpecial
     components:

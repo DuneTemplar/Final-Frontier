@@ -1,0 +1,39 @@
+- type: vessel
+  id: Crater
+  parent: BaseVesselAntag
+  name: TSF-DWI Crater
+  description: An extremely armed military mining frigate made in the Colossus sector by Dornan-Weryl Industrial, including industrial manufacturing capability.
+  limit: 2
+  price: 260000
+  category: Large
+  group: Security
+  access: Security
+  shuttlePath: /Maps/_FinalFrontier/Shuttles/TSFMC/crater.yml
+  guidebookPage: Null
+  class:
+  - Frigate
+  - Salvage
+  engine:
+  - AME
+
+- type: gameMap
+  id: Crater
+  mapName: 'Crater'
+  mapPath: /Maps/_FinalFrontier/Shuttles/TSFMC/crater.yml
+  minPlayers: 0
+  stations:
+    Crater:
+      stationProto: StandardFrontierSecurityVessel
+      gridComponents:
+      - type: VesselInfo
+        description: "As the war machine keeps turning."
+      components:
+      - type: StationNameSetup
+        mapNameTemplate: 'Crater TSF{1}'
+        nameGenerator:
+          !type:NanotrasenNameGenerator
+          prefixCreator: '14'
+      - type: StationJobs
+        availableJobs:
+          Deputy: [ 0, 0 ]
+          TsfBorg: [ 0, 0 ]

@@ -222,6 +222,7 @@
   - type: Physics
     bodyType: Dynamic
     fixedRotation: false
+  - type: TargetSeekingTarget
   - type: EmbeddableProjectile
     deleteOnRemove: true
   - type: Fixtures

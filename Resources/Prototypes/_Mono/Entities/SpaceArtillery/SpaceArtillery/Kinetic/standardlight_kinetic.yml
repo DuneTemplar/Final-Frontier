@@ -146,7 +146,7 @@
   - type: ShipGunClass
     shipClass: Medium
 
-# M6A2
+# M6A2 # FINAL FRONTIER
 
 - type: entity
   id: WeaponTurretM6A2Machinegun
@@ -258,9 +258,6 @@
   - type: Clickable
   - type: InputMover
   - type: InteractionOutline
-  - type: DeviceNetwork
-    deviceNetId: Wireless
-    receiveFrequencyId: BasicDevice
   - type: Strap
     buckleOffset: "0, 0.5"
     position: Stand

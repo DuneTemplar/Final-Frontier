@@ -141,14 +141,13 @@
   - type: Ammo
     muzzleFlash: null
   - type: StaminaDamageOnCollide
-    damage: 65
+    damage: 15 ## Final Frontier - No. We aren't having it deal 65 stamina.
   - type: Projectile
     impactEffect: BulletImpactEffectKinetic
     damage:
       types:
-        Blunt: 5
-        Caustic: 15
-        Cellular: 5
+        Blunt: 8
+        Shock: 10
     soundHit:
       collection: ExplosionSmall
     forceSound: true

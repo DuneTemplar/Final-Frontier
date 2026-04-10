@@ -123,5 +123,5 @@
   - type: Clothing
     sprite: _FinalFrontier/Objects/Weapons/Guns/SMGs/kr_m26.rsi
   - type: StaticPrice
-    price: 22500
+    price: 2500
     vendPrice: 27500

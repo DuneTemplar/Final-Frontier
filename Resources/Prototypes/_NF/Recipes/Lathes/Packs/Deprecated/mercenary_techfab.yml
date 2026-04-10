@@ -139,6 +139,7 @@
   - ClothingShoesBootsMagMercenary
   - ClothingOuterHardsuitKolmerEngineer # Final Frontier
   - ClothingOuterHardsuitKolmerLight # Final Frontier
+  - ClothingOuterHardsuitKolmerHeavy # Final Frontier
   - ClothingOuterHardsuitHemolysis # Final Frontier
 ## Utilities
   - ForensicPad
@@ -191,6 +192,7 @@
   - WeaponSniperWessex # Final Frontier
   - WeaponSubMachineGunRaven # Final Frontier 
   - WeaponShotgunBreacher # Final Frontier
+  - WeaponLightMachineGunEagle # Final Frontier
   - WeaponSubMachineGunVectorNtsfHclm
   - WeaponRadAx
   - WeaponRifleAk

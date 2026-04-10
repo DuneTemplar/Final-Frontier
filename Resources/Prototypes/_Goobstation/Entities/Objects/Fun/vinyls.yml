@@ -432,6 +432,17 @@
   - type: Vinyl
     song:
       path: /Audio/_FinalFrontier/RadioStation/music/space_asshole.ogg
+      
+- type: entity
+  name: "vinyl disk: praise the lord and pass the ammunition"
+  id: VinylDiskPraiseTheLordAndPassTheAmmunition
+  parent: BaseVinylDisk
+  components:
+  - type: Sprite
+    state: blue-vinyl-disk
+  - type: Vinyl
+    song:
+      path: /Audio/_FinalFrontier/RadioStation/music/praise_the_lord_and_pass_the_ammunition.ogg
 
 # Sleeves
 

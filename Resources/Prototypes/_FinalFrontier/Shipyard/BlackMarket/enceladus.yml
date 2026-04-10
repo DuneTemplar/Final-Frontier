@@ -1,0 +1,37 @@
+- type: vessel
+  id: Enceladus
+  parent: BaseVesselAntag
+  name: PDV Enceladus
+  description: A heavily armed mining frigate equipped with 4 Apollo mining lasers, 2 Hydra 220mm cannons, 3 CYREXA 220mm cannons, a full industrial setup and a questionable hull design.
+  limit: 2
+  price: 300000
+  category: Large
+  group: BlackMarket
+  access: Pirate
+  shuttlePath: /Maps/_FinalFrontier/Shuttles/BlackMarket/enceladus.yml
+  guidebookPage: Null
+  class:
+  - Pirate
+  - Frigate
+  - Salvage
+  engine:
+  - AME
+
+- type: gameMap
+  id: Enceladus
+  mapName: 'PDV Enceladus'
+  mapPath: /Maps/_FinalFrontier/Shuttles/BlackMarket/enceladus.yml
+  minPlayers: 0
+  stations:
+    Enceladus:
+      stationProto: StandardFrontierVessel
+      components:
+        - type: StationNameSetup
+          mapNameTemplate: 'Enceladus PDV{1}'
+          nameGenerator:
+            !type:NanotrasenNameGenerator
+            prefixCreator: '14'
+        - type: StationJobs
+          availableJobs:
+            Pirate: [ 0, 0 ]
+            PdvBorg: [ 0, 0 ]

@@ -1,0 +1,39 @@
+# Author Info
+# GitHub: Erophosea
+# Discord: Erophosea
+
+- type: vessel
+  id: Slughauler
+  parent: BaseVessel
+  name: PHX Slughauler
+  description: An old shuttle designed by the Phoenixes. Has everything you need to start both ore and gas mining... except for air. A pressurized room and EVA suits have been added for your convinience.
+  price: 40000
+  category: small
+  group: Shipyard
+  shuttlePath: /Maps/_FinalFrontier/Shuttles/slughauler.yml
+  guidebookPage: Null
+  class:
+  - Salvage
+  - Atmospherics 
+  engine:
+  - Steam
+
+- type: gameMap
+  id: Slughauler
+  mapName: 'PHX Slughauler'
+  mapPath: /Maps/_FinalFrontier/Shuttles/slughauler.yml
+  minPlayers: 0
+  stations:
+    Slughauler:
+      stationProto: StandardFrontierVessel
+      components:
+        - type: StationNameSetup
+          mapNameTemplate: 'Slughauler CIV{1}'
+          nameGenerator:
+            !type:NanotrasenNameGenerator
+            prefixCreator: '14'
+        - type: StationJobs
+          availableJobs:
+            Contractor: [ 0, 0 ]
+            Pilot: [ 0, 0 ]
+            Mercenary: [ 0, 0 ]

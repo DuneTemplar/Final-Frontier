@@ -4,10 +4,11 @@
   entityIcon: WeaponLMGRatel
   discipline: Arsenal
   tier: 2
-  cost: 25000
+  cost: 35000
   recipeUnlocks:
   - WeaponLMGRatel
   - WeaponShotgunBigBuddy
+  - WeaponLightMachineGunEagle
   technologyPrerequisites:
   - MercArmementSimple
   - AdvancedParts

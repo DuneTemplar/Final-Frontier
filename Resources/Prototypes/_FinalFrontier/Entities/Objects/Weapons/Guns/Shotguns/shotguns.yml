@@ -28,5 +28,5 @@
     soundInsert:
       path: /Audio/Weapons/Guns/MagIn/shotgun_insert.ogg
   - type: StaticPrice
-    price: 25000
+    price: 2500
     vendPrice: 30000

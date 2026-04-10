@@ -22,6 +22,13 @@ public sealed partial class MechComponent : Component
     [DataField("breakOnEmag")]
     [AutoNetworkedField]
     public bool BreakOnEmag = true;
+	
+	/// <summary>
+    /// FinalFrontier: Is it power armor.
+    /// </summary>
+    [DataField("powerArmor")]
+    [AutoNetworkedField]
+    public bool PowerArmor = false;
 
     /// <summary>
     /// How much "health" the mech has left.
@@ -48,6 +55,18 @@ public sealed partial class MechComponent : Component
     /// </summary>
     [DataField, AutoNetworkedField, ViewVariables(VVAccess.ReadWrite)]
     public FixedPoint2 MaxEnergy = 0;
+	
+	/// <summary>
+    /// Monolith - State that activates at 5% of mech battery remaining.
+    /// </summary>
+    [DataField]
+    public bool CriticalPowerState = false;
+
+    /// <summary>
+    /// Monolith - Speed penalty that applies when CriticalPowerState is true.
+    /// </summary>
+    [DataField]
+    public float CriticalPowerStateSpeedPenalty = 0.65f;
 
     /// <summary>
     /// The slot the battery is stored in.

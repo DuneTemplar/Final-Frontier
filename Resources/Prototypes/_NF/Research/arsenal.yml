@@ -124,6 +124,7 @@
   - ClothingOuterHardsuitScaf
   - BlueprintClothingOuterHardsuitScaf
   - ClothingOuterHardsuitHemolysis
+  - ClothingOuterHardsuitKolmerHeavy
   technologyPrerequisites:
   - HardsuitsArmored
   - SuperParts

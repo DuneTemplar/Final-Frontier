@@ -9,3 +9,18 @@
   
 - type: Tag
   id: NavalMine
+  
+- type: Tag
+  id: PowerArmorChestplate
+  
+- type: Tag
+  id: PowerArmorRightArm
+
+- type: Tag
+  id: PowerArmorLeftArm
+  
+- type: Tag
+  id: PowerArmorRightLeg
+  
+- type: Tag
+  id: PowerArmorLeftLeg

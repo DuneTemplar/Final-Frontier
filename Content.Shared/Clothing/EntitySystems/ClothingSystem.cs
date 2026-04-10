@@ -1,13 +1,17 @@
 using Content.Shared.Clothing.Components;
+using Content.Shared.Containers.ItemSlots;
 using Content.Shared.Hands.Components;
 using Content.Shared.Hands.EntitySystems;
 using Content.Shared.Humanoid;
 using Content.Shared.Interaction.Events;
 using Content.Shared.Inventory;
+using Content.Shared.DragDrop;
+using Content.Shared.DoAfter;
 using Content.Shared.Inventory.Events;
 using Content.Shared.Item;
 using Content.Shared.Strip.Components;
 using Robust.Shared.Containers;
+using Robust.Shared.Serialization;
 using Robust.Shared.GameStates;
 
 namespace Content.Shared.Clothing.EntitySystems;
@@ -19,6 +23,7 @@ public abstract class ClothingSystem : EntitySystem
     [Dependency] private readonly SharedHumanoidAppearanceSystem _humanoidSystem = default!;
     [Dependency] private readonly InventorySystem _invSystem = default!;
     [Dependency] private readonly SharedHandsSystem _handsSystem = default!;
+	[Dependency] private readonly SharedDoAfterSystem _doAfter = default!;
 
     public override void Initialize()
     {
@@ -37,6 +42,9 @@ public abstract class ClothingSystem : EntitySystem
         SubscribeLocalEvent<ClothingComponent, BeforeItemStrippedEvent>(OnItemStripped);
         SubscribeLocalEvent<HideLayerClothingComponent, ComponentInit>(OnHideLayerComponent); // Goobstation - Update component state on component toggle
         SubscribeLocalEvent<HideLayerClothingComponent, ComponentRemove>(OnHideLayerComponent); // Goobstation - Update component state on component toggle
+		SubscribeLocalEvent<ClothingComponent, DragDropTargetEvent>(OnDragDrop);
+        SubscribeLocalEvent<ClothingComponent, CanDropTargetEvent>(OnCanDragDrop);
+		SubscribeLocalEvent<ClothingComponent, ArmorEntryEvent>(OnDragFinish);
     }
 
     private void OnUseInHand(Entity<ClothingComponent> ent, ref UseInHandEvent args)
@@ -58,6 +66,14 @@ public abstract class ClothingSystem : EntitySystem
         Entity<ClothingComponent> toEquipEnt,
         Entity<InventoryComponent, HandsComponent> userEnt)
     {
+		if (TryComp(userEnt, out ContainerManagerComponent? containerManagerComp))
+		{
+			foreach (var container in containerManagerComp.Containers)
+			{
+				//if (container.Value.ID == "outerClothing")
+				//	container.Value.ShowContents = true;
+			}
+		}
         foreach (var slotDef in userEnt.Comp1.Slots)
         {
             if (!_invSystem.CanEquip(userEnt, toEquipEnt, slotDef.Name, out _, slotDef, userEnt, toEquipEnt))
@@ -224,6 +240,43 @@ public abstract class ClothingSystem : EntitySystem
         CheckEquipmentForLayerHide(equipee.Value, component.Slots);
     }
 
+	private void OnDragFinish(Entity<ClothingComponent> ent, ref ArmorEntryEvent args)
+	{
+		if (args.Handled || !ent.Comp.QuickEquip)
+            return;
+		var user = args.User;
+        if (!TryComp(user, out InventoryComponent? inv) ||
+            !TryComp(user, out HandsComponent? hands))
+            return;
+        QuickEquip(ent, (user, inv, hands));
+        args.Handled = true;
+	}
+	
+
+	private void OnDragDrop(EntityUid uid, ClothingComponent component, ref DragDropTargetEvent args)
+    {
+        if (args.Handled)
+            return;
+
+        args.Handled = true;
+
+        var doAfterEventArgs = new DoAfterArgs(EntityManager, args.Dragged, 5, new ArmorEntryEvent(), uid, target: uid)
+        {
+            BreakOnMove = true,
+            MultiplyDelay = false, // Goobstation
+        };
+
+        _doAfter.TryStartDoAfter(doAfterEventArgs);
+    }
+	
+	private void OnCanDragDrop(EntityUid uid, ClothingComponent component, ref CanDropTargetEvent args)
+    {
+        args.Handled = true;
+
+        args.CanDrop = component.DragEquip;
+    }
+	
+
     #region Public API
 
     public void SetEquippedPrefix(EntityUid uid, string? prefix, ClothingComponent? clothing = null)
@@ -292,4 +345,13 @@ public abstract class ClothingSystem : EntitySystem
     }
 
     #endregion
+}
+
+
+/// <summary>
+///     Event raised when a person enters a mech, on both success and failure
+/// </summary>
+[Serializable, NetSerializable]
+public sealed partial class ArmorEntryEvent : SimpleDoAfterEvent
+{
 }

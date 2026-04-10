@@ -1,8 +1,12 @@
+using Content.Shared._FinalFrontier.PowerArmor;
+using Content.Shared.Containers.ItemSlots;
 using Content.Shared.Damage;
 using Content.Shared.Examine;
 using Content.Shared.Inventory;
 using Content.Shared.Silicons.Borgs;
 using Content.Shared.Verbs;
+using Robust.Shared;
+using Robust.Shared.Console;
 using Robust.Shared.GameStates;
 using Robust.Shared.Utility;
 
@@ -33,6 +37,7 @@ public abstract class SharedArmorSystem : EntitySystem
     /// <param name="args">The event, contains the running count of armor percentage as a coefficient</param>
     private void OnCoefficientQuery(Entity<ArmorComponent> ent, ref InventoryRelayedEvent<CoefficientQueryEvent> args)
     {
+
         foreach (var armorCoefficient in ent.Comp.Modifiers.Coefficients)
         {
             args.Args.DamageModifiers.Coefficients[armorCoefficient.Key] = args.Args.DamageModifiers.Coefficients.TryGetValue(armorCoefficient.Key, out var coefficient) ? coefficient * armorCoefficient.Value : armorCoefficient.Value;
@@ -41,6 +46,20 @@ public abstract class SharedArmorSystem : EntitySystem
 
     private void OnDamageModify(EntityUid uid, ArmorComponent component, InventoryRelayedEvent<DamageModifyEvent> args)
     {
+		if (TryComp<ItemSlotsComponent>(uid, out var slots))
+        {
+            foreach (var slot in slots.Slots)
+            {
+                if (TryComp<PowerArmorPieceComponent>(slot.Value.Item, out var pieceComp))
+                {
+                    if (TryComp<ArmorComponent>(slot.Value.Item, out var armorComp))
+                    {
+                       args.Args.Damage = DamageSpecifier.ApplyModifierSet(args.Args.Damage,
+            DamageSpecifier.PenetrateArmor(armorComp.Modifiers, args.Args.ArmorPenetration)); // Goob edit
+                    }
+                }
+            }
+        }
         args.Args.Damage = DamageSpecifier.ApplyModifierSet(args.Args.Damage,
             DamageSpecifier.PenetrateArmor(component.Modifiers, args.Args.ArmorPenetration)); // Goob edit
     }
