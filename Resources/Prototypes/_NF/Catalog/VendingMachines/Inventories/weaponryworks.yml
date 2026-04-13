@@ -96,7 +96,8 @@
 # Energy
     # WeaponLaserCannonPMC: 4294967295
     WeaponLaserCarbine: 4294967295
-    WeaponAutoLaserRifle: 4294967295
+    WeaponAutoLaserRifle: 4294967295 # Final Frontier
+    WeaponLaserMachineGun: 4294967295 # Final Frontier
     WeaponEnergyGunPMC: 4294967295
     WeaponDisablerSMGPMC: 4294967295
 # Sidearms

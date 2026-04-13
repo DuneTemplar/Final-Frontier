@@ -43,7 +43,17 @@
   - type: HitscanBasicDamage
     damage:
       types:
-        Heat: 10 # Mono
+        Heat: 12 # Final Frontier
+  - type: HitscanBasicVisuals
+    muzzleFlash:
+      sprite: _Goobstation/Objects/Weapons/Guns/Projectiles/small_laser.rsi
+      state: muzzle_beam_light
+    travelFlash:
+      sprite: _Goobstation/Objects/Weapons/Guns/Projectiles/small_laser.rsi
+      state: beam_light
+    impactFlash:
+      sprite: _Goobstation/Objects/Weapons/Guns/Projectiles/small_laser.rsi
+      state: impact_beam_light
 
 - type: entity
   parent: BasicHitscan
@@ -53,7 +63,7 @@
   - type: HitscanBasicDamage
     damage:
       types:
-        Heat: 18 # Mono
+        Heat: 21 # Final Frontier
 
 - type: entity
   parent: BasicHitscan
@@ -63,7 +73,7 @@
   - type: HitscanBasicDamage
     damage:
       types:
-        Heat: 22 # Mono
+        Heat: 28 # Final Frontier
 
 - type: entity
   parent: BasicHitscan
@@ -73,7 +83,7 @@
   - type: HitscanBasicDamage
     damage:
       types:
-        Heat: 32 # Mono
+        Heat: 45 # Final Frontier
   - type: HitscanBasicVisuals
     muzzleFlash:
       sprite: Objects/Weapons/Guns/Projectiles/projectiles.rsi

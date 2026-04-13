@@ -7,8 +7,8 @@
       slotFlags: POCKET
       slotGroup: MainHotbar
       stripTime: 3
-      uiWindowPos: 0,3
-      strippingWindowPos: 0,0
+      uiWindowPos: 0,4
+      strippingWindowPos: 0,4
       displayName: Pocket 1
 
     - name: pocket2
@@ -17,8 +17,8 @@
       slotFlags: POCKET
       slotGroup: MainHotbar
       stripTime: 3
-      uiWindowPos: 2,3
-      strippingWindowPos: 1,0
+      uiWindowPos: 2,4
+      strippingWindowPos: 1,4
       displayName: Pocket 2
 
     - name: id
@@ -27,8 +27,8 @@
       slotFlags: IDCARD
       slotGroup: SecondHotbar
       stripTime: 999999 # "Not strippable"
-      uiWindowPos: 2,1
-      strippingWindowPos: 2,0
+      uiWindowPos: 2,2
+      strippingWindowPos: 2,4
       displayName: ID
 
     - name: back
@@ -37,8 +37,8 @@
       slotFlags: BACK
       slotGroup: SecondHotbar
       stripTime: 6
-      uiWindowPos: 3,0
-      strippingWindowPos: 0,1
+      uiWindowPos: 3,1
+      strippingWindowPos: 0,5
       displayName: Back
 
     - name: belt
@@ -47,25 +47,25 @@
       slotFlags: BELT
       slotGroup: SecondHotbar
       stripTime: 4
-      uiWindowPos: 3,1
-      strippingWindowPos: 1,1
+      uiWindowPos: 3,2
+      strippingWindowPos: 1,5
       displayName: Belt
 
     - name: suitstorage
       slotTexture: suit_storage
       slotFlags:   SUITSTORAGE
       slotGroup: MainHotbar
-      uiWindowPos: 2,0
-      strippingWindowPos: 2,1
+      uiWindowPos: 2,1
+      strippingWindowPos: 2,5
       displayName: Suit Storage
 
-# "Not strippable", "hidden"
+# Final Frontier: Nah, I'd rework.
     - name: shoes
       slotTexture: shoes
       slotFlags: FEET
-      stripTime: 999999
+      stripTime: 3
       uiWindowPos: 1,0
-      strippingWindowPos: 21,23
+      strippingWindowPos: 1,3
       displayName: Shoes
 
     - name: jumpsuit
@@ -73,61 +73,57 @@
       slotFlags: INNERCLOTHING
       stripTime: 6
       uiWindowPos: 0,1
-      strippingWindowPos: 20,22
+      strippingWindowPos: 0,2
       displayName: Jumpsuit
 
     - name: outerClothing
       slotTexture: suit
       slotFlags: OUTERCLOTHING
-      stripTime: 999999
+      stripTime: 6
       uiWindowPos: 1,1
-      strippingWindowPos: 21,22
+      strippingWindowPos: 1,2
       displayName: Suit
 
     - name: gloves
-      stripTime: 999999
       slotTexture: gloves
       slotFlags: GLOVES
       uiWindowPos: 2,1
-      strippingWindowPos: 22,22
+      strippingWindowPos: 2,2
       displayName: Gloves
 
     - name: neck
-      stripTime: 999999
       slotTexture: neck
       slotFlags: NECK
       uiWindowPos: 0,2
-      strippingWindowPos: 20,21
+      strippingWindowPos: 0,1
       displayName: Neck
 
     - name: mask
-      stripTime: 999999
       slotTexture: mask
       slotFlags: MASK
       uiWindowPos: 1,2
-      strippingWindowPos: 21,21
+      strippingWindowPos: 1,1
       displayName: Mask
 
     - name: eyes
       slotTexture: glasses
       slotFlags: EYES
-      stripTime: 999999
+      stripTime: 3
       uiWindowPos: 0,3
-      strippingWindowPos: 20,20
+      strippingWindowPos: 0,0
       displayName: Eyes
 
     - name: ears
       slotTexture: ears
       slotFlags: EARS
-      stripTime: 999999
+      stripTime: 3
       uiWindowPos: 2,2
-      strippingWindowPos: 22,20
+      strippingWindowPos: 2,0
       displayName: Ears
 
     - name: head
-      stripTime: 999999
       slotTexture: head
       slotFlags: HEAD
       uiWindowPos: 1,3
-      strippingWindowPos: 21,20
+      strippingWindowPos: 1,0
       displayName: Head

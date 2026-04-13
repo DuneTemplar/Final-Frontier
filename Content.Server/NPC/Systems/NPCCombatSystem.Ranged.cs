@@ -1,10 +1,13 @@
 using System.Numerics;
 using Content.Server.NPC.Components;
+using Content.Server.Wieldable;
 using Content.Shared._Goobstation.Weapons.SmartGun;
 using Content.Shared.CombatMode;
+using Content.Shared.Containers.ItemSlots;
 using Content.Shared.Damage.Components;
 using Content.Shared.Interaction;
 using Content.Shared.Physics;
+using Content.Shared.Weapons.Ranged;
 using Content.Shared.Weapons.Ranged.Components;
 using Content.Shared.Weapons.Ranged.Events;
 using Content.Shared.Wieldable.Components;
@@ -18,6 +21,8 @@ public sealed partial class NPCCombatSystem
     [Dependency] private readonly SharedCombatModeSystem _combat = default!;
     [Dependency] private readonly RotateToFaceSystem _rotate = default!;
     [Dependency] private readonly SharedLaserPointerSystem _pointer = default!; // Goobstation
+    [Dependency] private readonly WieldableSystem _wieldable = default!; // Final Frontier
+    [Dependency] private readonly ItemSlotsSystem _slots = default!; // Final Frontier
 
     private EntityQuery<CombatModeComponent> _combatQuery;
     private EntityQuery<NPCSteeringComponent> _steeringQuery;
@@ -134,11 +139,21 @@ public sealed partial class NPCCombatSystem
                     UpdatePointerLine(gunUid, targetPos, worldPos, comp.Target); // Goobstation
                     continue;
                 }
+                // Final Frontier
+                if (TryComp(gunUid, out ItemSlotsComponent? slotsComp))
+                {
 
-                comp.Status = CombatStatus.Unspecified;
-                comp.ShootAccumulator = 0f;
-                UpdatePointerLine(gunUid, targetPos, worldPos, comp.Target); // Goobstation
+                    _slots.TryEject(gunUid, slotsComp.Slots["gun_magazine"], uid, out _);
+                    TrySpawnInContainer(slotsComp.Slots["gun_magazine"].StartingItem, gunUid, "gun_magazine", out _);
+                }
+                else
+                {
+                    comp.Status = CombatStatus.Unspecified;
+                    comp.ShootAccumulator = 0f;
+                    UpdatePointerLine(gunUid, targetPos, worldPos, comp.Target); // Goobstation
+                }
                 continue;
+                // Final Frontier end
             }
 
             comp.LOSAccumulator -= frameTime;
@@ -233,6 +248,30 @@ public sealed partial class NPCCombatSystem
             {
                 return;
             }
+            // Final Frontier
+            if (TryComp(gunUid, out WieldableComponent? wieldableComp))
+            {
+                if (wieldableComp.Wielded == false)
+                {
+                    _wieldable.TryWield(gunUid, wieldableComp, uid);
+                }
+            }
+
+            if (TryComp(gunUid, out ChamberMagazineAmmoProviderComponent? chamberComp))
+            {
+                if (chamberComp.BoltClosed != null)
+                {
+                    if (chamberComp.AutoCycle == false && chamberComp.BoltClosed.Value == true)
+                    {
+                        _gun.ToggleBolt(gunUid,chamberComp);
+                    }
+                    if (chamberComp.BoltClosed.Value == false)
+                    {
+                        _gun.ToggleBolt(gunUid,chamberComp);
+                    }
+                }
+            }
+            // Final Frontier end
 
             _gun.SetTarget(gun, comp.Target); // Frontier - This ensures that the bullet won't fly over the target if it's downed
             _gun.AttemptShoot(uid, gunUid, gun, targetCordinates);

@@ -27,15 +27,13 @@
       state: wielded-inhand-right
   - type: RandomSpawner
     prototypes:
-    - MobMercenarySoldierKnife
-    - MobMercenarySoldierPistol
-    - MobMercenarySoldierNovalite
+    - MobMercenarySoldierT1
     chance: 1
     offset: 0.0
     rarePrototypes:
     - SpawnMobMercenaryT2
     rareChance: 0.05
-
+    
 - type: entity
   name: mercenary spawner
   id: SpawnMobMercenaryT2
@@ -50,29 +48,27 @@
       state: human
     - sprite: Clothing/Uniforms/Jumpsuit/color.rsi
       state: equipped-INNERCLOTHING
-      color: "#3d5c87"
-    - sprite: Clothing/Shoes/Boots/combatboots.rsi
+      color: "#404029"
+    - sprite: Clothing/Shoes/Boots/mercboots.rsi
       state: equipped-FEET
-    - sprite: Clothing/Hands/Gloves/fingerless.rsi
+    - sprite: Clothing/Hands/Gloves/mercbattle.rsi
       state: equipped-HAND
-    - sprite: Clothing/OuterClothing/Armor/security_slim.rsi
+    - sprite: Clothing/OuterClothing/Vests/mercwebvest.rsi
       state: equipped-OUTERCLOTHING
-    - sprite: Clothing/Mask/gas.rsi
+    - sprite: Clothing/Mask/merc.rsi
       state: equipped-MASK
-    - sprite: Clothing/Head/Helmets/security.rsi
+    - sprite: Clothing/Head/Helmets/merc_helmet.rsi
       state: equipped-HELMET
-    - sprite: Objects/Weapons/Guns/Shotguns/db_shotgun_inhands_64x.rsi
+    - sprite: Objects/Weapons/Guns/Snipers/bolt_gun_wood.rsi
       state: wielded-inhand-right
   - type: RandomSpawner
     prototypes:
-    - MobMercenaryBreacherShotgun
-    - MobMercenarySoldierRevolver
-    - MobMercenaryBreacherMachete
+    - MobMercenarySoldierT2
     chance: 1
     offset: 0.0
     rarePrototypes:
     - SpawnMobMercenaryT3
-    rareChance: 0.1
+    rareChance: 0.05
 
 - type: entity
   name: mercenary spawner
@@ -88,28 +84,21 @@
       state: human
     - sprite: Clothing/Uniforms/Jumpsuit/color.rsi
       state: equipped-INNERCLOTHING
-      color: "#2e687a"
-    - sprite: Clothing/Shoes/Boots/combatboots.rsi
+      color: "#404029"
+    - sprite: Clothing/Shoes/Boots/mercboots.rsi
       state: equipped-FEET
-    - sprite: Clothing/Hands/Gloves/fingerless.rsi
+    - sprite: Clothing/Hands/Gloves/mercbattle.rsi
       state: equipped-HAND
-    - sprite: Clothing/OuterClothing/Armor/security_slim.rsi
+    - sprite: Clothing/OuterClothing/Vests/mercwebvest.rsi
       state: equipped-OUTERCLOTHING
-    - sprite: Clothing/Mask/medicalsecurity.rsi
+    - sprite: Clothing/Mask/merc.rsi
       state: equipped-MASK
-    - sprite: Clothing/Head/Helmets/light_riot.rsi
+    - sprite: Clothing/Head/Helmets/merc_helmet.rsi
       state: equipped-HELMET
-    - sprite: Objects/Specific/Medical/Surgery/saw.rsi
-      state: electric-inhand-right
-    - sprite: Objects/Weapons/Guns/Battery/laser_retro.rsi
-      state: inhand-right-3
+    - sprite: Objects/Weapons/Guns/Snipers/bolt_gun_wood.rsi
+      state: wielded-inhand-right
   - type: RandomSpawner
     prototypes:
-    - MobMercenarySpecialistMedic
-    - MobMercenarySpecialistAssault
+    - MobMercenarySoldierT3
     chance: 1
     offset: 0.0
-    rarePrototypes:
-    - MobMercenarySpecialistMedic
-    - MobMercenarySpecialistAssault
-    rareChance: 0.2

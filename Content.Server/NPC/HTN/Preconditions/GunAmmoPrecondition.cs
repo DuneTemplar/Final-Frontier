@@ -1,4 +1,5 @@
 using Content.Server.Weapons.Ranged.Systems;
+using Content.Shared.Weapons.Ranged.Components;
 using Content.Shared.Weapons.Ranged.Events;
 
 namespace Content.Server.NPC.HTN.Preconditions;
@@ -34,6 +35,36 @@ public sealed partial class GunAmmoPrecondition : HTNPrecondition
             percent = 0f;
         else
             percent = ammoEv.Count / (float) ammoEv.Capacity;
+		
+		if (_entManager.TryGetComponent(gunUid, out BasicEntityAmmoProviderComponent? entityAmmoComp))
+        {
+			if (entityAmmoComp.Count == null || entityAmmoComp.Capacity == null)
+				return true;
+
+			percent = (float)entityAmmoComp.Count / (float)entityAmmoComp.Capacity;
+			percent = System.Math.Clamp(percent, 0f, 1f);
+
+			if (MaxPercent < percent)
+				return false;
+
+			if (MinPercent > percent)
+				return false;
+
+			return true;
+        }
+        if (_entManager.TryGetComponent(gunUid, out HitscanBatteryAmmoProviderComponent? hitscanAmmoComp))
+        {
+			percent = (float)hitscanAmmoComp.Shots / (float)hitscanAmmoComp.Capacity;
+			percent = System.Math.Clamp(percent, 0f, 1f);
+
+			if (MaxPercent < percent)
+				return false;
+	
+			if (MinPercent > percent)
+				return false;
+
+			return true;
+        }
 
         percent = System.Math.Clamp(percent, 0f, 1f);
 

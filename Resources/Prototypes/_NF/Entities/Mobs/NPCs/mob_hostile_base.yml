@@ -338,6 +338,8 @@
   id: MobHumanoidHostileAIComplex
   abstract: true
   components:
+  - type: InputMover
+  - type: MobMover
   - type: HTN
     rootTask:
        task: SimpleHumanoidHostileCompound
@@ -356,6 +358,7 @@
   suffix: AI, Hostile
   abstract: true
   parent:
+  - BaseMobHuman
   - NFMobAtmos
   - MobBloodstream
   - MobFlammable
@@ -364,7 +367,6 @@
   - MobStepTriggerImmune
   - BaseMobSpecies
   - MobHumanoidHostileAIComplex
-  - BaseC3MobHuman
   id: MobHumanoidHostileBase
   components:
   - type: NPCRetaliation
@@ -377,7 +379,7 @@
     thresholds:
       0: Alive
       100: Critical
-      140: Dead
+      200: Dead
   - type: Stamina
     critThreshold: 100
   - type: SlowOnDamage

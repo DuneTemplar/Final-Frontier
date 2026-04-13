@@ -44,3 +44,58 @@
           - PowerCage
   - type: PirateBountyItem # Mono
     id: StandardFactionLongarm
+    
+- type: entity
+  name: laser LMG
+  parent: [WeaponLaserCarbine, BaseGunWieldable]
+  id: WeaponLaserMachineGun
+  description: A civilian grade laser LMG, the even bigger brother of the standard laser rifle.
+  components:
+  - type: Sprite
+    sprite: _FinalFrontier/Objects/Weapons/Guns/Battery/laser_lmg.rsi/icon.rsi
+    layers:
+    - state: base
+      map: ["enum.GunVisualLayers.Base"]
+    - state: mag-unshaded-4
+      map: ["enum.GunVisualLayers.MagUnshaded"]
+      shader: unshaded
+  - type: Item
+    sprite: _FinalFrontier/Objects/Weapons/Guns/Battery/laser_lmg.rsi
+  - type: Clothing
+    sprite: _FinalFrontier/Objects/Weapons/Guns/Battery/laser_lmg.rsi
+    quickEquip: false
+    slots:
+    - Back
+    - suitStorage
+  - type: StaticPrice
+    price: 4200
+  - type: Gun
+    minAngle: 22
+    maxAngle: 40
+    angleIncrease: 2
+    angleDecay: 22
+    fireRate: 7.3
+    selectedMode: FullAuto
+    availableModes:
+    - FullAuto
+    soundGunshot:
+      path: /Audio/_FinalFrontier/Weapons/Guns/Gunshots/laser1.ogg
+  - type: HitscanBatteryAmmoProvider
+    proto: RedLightLaser
+    fireCost: 15
+  - type: SpeedModifiedOnWield
+    walkModifier: 0.5
+    sprintModifier: 0.4
+  - type: GunRequiresWield
+  - type: ItemSlots
+    slots:
+      gun_magazine:
+        name: Magazine
+        startingItem: PowerCageSmall
+        insertSound: /Audio/Weapons/Guns/MagIn/batrifle_magin.ogg
+        ejectSound: /Audio/Weapons/Guns/MagOut/batrifle_magout.ogg
+        whitelist:
+          tags:
+          - PowerCage
+  - type: PirateBountyItem # Mono
+    id: StandardFactionLongarm

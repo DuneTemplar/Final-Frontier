@@ -1,0 +1,338 @@
+# Tier 1
+- type: entity
+  id: LoadoutRandomMercT1
+  abstract: true
+  components:
+  - type: EntityTableSpawner
+    deleteSpawnerAfterSpawn: false
+    table: !type:NestedSelector
+      tableId: MercWeaponT1
+  - type: EntityTableContainerFill
+    containers:
+      jumpsuit: !type:NestedSelector
+        tableId: MercJumpsuitGeneric
+      head: !type:NestedSelector
+        tableId: MercHelmetT1
+      shoes: !type:NestedSelector
+        tableId: MercBootsGeneric
+      outerClothing: !type:NestedSelector
+        tableId: MercOuterClothingGeneric
+      gloves: !type:NestedSelector
+        tableId: MercGlovesGeneric
+      mask: !type:NestedSelector
+        tableId: MercMaskGeneric
+      pocket1: !type:NestedSelector
+        tableId: MercPocketLootT1
+      pocket2: !type:NestedSelector
+        tableId: MercPocketLootT1
+      belt: !type:NestedSelector
+        tableId: MercBeltT1
+      back: !type:NestedSelector
+        tableId: MercBackT1
+        
+# Tier 2
+- type: entity
+  id: LoadoutRandomMercT2
+  abstract: true
+  components:
+  - type: EntityTableSpawner
+    deleteSpawnerAfterSpawn: false
+    table: !type:NestedSelector
+      tableId: MercWeaponT2
+  - type: EntityTableContainerFill
+    containers:
+      jumpsuit: !type:NestedSelector
+        tableId: MercJumpsuitGeneric
+      head: !type:NestedSelector
+        tableId: MercHelmetT2
+      shoes: !type:NestedSelector
+        tableId: MercBootsGeneric
+      outerClothing: !type:NestedSelector
+        tableId: MercOuterClothingGeneric
+      gloves: !type:NestedSelector
+        tableId: MercGlovesGeneric
+      mask: !type:NestedSelector
+        tableId: MercMaskGeneric
+      pocket1: !type:NestedSelector
+        tableId: MercPocketLootT1
+      pocket2: !type:NestedSelector
+        tableId: MercPocketLootT1
+      belt: !type:NestedSelector
+        tableId: MercBeltT1
+      back: !type:NestedSelector
+        tableId: MercBackT1
+      
+# Tier 3
+- type: entity
+  id: LoadoutRandomMercT3
+  abstract: true
+  components:
+  - type: EntityTableSpawner
+    deleteSpawnerAfterSpawn: false
+    table: !type:NestedSelector
+      tableId: MercWeaponT3
+  - type: EntityTableContainerFill
+    containers:
+      jumpsuit: !type:NestedSelector
+        tableId: MercJumpsuitGeneric
+      head: !type:NestedSelector
+        tableId: MercHelmetT2
+      shoes: !type:NestedSelector
+        tableId: MercBootsGeneric
+      outerClothing: !type:NestedSelector
+        tableId: MercOuterClothingPremium
+      gloves: !type:NestedSelector
+        tableId: MercGlovesGeneric
+      mask: !type:NestedSelector
+        tableId: MercMaskGeneric
+      pocket1: !type:NestedSelector
+        tableId: MercPocketLootT1
+      pocket2: !type:NestedSelector
+        tableId: MercPocketLootT1
+      belt: !type:NestedSelector
+        tableId: MercBeltT1
+      back: !type:NestedSelector
+        tableId: MercBackT1
+        
+# Captain
+- type: entity
+  id: LoadoutRandomMercCaptain
+  abstract: true
+  components:
+  - type: EntityTableSpawner
+    deleteSpawnerAfterSpawn: false
+    table: !type:NestedSelector
+      tableId: MercWeaponCaptain
+  - type: EntityTableContainerFill
+    containers:
+      jumpsuit: !type:NestedSelector
+        tableId: MercJumpsuitCaptain
+      head: !type:NestedSelector
+        tableId: MercHelmetCaptain
+      shoes: !type:NestedSelector
+        tableId: MercBootsGeneric
+      outerClothing: !type:NestedSelector
+        tableId: MercOuterClothingPremium
+      gloves: !type:NestedSelector
+        tableId: MercGlovesGeneric
+      mask: !type:NestedSelector
+        tableId: MercMaskGeneric
+      pocket1: !type:NestedSelector
+        tableId: MercPocketLootT1
+      pocket2: !type:NestedSelector
+        tableId: MercPocketLootT1
+      belt: !type:NestedSelector
+        tableId: MercBeltT1
+      back: !type:NestedSelector
+        tableId: MercBackT1
+      suitstorage: !type:NestedSelector
+        tableId: MercWeaponT3
+          
+- type: entityTable
+  id: MercJumpsuitGeneric
+  table: !type:GroupSelector
+    children:
+      - id: ClothingUniformJumpsuitCombatSuitCCEBasic
+      - id: ClothingUniformJumpsuitCombatSuitCCEDesert
+      - id: ClothingUniformJumpsuitCombatSuitGrassland
+      - id: ClothingUniformJumpsuitMilitaryContractorTac
+      - id: ClothingUniformJumpsuitCombatSuitDigitalGreenTan
+      - id: ClothingUniformJumpsuitBH
+      - id: ClothingUniformJumpsuitMilitaryTurtleneckMercenary
+      - id: ClothingUniformJumpsuitMilitaryTurtleneckBlueMercenary
+      - id: ClothingUniformJumpsuitPrivateSec
+      - id: ClothingUniformJumpsuitOrderTriarii
+      
+- type: entityTable
+  id: MercJumpsuitCaptain
+  table: !type:GroupSelector
+    children:
+      - id: ClothingUniformJumpsuitOrderCaptain
+      - id: ClothingUniformJumpsuitMilitaryCaptain
+      - id: ClothingUniformJumpsuitMilitaryTurtleneckBlueMercenaryCaptain
+
+- type: entityTable
+  id: MercOuterClothingGeneric
+  table: !type:GroupSelector
+    children:
+      - id: ClothingOuterArmorBPVestPolyvalent
+      - id: ClothingOuterArmorBasicSlim
+      - id: ClothingOuterVestDetective
+      - id: ClothingOuterVestWebMercenary
+      - id: ClothingOuterVestWebMercenaryBlack
+      - id: ClothingOuterArmorMakeshiftVestHeavy
+      - id: ClothingOuterHardsuitUNSAArmoredEva
+      - id: ClothingOuterArmorRiot
+      - id: ClothingOuterHardsuitUsspL10
+      - id: ClothingOuterHardsuitPrivateSecurity
+      - id: ClothingOuterHardsuitMercenary
+      
+- type: entityTable
+  id: MercOuterClothingPremium
+  table: !type:GroupSelector
+    children:
+      - id: ClothingOuterArmorBPVestPolyvalent
+      - id: ClothingOuterArmorBasicSlim
+      - id: ClothingOuterArmorReflective
+      - id: ClothingOuterArmorBPVestMedium
+      - id: ClothingOuterArmorBPVestHeavy
+      - id: ClothingOuterArmorOrder
+      - id: ClothingOuterArmorBulletproof
+      - id: ClothingOuterHardsuitDWIPaladin
+      - id: ClothingOuterHardsuitKolmerLight
+      - id: ClothingOuterHardsuitMercenaryWarlord
+      - id: ClothingOuterHardsuitScaf
+      - id: SpawnPowerArmorFrameT11
+        weight: 0.03
+      - id: SpawnPowerArmorFrameDM10
+        weight: 0.03
+      
+- type: entityTable
+  id: MercBootsGeneric
+  table: !type:GroupSelector
+    children:
+      - id: ClothingShoesBootsJackFilled
+      - id: ClothingShoesBootsCombatFilled
+      - id: ClothingShoesBootsCowboyBlack
+      - id: ClothingShoesTacticalSwatBlack
+      
+- type: entityTable
+  id: MercGlovesGeneric
+  table: !type:GroupSelector
+    children:
+      - id: ClothingHandsGlovesTacticalCombatTan
+      - id: ClothingHandsGlovesCombat
+      - id: ClothingHandsMercenaryGlovesCombat
+      
+- type: entityTable
+  id: MercMaskGeneric
+  table: !type:GroupSelector
+    children:
+      - id: ClothingMaskGasExplorer
+      - id: ClothingMaskSOM41
+      - id: ClothingMaskSOM42
+      - id: ClothingMaskGasMercenary
+      - id: ClothingMaskGasOrderTriarii
+      - id: ClothingMaskGasSecurity
+      
+- type: entityTable
+  id: MercPocketLootT1
+  table: !type:GroupSelector
+    children:
+      - id: WeaponPistolCobra
+      - id: WeaponPistolPollock
+      - id: WeaponPistolMk58
+      - id: WeaponLaserPistolNF
+      - id: Magazine9x19mmPistolFMJ
+      - id: Magazine45_ACPPistolFMJ
+      - id: Magazine9x19mmPistolHighCapacityFMJ
+      - id: Magazine45_ACPPistolHighCapacityFMJ
+      - id: SpaceCash1000
+
+- type: entityTable
+  id: MercBeltT1
+  table: !type:GroupSelector
+    children:
+      - id: ClothingBeltWebbingMecranaryTier1Pistol
+      - id: ClothingBeltWebbingMecranaryTier1Novalite
+      - id: ClothingBeltWebbingMecranaryTier2Revolver
+      - id: ClothingBeltWebbingMecranaryTier2Shotgun
+      
+- type: entityTable
+  id: MercBackT1
+  table: !type:GroupSelector
+    children:
+      - id: ClothingBackpackDuffelMecranaryTier1Pistol
+      - id: ClothingBackpackDuffelMecranaryTier1Novalite
+      - id: ClothingBackpackDuffelMecranaryTier2Revolver
+      - id: ClothingBackpackDuffelMecranaryTier2Shotgun
+      
+- type: entityTable
+  id: MercHelmetT1
+  table: !type:GroupSelector
+    children:
+      - id: ClothingHeadHelmetOrder
+      - id: ClothingHeadBPHelmetLight
+      - id: ClothingHeadHelmetBasic
+      - id: ClothingHeadHelmetMercenary
+      - id: ClothingHeadHelmetMercenaryBlack
+      - id: ClothingHeadMakeshiftHelmet
+      - id: ClothingHeadHatBoonieDesert
+      - id: ClothingHeadHatBoonieForest
+      
+- type: entityTable
+  id: MercHelmetT2
+  table: !type:GroupSelector
+    children:
+      - id: ClothingHeadHelmetOrder
+      - id: ClothingHeadHatBeret
+      - id: ClothingHeadHatBeretMercenary
+      - id: ClothingHeadHatBeretSecurity
+      - id: ClothingHeadHatBH
+      
+- type: entityTable
+  id: MercHelmetCaptain
+  table: !type:GroupSelector
+    children:
+      - id: ClothingHeadHatBeretCommander
+      - id: ClothingHeadHatHoshat
+      - id: ClothingHeadHatUSSPOfficerCap
+      - id: ClothingHeadHatCapcap
+      - id: ClothingHeadHatBH
+      - id: ClothingHeadHatSyndieMAA
+      
+- type: entityTable
+  id: MercWeaponT1
+  table: !type:GroupSelector
+    children:
+      - id: WeaponPistolCobra
+      - id: WeaponPistolPollock
+      - id: WeaponPistolMk58
+      - id: WeaponLaserPistolNF
+      - id: WeaponRiflePrometheus
+      - id: WeaponRifleNovaliteC1
+      - id: WeaponRifleGestioPMC
+      - id: PlasteelArmingSword
+      - id: CombatKnife
+      - id: KukriKnife
+      
+- type: entityTable
+  id: MercWeaponT2
+  table: !type:GroupSelector
+    children:
+      - id: WeaponPistolCobra
+      - id: WeaponRifleNovaliteC1
+      - id: WeaponSubMachineGunMontese
+      - id: WeaponRiflePrometheus
+      - id: WeaponRifleAK502
+      - id: WeaponAutoLaserRifle
+      - id: WeaponSniperWessex
+      - id: WeaponRifleAK410
+      - id: WeaponRifleAk
+      - id: CaptainSabre
+      - id: Katana
+
+- type: entityTable
+  id: MercWeaponT3
+  table: !type:GroupSelector
+    children:
+      - id: WeaponSubMachineGunRaven
+      - id: WeaponSniperWessex
+      - id: WeaponLaserMachineGun
+      - id: WeaponRifleVulcan
+      - id: WeaponSubMachineGunVectorNtsfHclm
+      - id: WeaponRifleNtsfLtr
+      - id: WeaponLMGRatel
+      
+- type: entityTable
+  id: MercWeaponCaptain
+  table: !type:GroupSelector
+    children:
+      - id: WeaponLightMachineGunEagle
+      - id: WeaponRifleJackdaw
+      - id: WeaponLaserMachineGun
+      - id: WeaponPistolAnaconda
+      - id: WeaponPulsePistol
+      - id: WeaponRifleMR3C
+      - id: WeaponAntiqueLaser
+      - id: WeaponHFKatana

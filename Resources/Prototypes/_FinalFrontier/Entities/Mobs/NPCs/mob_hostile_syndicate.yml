@@ -3,10 +3,7 @@
   abstract: true
   categories: [ HideSpawnMenu ]
   parent:
-  - MobHumanoidHostileBase
-  - MobHumanoidInvetory
-  - MobHumanoidHostileAISimpleRanged
-  - NFMobRestrictions
+  - FFMobHumanoidHostileBase
   id: MobSyndicateNavalBase
   components:
   - type: Body
@@ -45,8 +42,8 @@
     gib: false
     useArgumentEntity: true
   - type: MovementSpeedModifier
-    baseWalkSpeed : 4.5
-    baseSprintSpeed : 4.5
+    baseWalkSpeed : 2.5
+    baseSprintSpeed : 2.5
 
 # Humans
 # Syndicate Captain, "armed" with AP Python
