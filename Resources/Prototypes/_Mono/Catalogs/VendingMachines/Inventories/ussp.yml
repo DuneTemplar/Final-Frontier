@@ -41,5 +41,6 @@
     WeaponRifleAK502: 4294967295 # Infinite
     WeaponShotgunBigLeady: 4294967295 # Infinite
     WeaponDP29: 4294967295 # Infinite
-    RDServerUSSPFlatpack: 2
-    FactionLatheFlatpack: 2
+    RDServerUSSPFlatpack: 5
+    FactionLatheFlatpack: 5
+    RubberStampUSSP: 4294967295 # Infinite
