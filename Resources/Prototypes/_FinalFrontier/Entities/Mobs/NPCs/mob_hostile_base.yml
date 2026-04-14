@@ -76,6 +76,23 @@
   - FFMobHumanoidHostileAIComplex
   id: FFMobHumanoidHostileBase
   components:
+  - type: Tool
+    speedModifier: 3 # 1.5->3 Mono
+    qualities:
+      - Prying
+    hideQualities: true
+  - type: Prying
+    pryPowered: true
+    force: true
+    speedModifier: 3 # 1.5->3 Mono
+    useSound:
+      path: /Audio/Items/crowbar.ogg
+  - type: Tag
+    tags:
+    - CanPilot
+    - FootstepSound
+    - DoorBumpOpener
+    - Humanoid
   - type: NPCRetaliation
     attackMemoryLength: 10
   - type: MobMover
@@ -107,8 +124,8 @@
     critThreshold: 100
   - type: SlowOnDamage
     speedModifierThresholds:
-      60: 0.7
-      80: 0.5
+      60: 0.6
+      80: 0.4
   - type: Blindable
   - type: Butcherable
     butcheringType: Spike

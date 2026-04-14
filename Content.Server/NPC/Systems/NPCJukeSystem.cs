@@ -41,6 +41,7 @@ public sealed class NPCJukeSystem : EntitySystem
     {
         if (component.JukeType == JukeType.AdjacentTile)
         {
+
             if (_npcRangedQuery.TryGetComponent(uid, out var ranged) &&
                 ranged.Status == CombatStatus.NotInSight)
             {
@@ -119,6 +120,15 @@ public sealed class NPCJukeSystem : EntitySystem
 
             var targetCoords = _mapSystem.GridTileToWorld(args.Transform.GridUid.Value, grid, component.TargetTile.Value);
             var targetDir = (targetCoords.Position - args.WorldPosition);
+            if (ranged != null)
+            {
+                var rangedTarget = ranged.Target;
+                if (TryComp(rangedTarget, out TransformComponent? targetTransform))
+                {
+                    var rangedDir = (targetTransform.WorldPosition - args.WorldPosition);
+                    targetDir = (rangedDir / 2) + (targetDir / 2);
+                }
+            }
             targetDir = args.OffsetRotation.RotateVec(targetDir);
             const float weight = 1f;
             var norm = targetDir.Normalized();

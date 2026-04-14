@@ -1,5 +1,7 @@
+using System.Linq;
 using System.Numerics;
 using Content.Server.NPC.Components;
+using Content.Server.Weapons.Ranged.Systems;
 using Content.Server.Wieldable;
 using Content.Shared._Goobstation.Weapons.SmartGun;
 using Content.Shared.CombatMode;
@@ -11,6 +13,8 @@ using Content.Shared.Weapons.Ranged;
 using Content.Shared.Weapons.Ranged.Components;
 using Content.Shared.Weapons.Ranged.Events;
 using Content.Shared.Wieldable.Components;
+using Robust.Server.Containers;
+using Robust.Shared.Containers;
 using Robust.Shared.Map;
 using Robust.Shared.Physics.Components;
 
@@ -23,6 +27,7 @@ public sealed partial class NPCCombatSystem
     [Dependency] private readonly SharedLaserPointerSystem _pointer = default!; // Goobstation
     [Dependency] private readonly WieldableSystem _wieldable = default!; // Final Frontier
     [Dependency] private readonly ItemSlotsSystem _slots = default!; // Final Frontier
+    [Dependency] private readonly ContainerSystem _container = default!; // Final Frontier
 
     private EntityQuery<CombatModeComponent> _combatQuery;
     private EntityQuery<NPCSteeringComponent> _steeringQuery;
@@ -32,12 +37,12 @@ public sealed partial class NPCCombatSystem
     private EntityQuery<RequireProjectileTargetComponent> _requireTargetQuery; // Mono
 
     // TODO: Don't predict for hitscan
-    private const float ShootSpeed = 20f;
+    private const float ShootSpeed = 22f;
 
     /// <summary>
     /// Cooldown on raycasting to check LOS.
     /// </summary>
-    public const float UnoccludedCooldown = 0.2f;
+    public const float UnoccludedCooldown = 0.5f;
 
     private void InitializeRanged()
     {
@@ -203,7 +208,7 @@ public sealed partial class NPCCombatSystem
             }
 
             var mapVelocity = targetBody.LinearVelocity;
-            var targetSpot = targetPos + mapVelocity * distance / ShootSpeed;
+            var targetSpot = targetPos + mapVelocity * distance / (ShootSpeed + _random.Next(-12,13));
 
             // If we have a max rotation speed then do that.
             var goalRotation = (targetSpot - worldPos).ToWorldAngle();
@@ -271,10 +276,28 @@ public sealed partial class NPCCombatSystem
                     }
                 }
             }
-            // Final Frontier end
 
             _gun.SetTarget(gun, comp.Target); // Frontier - This ensures that the bullet won't fly over the target if it's downed
             _gun.AttemptShoot(uid, gunUid, gun, targetCordinates);
+            if (gun.SelectedMode == SelectiveFire.SemiAuto)
+            {
+                gun.NextFire = gun.NextFire.Add(TimeSpan.FromSeconds(_random.NextDouble() / 1.5f));
+            }
+            if (TryComp(gunUid, out BallisticAmmoProviderComponent? ballisticComp))
+            {
+                if (ballisticComp.AutoCycle == false)
+                {
+                    if (ballisticComp.Proto != null)
+                    {
+                        if (TryComp(gunUid, out ContainerManagerComponent? containerComp))
+                        {
+                            _interaction.UseInHandInteraction(uid, gunUid);
+                            _gun.AddBallisticAmmo(gunUid, ballisticComp, 1);
+                        }
+                    }
+                }
+            }
+            // Final Frontier end
         }
     }
 

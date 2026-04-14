@@ -285,7 +285,6 @@
   id: MercWeaponT1
   table: !type:GroupSelector
     children:
-      - id: WeaponPistolCobra
       - id: WeaponPistolPollock
       - id: WeaponPistolMk58
       - id: WeaponLaserPistolNF
@@ -300,9 +299,11 @@
   id: MercWeaponT2
   table: !type:GroupSelector
     children:
-      - id: WeaponPistolCobra
       - id: WeaponRifleNovaliteC1
       - id: WeaponSubMachineGunMontese
+      - id: WeaponShotgunEnforcer
+      - id: WeaponShotgunKammerer
+      - id: WeaponLaserCarbine
       - id: WeaponRiflePrometheus
       - id: WeaponRifleAK502
       - id: WeaponAutoLaserRifle

@@ -638,7 +638,7 @@
     - 1 # water vapor
     - 0 # miasma
     - 34.642633 # nitrous oxide
-    - 0.1 # frezon
+    - 0.05 # frezon
     # Mono Start - Funky Station gases
     # - 0 # bz
     # - 0 # healium
@@ -685,20 +685,60 @@
     # - 0 # nitrium
     # Mono End
 
-# - type: salvageAirMod
-  # id: Unknown5
-  # cost: 5
-  # desc: salvage-air-mod-unknown
-  # gases:
-    # - 20 # oxygen
-    # - 32.642633 # nitrogen
-    # - 17.321316 # carbon dioxide
-    # - 1.321316 # plasma
-    # - 2 # tritium
-    # - 1 # water vapor
-    # - 15 # miasma
-    # - 14.642633 # nitrous oxide
-    # - 0 # frezon
+- type: salvageAirMod
+  id: Unknown5
+  cost: 5
+  desc: salvage-air-mod-unknown
+  gases:
+    - 20 # oxygen
+    - 32.642633 # nitrogen
+    - 17.321316 # carbon dioxide
+    - 1.321316 # plasma
+    - 2 # tritium
+    - 1 # water vapor
+    - 15 # miasma
+    - 14.642633 # nitrous oxide
+    - 0 # frezon
+    # Mono Start - Funky Station gases
+    # - 0 # bz
+    # - 0 # healium
+    # - 0 # nitrium
+    # Mono End
+    
+- type: salvageAirMod
+  id: Unknown6
+  cost: 5
+  desc: salvage-air-mod-unknown
+  gases:
+    - 0 # oxygen
+    - 0 # nitrogen
+    - 0 # carbon dioxide
+    - 24.2 # plasma
+    - 0 # tritium
+    - 0 # water vapor
+    - 0 # miasma
+    - 0 # nitrous oxide
+    - 0 # frezon
+    # Mono Start - Funky Station gases
+    # - 0 # bz
+    # - 0 # healium
+    # - 0 # nitrium
+    # Mono End
+
+- type: salvageAirMod
+  id: Unknown7
+  cost: 5
+  desc: salvage-air-mod-unknown
+  gases:
+    - 1 # oxygen
+    - 17.321316 # nitrogen
+    - 32.642633 # carbon dioxide
+    - 16.642633 # plasma
+    - 1.321316 # tritium
+    - 20 # water vapor
+    - 15 # miasma
+    - 0 # nitrous oxide
+    - 0 # frezon
     # Mono Start - Funky Station gases
     # - 0 # bz
     # - 0 # healium
