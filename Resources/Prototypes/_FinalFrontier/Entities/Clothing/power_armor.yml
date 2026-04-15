@@ -100,10 +100,10 @@
     modifiers:
       coefficients:
         Blunt: 0.6
-        Slash: 0.65
-        Piercing: 0.65
-        Heat: 0.5
-        Radiation: 0
+        Slash: 0.7
+        Piercing: 0.7
+        Heat: 0.65
+        Radiation: 0.5
         Shock: 0.05
   - type: GroupExamine
   - type: HideLayerClothing
@@ -521,7 +521,7 @@
         Slash: 0.6
         Piercing: 0.6
         Heat: 0.5
-        Radiation: 0.75
+        Radiation: 0.25
     
 - type: entity
   id: PowerArmorRightArmKolmer
@@ -671,7 +671,7 @@
         Piercing: 0.5
         Heat: 0.35
         Caustic: 0.5
-        Radiation: 0.5
+        Radiation: 0.25
     
 - type: entity
   id: PowerArmorRightArmMK1
@@ -826,7 +826,7 @@
         Heat: 0.25
         Caustic: 0.25
         Shock: 0.5
-        Radiation: 0.25
+        Radiation: 0
     
 - type: entity
   id: PowerArmorRightArmDM10
