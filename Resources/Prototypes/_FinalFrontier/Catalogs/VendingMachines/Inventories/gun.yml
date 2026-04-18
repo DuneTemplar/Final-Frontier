@@ -1,0 +1,48 @@
+- type: vendingMachineInventory
+  id: AutoMunitionsInventory
+  startingInventory:
+    
+    #Rifle
+    WeaponRifleNovaliteC1: 4294967295
+    WeaponRifleGestio: 4294967295
+    WeaponRifleAk: 4294967295
+    WeaponRifleVulcanFCMC: 4294967295
+    WeaponRiflePrometheus: 4294967295
+    WeaponRifleM9AR: 4294967295
+    
+    #Rifle (long range)
+    WeaponHenryRepeater: 4294967295
+    WeaponSniperRepeater: 4294967295
+    WeaponSniperWessex: 4294967295
+    
+    #SMG
+    WeaponSubMachineGunRaven: 4294967295
+    WeaponSubMachineGunKnallstock: 4294967295
+    WeaponSubMachineGunTypewriterPMC: 4294967295
+    WeaponSubMachineGunAK220: 4294967295
+    
+    #Shotgun
+    WeaponShotgunDoubleBarreled: 4294967295
+    WeaponShotgunBreacher: 4294967295
+    WeaponShotgunKammererPMC: 4294967295
+    WeaponShotgunEnforcerPMC: 4294967295
+    WeaponShotgunHelepolis: 4294967295
+    
+    #Energy
+    WeaponLaserCarbine: 4294967295
+    WeaponAutoLaserRifle: 4294967295
+    WeaponEnergyGunPMC: 4294967295
+    
+    #Sidearm
+    WeaponLaserPistolNF: 4294967295
+    WeaponRevolverArgenti: 4294967295
+    WeaponRevolverFitz: 4294967295
+    WeaponRevolverNavy: 4294967295
+    WeaponPistolViperPMC: 4294967295
+    WeaponPistolMk58: 4294967295
+    WeaponPistolPollock: 4294967295
+    WeaponPistolMk32: 4294967295
+    
+    #Misc
+    WeaponBrassKnuckles: 4294967295
+    

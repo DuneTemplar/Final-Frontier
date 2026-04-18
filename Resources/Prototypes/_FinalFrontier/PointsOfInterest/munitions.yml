@@ -1,0 +1,38 @@
+# Author Info
+# GitHub: dunetemplar
+# Discord: dunetemplar
+
+- type: pointOfInterest
+  id: MunitionsDepot
+  parent: BasePOI
+  name: 'Munitions Depot'
+  minimumDistance: 6650
+  maximumDistance: 7400
+  spawnGroup: Required
+  gridPath: /Maps/_FinalFrontier/POI/munitions.yml
+  addComponents:
+  - type: IFF
+    color: "#3737F8"
+  - type: StationTransit
+
+- type: gameMap
+  id: MunitionsDepot
+  mapName: 'Munitions Depot'
+  mapPath: /Maps/_FinalFrontier/POI/munitions.yml
+  minPlayers: 0
+  stations:
+    MunitionsDepot:
+      stationProto: RecordsFrontierOutpostCargo
+      components:
+        - type: StationNameSetup
+          mapNameTemplate: 'Munitions Depot'
+        - type: ExtraStationInformation
+          iconPath: /Textures/_NF/Markers/jobs.rsi/mercenary.png
+          stationSubtext: 'finalfrontier-lobby-munitions-subtext'
+          stationDescription: 'finalfrontier-lobby-munitions-description'
+          lobbySortOrder: 3
+        - type: StationJobs
+          availableJobs:
+            Mercenary: [ -1, -1 ]
+        - type: StationDeadDrop
+          maxDeadDrops: 1 # Fewer here, players start here.
