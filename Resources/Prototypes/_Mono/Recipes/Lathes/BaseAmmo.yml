@@ -77,7 +77,8 @@
   abstract: true
   materials:
     Steel: 175
-    UraniumDepleted: 100
+    Uranium: 75
+    
 
 - type: latheRecipe
   parent: BaseAmmoRecipe
@@ -173,7 +174,7 @@
   abstract: true
   materials:
     Steel: 60
-    UraniumDepleted: 50
+    Uranium: 50
 
 - type: latheRecipe
   parent: BaseAmmoRecipe
@@ -262,7 +263,7 @@
   abstract: true
   materials:
     Steel: 570
-    UraniumDepleted: 100
+    Uranium: 100
 
 - type: latheRecipe
   parent: BaseAmmoRecipe
@@ -358,7 +359,7 @@
   abstract: true
   materials:
     Steel: 200
-    UraniumDepleted: 100
+    Uranium: 100
 
 - type: latheRecipe
   parent: BaseAmmoRecipe
@@ -447,7 +448,7 @@
   abstract: true
   materials:
     Steel: 575
-    UraniumDepleted: 200
+    Uranium: 200
 
 - type: latheRecipe
   parent: BaseAmmoRecipe
@@ -556,7 +557,7 @@
   abstract: true
   materials:
     Steel: 50
-    UraniumDepleted: 50
+    Uranium: 50
 
 - type: latheRecipe
   parent: BaseAmmoRecipe
@@ -652,7 +653,7 @@
   abstract: true
   materials:
     Steel: 125
-    UraniumDepleted: 75
+    Uranium: 75
 
 - type: latheRecipe
   parent: BaseAmmoRecipe
@@ -737,7 +738,7 @@
   abstract: true
   materials:
     Steel: 60
-    UraniumDepleted: 50
+    Uranium: 50
 
 #Base pistol caliber ammo boxes for .45 ACP, 9mm, 5.7mm, 4.6mm
 #Boxes:     [TOTAL = 1125]
@@ -802,7 +803,7 @@
   abstract: true
   materials:
     Steel: 375
-    UraniumDepleted: 100
+    Uranium: 100
 
 - type: latheRecipe
   parent: BaseAmmoRecipe

@@ -1,4 +1,3 @@
-# Final Frontier
 - type: entity
   name: N2460 Repeating Rifle (.45 magnum)
   parent: [ BaseWeaponSniper, BaseGunWieldable ]
@@ -26,4 +25,74 @@
     - SemiAuto
     soundGunshot:
       path: /Audio/Weapons/Guns/Gunshots/sniper.ogg
-    projectileSpeed: 75 # Mono
+    projectileSpeed: 75
+    
+- type: entity
+  name: LFD M9AR (5.56x45mm)
+  parent: BaseWeaponRifle
+  id: WeaponRifleM9AR
+  description: A lightweight assault rifle designed for close quarters. Uses 5.56x45mm ammo.
+  components:
+  - type: Item
+    size: Huge
+  - type: Sprite
+    sprite: _FinalFrontier/Objects/Weapons/Guns/Rifles/lfd_m9ar.rsi
+    layers:
+      - state: base
+        map: ["enum.GunVisualLayers.Base"]
+      - state: mag-0
+        map: ["enum.GunVisualLayers.Mag"]
+  - type: Clothing
+    sprite: _FinalFrontier/Objects/Weapons/Guns/Rifles/lfd_m9ar.rsi
+  - type: GunWieldBonus
+    minAngle: -27
+    maxAngle: -45
+  - type: Gun
+    minAngle: 30
+    maxAngle: 50
+    angleIncrease: 65
+    angleDecay: 7
+    fireRate: 5
+    selectedMode: FullAuto
+    soundGunshot:
+      path: /Audio/_FinalFrontier/Weapons/Guns/Gunshots/ar_fire.ogg
+      pitch: 1.75
+    availableModes:
+    - Burst
+    - FullAuto
+    burstCooldown: 0.75
+    burstFireRate: 9
+    shotsPerBurst: 4
+  - type: ContainerContainer
+    containers:
+      gun_magazine: !type:ContainerSlot
+      gun_chamber: !type:ContainerSlot
+  - type: ChamberMagazineAmmoProvider
+    soundRack:
+      path: /Audio/Weapons/Guns/Cock/sf_rifle_cock.ogg
+  - type: ItemSlots
+    slots:
+      gun_magazine:
+        name: Magazine
+        startingItem: Magazine556x45mmFMJ
+        insertSound: /Audio/_Mono/Weapons/Guns/SmallArms/MagIn/m16_magin.ogg
+        ejectSound: /Audio/_Mono/Weapons/Guns/SmallArms/MagOut/skm_magout.ogg
+        priority: 2
+        whitelist:
+          tags:
+            - Magazine556x45mmFMJ
+        whitelistFailPopup: gun-magazine-whitelist-fail
+      gun_chamber:
+        name: Chamber
+        startingItem: Cartridge556x45mmFMJ
+        priority: 1
+        whitelist:
+          tags:
+            - Cartridge556x45mmFMJ
+  - type: MagazineVisuals
+    magState: mag
+    steps: 1
+    zeroVisible: true
+  - type: Appearance
+  - type: StaticPrice 
+    price: 1750

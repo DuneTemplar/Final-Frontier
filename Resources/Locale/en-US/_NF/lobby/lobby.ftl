@@ -30,14 +30,6 @@ frontier-lobby-medical-description = TSF civilian medical dispatch hub. Here you
    - Drop off medical bounties
  Some of the roles on this station are whitelist-only and require an application in the discord to be accepted.
 
-finalfrontier-lobby-planet-subtext = The center for planetside operations in the sector.
-finalfrontier-lobby-planet-description = Unaligned settlement for all groups to operate. Here you can:
-   - Find other explorers and group up
-   - Gear up for planetary exploration
-   - Die in the middle of nowhere on an inhospitable desert wasteland
-   - Socialize with the mercenaries and medics that might be present. Or not.
- Some of the roles on this station are whitelist-only and require an application in the discord to be accepted.
-
 frontier-lobby-nfsd-subtext = The center of operations for the TSFMC.
 frontier-lobby-nfsd-description = The TFSMC-FOB is the center of operations for the TSF's armed expansion into the Colossus. Here you can:
    - Join the TSFMC department

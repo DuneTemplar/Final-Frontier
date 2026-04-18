@@ -9,21 +9,21 @@
   id: FineComponent
   stackEntity: FineComponentFine1
   name: fine component
-  icon: { sprite: _FinalFrontier/Objects/Materials/gun_component.rsi, state: guncomp }
+  icon: { sprite: _FinalFrontier/Objects/Materials/fine_component.rsi, state: guncomp }
   price: 1
   
 - type: material
   id: BasicComponent
   stackEntity: FineComponentBasic1
   name: basic component
-  icon: { sprite: _FinalFrontier/Objects/Materials/gun_component.rsi, state: guncomp }
+  icon: { sprite: _FinalFrontier/Objects/Materials/basic_component.rsi, state: guncomp }
   price: 0.5
   
 - type: material
   id: EnrichedUranium
   stackEntity: EnrichedUraniumMaterial1
   name: enriched uranium
-  icon: { sprite: _FinalFrontier/Objects/Materials/enriched_uranium.rsi, state: guncomp }
+  icon: { sprite: _FinalFrontier/Objects/Materials/enriched_uranium.rsi, state: uranium }
   price: 31.5
 
 

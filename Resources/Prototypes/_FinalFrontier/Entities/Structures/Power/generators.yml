@@ -58,8 +58,6 @@
     gasType: WaterVapor
     # 0.5 moles of gas for every sheet of plasma.
     moleRatio: 3
-    sprite: _FinalFrontier/Structures/Power/Generators/steamengine.rsi
-    state: steamengine
   - type: Fixtures
     fixtures:
       fix1:

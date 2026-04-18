@@ -99,7 +99,7 @@ public sealed partial class BlockingComponent : Component
     [AutoNetworkedField]
     public bool ColorOverride = false;
 	
-	[DataField("ActiveColor")]
+	[DataField("activeColor")]
     [AutoNetworkedField]
     public Color ActiveColor = Color.Plum;
 	// Final Frontier end

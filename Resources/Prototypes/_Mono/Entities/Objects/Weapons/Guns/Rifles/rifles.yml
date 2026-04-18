@@ -257,7 +257,7 @@
   name: HWM FCL "Prometheus" (5.56x45mm)
   parent: BaseWeaponRifle
   id: WeaponRiflePrometheus
-  description: The Herstal Weapon Manufacture "Prometheus" Light combat rifle (Fusil de Combat Léger) in 556x45mm. Made to be mass producable for fight against xenos. Its firerate is decent with burst being superior and accuracy poor.
+  description: The Herstal Weapon Manufacture "Prometheus" Light combat rifle (Fusil de Combat Léger) in 5.56x45mm. Made to be mass producable for fight against xenos. Its firerate is decent with burst being superior and accuracy poor.
   components:
   - type: Item # Mono
     size: Huge
@@ -281,7 +281,6 @@
     maxAngle: 46
     angleIncrease: 76
     angleDecay: 7
-    cameraRecoilScalar: 0
     fireRate: 3
     selectedMode: Burst
     soundGunshot:

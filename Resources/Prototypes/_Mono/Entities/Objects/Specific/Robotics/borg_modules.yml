@@ -164,6 +164,5 @@
     moduleId: Security
     items:
     - WeaponPistolAnaconda
-    - WeaponRifleAsakimAutopulserADM
   - type: BorgModuleIcon
     icon: { sprite: _Mono/Interface/Action/actions_borg.rsi, state: tsfstandard-weapon-module }

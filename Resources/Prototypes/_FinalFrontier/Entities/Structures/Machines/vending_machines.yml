@@ -26,7 +26,7 @@
     access: [["Pirate"]]
     
 - type: entity
-  parent: [VendingMachineAstroVend, BaseStructureDisableAnchoring]
+  parent: [VendingMachine, BaseStructureDisableAnchoring]
   id: VendingMachineEquipmentTactical
   name: Tactical Equipment Vendor
   description: Provides tactical gear of questionable quality.
@@ -38,7 +38,7 @@
     brokenState: broken
     normalState: normal-unshaded
   - type: MarketModifier
-    mod: 8
+    mod: 5
   - type: Sprite
     sprite: _FinalFrontier/Structures/Machines/VendingMachines/tac_vend.rsi
     layers:
@@ -49,6 +49,39 @@
       shader: unshaded
     - state: panel
       map: [ "enum.WiresVisualLayers.MaintenancePanel" ]
-  - type: AccessReader
-    access: [["Mercenary"], ["Security"]]
+  - type: PointLight
+    radius: 1.5
+    energy: 1.6
+    color: "#4b93ad"
+    
+- type: entity
+  parent: [VendingMachine, BaseStructureDisableAnchoring]
+  id: VendingMachineAutoMunitions
+  name: AutoMunitions Machine
+  description: An automated firearm vendor. You can see the guns inside being maintained by the vendor's machinery.
+  suffix: POI
+  components:
+  - type: VendingMachine
+    pack: AutoMunitionsInventory
+    offState: off
+    brokenState: broken
+    normalState: normal-unshaded
+  - type: Advertise
+    pack: AutoMunitionsAds
+  - type: MarketModifier
+    mod: 10
+  - type: Sprite
+    sprite: _FinalFrontier/Structures/Machines/VendingMachines/gun_vend.rsi
+    layers:
+    - state: "off"
+      map: [ "enum.VendingMachineVisualLayers.Base" ]
+    - state: "off"
+      map: [ "enum.VendingMachineVisualLayers.BaseUnshaded" ]
+      shader: unshaded
+    - state: panel
+      map: [ "enum.WiresVisualLayers.MaintenancePanel" ]
+  - type: PointLight
+    radius: 1.5
+    energy: 1.6
+    color: "#4b93ad"
 

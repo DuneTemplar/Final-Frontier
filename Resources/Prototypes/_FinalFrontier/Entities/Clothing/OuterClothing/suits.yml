@@ -94,7 +94,6 @@
           - Cartridge762x39mmFMJ
   - type: Clothing
     sprite: _FinalFrontier/Clothing/OuterClothing/Suits/mobile_ordnance.rsi
-    state: equipped-OUTERCLOTHING
   - type: ToggleableClothing
     clothingPrototypes:
       head:  ClothingHeadMobileOrdnance

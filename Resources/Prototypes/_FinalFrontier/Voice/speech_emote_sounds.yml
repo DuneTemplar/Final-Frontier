@@ -21,7 +21,7 @@
     RobotBeep:
       collection: RobotBeeps
     Yawn:
-      collection: MaleAstrumYawn
+      collection: MaleYawn
     Snore:
       collection: Snores
     Honk:
@@ -51,7 +51,7 @@
     Laugh:
       collection: FemaleAstrumLaugh
     Sneeze:
-      collection: FemaleAstrumSneezes
+      collection: FemaleSneezes
     Cough:
       collection: FemaleAstrumCough
     CatMeow:
@@ -63,7 +63,7 @@
     RobotBeep:
       collection: RobotBeeps
     Yawn:
-      collection: FemaleAstrumYawn
+      collection: FemaleYawn
     Snore:
       collection: Snores
     Honk:
