@@ -1,0 +1,47 @@
+- type: entity
+  abstract: true
+  parent: [Clothing]
+  id: ClothingShoulderPlateBase
+  components:
+  - type: Item
+    size: Small
+  - type: Clothing
+    quickEquip: true
+    slots:
+    - ARMBANDLEFT
+    - ARMBANDRIGHT
+  - type: Sprite
+    state: icon
+  - type: StaticPrice
+    price: 350
+    vendPrice: 500
+
+- type: entity
+  parent: ClothingShoulderPlateBase
+  id: ClothingShoulderPlateCombat
+  name: combat arm plate
+  description: Might deflect a bullet or two.
+  components:
+  - type: Sprite
+    sprite: _FinalFrontier/Clothing/Shoulder/combat.rsi
+  - type: Clothing
+    sprite: _FinalFrontier/Clothing/Shoulder/combat.rsi
+    quickEquip: true
+    slots:
+    - ARMBANDLEFT
+    - ARMBANDRIGHT
+    clothingVisuals:
+      leftarmband:
+      - state: equipped-ARMBANDLEFT
+      rightarmband:
+      - state: equipped-ARMBANDRIGHT
+  - type: Armor
+    modifiers:
+      coefficients:
+        Blunt: 0.9
+        Slash: 0.9
+        Piercing: 0.9
+        Heat: 0.95
+  - type: StaticPrice
+    price: 1000
+    vendPrice: 2500

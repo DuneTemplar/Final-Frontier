@@ -56,7 +56,6 @@
     selectedMode: FullAuto
     soundGunshot:
       path: /Audio/_FinalFrontier/Weapons/Guns/Gunshots/ar_fire.ogg
-      pitch: 1.75
     availableModes:
     - Burst
     - FullAuto

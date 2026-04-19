@@ -91,6 +91,8 @@
       - Toggle
       - DisposalFlush
       - DisposalEject
+      sources:
+      - DisposalReady
 
 - type: entity
   id: DisposalUnit

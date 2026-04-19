@@ -85,3 +85,31 @@
     energy: 1.6
     color: "#4b93ad"
 
+- type: entity
+  parent: [VendingMachine, BaseStructureDisableAnchoring]
+  id: VendingMachineAmmunitionVend
+  name: AmmoVend
+  description: An automated ammunition vendor.
+  suffix: POI
+  components:
+  - type: VendingMachine
+    pack: AmmunitionVendorInventory
+    offState: off
+    brokenState: broken
+    normalState: normal-unshaded
+  - type: MarketModifier
+    mod: 10
+  - type: Sprite
+    sprite: _FinalFrontier/Structures/Machines/VendingMachines/ammo_vend.rsi
+    layers:
+    - state: "off"
+      map: [ "enum.VendingMachineVisualLayers.Base" ]
+    - state: "off"
+      map: [ "enum.VendingMachineVisualLayers.BaseUnshaded" ]
+      shader: unshaded
+    - state: panel
+      map: [ "enum.WiresVisualLayers.MaintenancePanel" ]
+  - type: PointLight
+    radius: 1.5
+    energy: 1.6
+    color: "#4b93ad"

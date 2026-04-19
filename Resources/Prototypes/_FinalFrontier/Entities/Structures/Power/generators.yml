@@ -57,7 +57,7 @@
   - type: GeneratorExhaustGas
     gasType: WaterVapor
     # 0.5 moles of gas for every sheet of plasma.
-    moleRatio: 3
+    moleRatio: 2
   - type: Fixtures
     fixtures:
       fix1:
@@ -159,8 +159,6 @@
     gasType: WaterVapor
     # 0.5 moles of gas for every sheet of plasma.
     moleRatio: 0.5
-    sprite: _FinalFrontier/Structures/Power/Generators/t22mfr.rsi
-    state: portgen0
   - type: Fixtures
     fixtures:
       fix1:
