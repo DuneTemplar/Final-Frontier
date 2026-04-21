@@ -3,6 +3,9 @@
   parent: BasePowerArmorFrame
   suffix: Filled, T11, Random
   components:
+  - type: ConditionalSpawner
+    prototypes:
+    - ClothingHeadHelmetPowerArmorKolmer
   - type: EntityTableContainerFill
     containers:
       Chestplate: !type:AllSelector
@@ -31,6 +34,9 @@
   parent: BasePowerArmorFrame
   suffix: Filled, Mk1, Random
   components:
+  - type: ConditionalSpawner
+    prototypes:
+    - ClothingHeadHelmetPowerArmorMK1
   - type: EntityTableContainerFill
     containers:
       Chestplate: !type:AllSelector
@@ -59,6 +65,9 @@
   parent: BasePowerArmorFrame
   suffix: Filled, DM10, Random
   components:
+  - type: ConditionalSpawner
+    prototypes:
+    - ClothingHeadHelmetPowerArmorDM10
   - type: EntityTableContainerFill
     containers:
       Chestplate: !type:AllSelector
@@ -81,3 +90,34 @@
         children:
         - id: PowerArmorLeftLegDM10
           prob: 0.45
+          
+- type: entity
+  id: SpawnPowerArmorFrameMK4
+  parent: BasePowerArmorFrame
+  suffix: Filled, Mk4, Random
+  components:
+  - type: ConditionalSpawner
+    prototypes:
+    - ClothingHeadHelmetPowerArmorMK4
+  - type: EntityTableContainerFill
+    containers:
+      Chestplate: !type:AllSelector
+        children:
+        - id: PowerArmorChestplateMK4
+          prob: 0.25
+      RightArm: !type:AllSelector
+        children:
+        - id: PowerArmorRightArmMK4
+          prob: 0.3
+      LeftArm: !type:AllSelector
+        children:
+        - id: PowerArmorLeftArmMK4
+          prob: 0.3
+      RightLeg: !type:AllSelector
+        children:
+        - id: PowerArmorRightLegMK4
+          prob: 0.3
+      LeftLeg: !type:AllSelector
+        children:
+        - id: PowerArmorLeftLegMK4
+          prob: 0.3

@@ -95,16 +95,16 @@
     heatingCoefficient: 0.01
     coolingCoefficient: 0.01
   - type: ExplosionResistance
-    damageCoefficient: 0.1
+    damageCoefficient: 0.5
   - type: Armor
     modifiers:
       coefficients:
-        Blunt: 0.6
-        Slash: 0.7
-        Piercing: 0.7
-        Heat: 0.65
+        Blunt: 0.7
+        Slash: 0.8
+        Piercing: 0.8
+        Heat: 0.8
         Radiation: 0.5
-        Shock: 0.05
+        Shock: 0.5
   - type: GroupExamine
   - type: HideLayerClothing
     slots:
@@ -221,6 +221,9 @@
   parent: BasePowerArmorFrame
   name: power armor frame
   components:
+  - type: ConditionalSpawner
+    prototypes:
+    - ClothingHeadHelmetPowerArmorKolmer
   - type: ItemSlots
     slots:
       Chestplate:
@@ -274,6 +277,9 @@
   parent: BasePowerArmorFrame
   name: power armor frame
   components:
+  - type: ConditionalSpawner
+    prototypes:
+    - ClothingHeadHelmetPowerArmorMK1
   - type: ItemSlots
     slots:
       Chestplate:
@@ -321,12 +327,69 @@
         whitelist:
           tags:
           - PowerArmorLeftArm
-          
+- type: entity
+  id: MK4PowerArmorFrame
+  parent: BasePowerArmorFrame
+  name: power armor frame
+  components:
+  - type: ConditionalSpawner
+    prototypes:
+    - ClothingHeadHelmetPowerArmorMK4
+  - type: ItemSlots
+    slots:
+      Chestplate:
+        name: Chestplate
+        startingItem: PowerArmorChestplateMK4
+        insertSound: /Audio/Weapons/Guns/MagIn/hpistol_magin.ogg
+        ejectSound: /Audio/Weapons/Guns/MagOut/sfrifle_magout.ogg
+        priority: 1
+        whitelist:
+          tags:
+          - PowerArmorChestplate
+      RightLeg:
+        name: Right Leg
+        startingItem: PowerArmorRightLegMK4
+        insertSound: /Audio/Weapons/Guns/MagIn/hpistol_magin.ogg
+        ejectSound: /Audio/Weapons/Guns/MagOut/sfrifle_magout.ogg
+        priority: 1
+        whitelist:
+          tags:
+          - PowerArmorRightLeg
+      LeftLeg:
+        name: Left Leg
+        startingItem: PowerArmorLeftLegMK4
+        insertSound: /Audio/Weapons/Guns/MagIn/hpistol_magin.ogg
+        ejectSound: /Audio/Weapons/Guns/MagOut/sfrifle_magout.ogg
+        priority: 1
+        whitelist:
+          tags:
+          - PowerArmorLeftLeg
+      RightArm:
+        name: Right Arm
+        startingItem: PowerArmorRightArmMK4
+        insertSound: /Audio/Weapons/Guns/MagIn/hpistol_magin.ogg
+        ejectSound: /Audio/Weapons/Guns/MagOut/sfrifle_magout.ogg
+        priority: 1
+        whitelist:
+          tags:
+          - PowerArmorRightArm
+      LeftArm:
+        name: Left Arm
+        startingItem: PowerArmorLeftArmMK4
+        insertSound: /Audio/Weapons/Guns/MagIn/hpistol_magin.ogg
+        ejectSound: /Audio/Weapons/Guns/MagOut/sfrifle_magout.ogg
+        priority: 1
+        whitelist:
+          tags:
+          - PowerArmorLeftArm
 - type: entity
   id: DM10PowerArmorFrame
   parent: BasePowerArmorFrame
   name: power armor frame
   components:
+  - type: ConditionalSpawner
+    prototypes:
+    - ClothingHeadHelmetPowerArmorDM10
   - type: ItemSlots
     slots:
       Chestplate:
@@ -951,3 +1014,166 @@
         Blunt: 0.8
         Slash: 0.9
         Piercing: 0.9
+
+# Mk.4 power armor
+
+- type: entity
+  id: PowerArmorChestplateMK4
+  parent: BasePowerArmorChestplate
+  name: Mk.4 power armor chestplate
+  components:
+  - type: Sprite
+    noRot: true
+    drawdepth: Mobs
+    sprite: _FinalFrontier/Clothing/PowerArmor/Chestplates/mk4.rsi
+    state: icon
+  - type: Tag
+    tags:
+    - PowerArmorChestplate
+  - type: PowerArmorPiece
+    path: _FinalFrontier/Clothing/PowerArmor/Chestplates/mk4.rsi
+  - type: Armor
+    modifiers:
+      coefficients:
+        Blunt: 0.35
+        Slash: 0.35
+        Piercing: 0.3
+        Heat: 0.4
+        Caustic: 0.3
+        Shock: 0.3
+        Radiation: 0.1
+    
+- type: entity
+  id: PowerArmorRightArmMK4
+  parent: BasePowerArmorRightArm
+  name: Mk.4 power armor right arm
+  components:
+  - type: Sprite
+    noRot: true
+    drawdepth: Mobs
+    sprite: _FinalFrontier/Clothing/PowerArmor/RightArms/mk4.rsi
+    state: icon
+  - type: Tag
+    tags:
+    - PowerArmorRightArm
+  - type: PowerArmorPiece
+    path: _FinalFrontier/Clothing/PowerArmor/RightArms/mk4.rsi
+  - type: Armor
+    modifiers:
+      coefficients:
+        Blunt: 0.55
+        Slash: 0.55
+        Piercing: 0.55
+        Heat: 0.5
+        Caustic: 0.5
+        Shock: 0.5
+        Radiation: 0.5
+    
+- type: entity
+  id: PowerArmorLeftArmMK4
+  parent: BasePowerArmorLeftArm
+  name: Mk.4 power armor left arm
+  components:
+  - type: Sprite
+    noRot: true
+    drawdepth: Mobs
+    sprite: _FinalFrontier/Clothing/PowerArmor/LeftArms/mk4.rsi
+    state: icon
+  - type: Tag
+    tags:
+    - PowerArmorLeftArm
+  - type: PowerArmorPiece
+    path: _FinalFrontier/Clothing/PowerArmor/LeftArms/mk4.rsi
+  - type: Armor
+    modifiers:
+      coefficients:
+        Blunt: 0.55
+        Slash: 0.55
+        Piercing: 0.55
+        Heat: 0.5
+        Caustic: 0.5
+        Shock: 0.5
+        Radiation: 0.5
+    
+- type: entity
+  id: PowerArmorRightLegMK4
+  parent: BasePowerArmorRightLeg
+  name: Mk.4 power armor right leg
+  components:
+  - type: Sprite
+    noRot: true
+    drawdepth: Mobs
+    sprite: _FinalFrontier/Clothing/PowerArmor/RightLegs/mk4.rsi
+    state: icon
+  - type: Tag
+    tags:
+    - PowerArmorRightLeg
+  - type: PowerArmorPiece
+    path: _FinalFrontier/Clothing/PowerArmor/RightLegs/mk4.rsi
+  - type: Armor
+    modifiers:
+      coefficients:
+        Blunt: 0.55
+        Slash: 0.55
+        Piercing: 0.55
+        Heat: 0.5
+        Caustic: 0.5
+        Shock: 0.5
+        Radiation: 0.5
+    
+- type: entity
+  id: PowerArmorLeftLegMK4
+  parent: BasePowerArmorLeftLeg
+  name: Mk.4 power armor left leg
+  components:
+  - type: Sprite
+    noRot: true
+    drawdepth: Mobs
+    sprite: _FinalFrontier/Clothing/PowerArmor/LeftLegs/mk4.rsi
+    state: icon
+  - type: Tag
+    tags:
+    - PowerArmorLeftLeg
+  - type: PowerArmorPiece
+    path: _FinalFrontier/Clothing/PowerArmor/LeftLegs/mk4.rsi
+  - type: Armor
+    modifiers:
+      coefficients:
+        Blunt: 0.55
+        Slash: 0.55
+        Piercing: 0.55
+        Heat: 0.5
+        Caustic: 0.5
+        Shock: 0.5
+        Radiation: 0.5
+        
+      
+- type: entity
+  parent: ClothingHeadHardsuitBase
+  id: ClothingHeadHelmetPowerArmorMK4
+  name: Mk.4 power armor helmet
+  components:
+  - type: BreathMask
+  - type: Item
+    size: Normal
+  - type: FlashImmunity
+  - type: IdentityBlocker
+  - type: NightVision
+    flashDurationMultiplier: 0.85
+    isEquipment: true
+  - type: ThermalVision
+    flashDurationMultiplier: 2
+    isEquipment: true
+  - type: Sprite
+    sprite: _FinalFrontier/Clothing/Head/PowerArmor/mk4.rsi
+  - type: Clothing
+    sprite: _FinalFrontier/Clothing/Head/PowerArmor/mk4.rsi
+  - type: PressureProtection
+    highPressureMultiplier: 0.525
+    lowPressureMultiplier: 10000
+  - type: Armor
+    modifiers:
+      coefficients:
+        Blunt: 0.9
+        Slash: 0.9
+        Piercing: 0.85

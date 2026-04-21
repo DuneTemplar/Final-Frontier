@@ -1,0 +1,52 @@
+- type: entity
+  parent: IngotBase
+  id: IngotPlutonium
+  name: plutonium bar
+  suffix: Full
+  components:
+  - type: Material
+  - type: PhysicalComposition
+    materialComposition:
+      Plutonium: 100
+  - type: Stack
+    stackType: Plutonium
+    baseLayer: base
+    layerStates:
+    - hydrogen # Why iron? Because I haven't gotten a spriter to make better # Mono - change from iron to hydrogen
+    - hydrogen_2 # Mono - change from iron to hydrogen
+    - hydrogen_3 # Mono - change from iron to hydrogen
+  - type: Sprite
+    state: hydrogen_3 # Mono - change from iron to hydrogen
+    layers:
+    - state: hydrogen_3 # Mono - change from iron to hydrogen
+      map: ["base"]
+  - type: Item
+    heldPrefix: plutonium
+  - type: Appearance
+  # - type: Extractable
+  #   grindableSolutionName: gold
+  # - type: SolutionContainerManager
+  #   solutions:
+  #     gold:
+  #       reagents:
+  #       - ReagentId: Silver
+  #         Quantity: 10
+  - type: RadiationSource
+    intensity: 0.08
+    slope: 3
+  - type: PointLight
+    radius: 1.2
+    energy: 0.8
+    castShadows: false
+    color: "#22bbff"
+
+- type: entity
+  parent: IngotPlutonium
+  id: IngotPlutonium1
+  name: plutonium bar
+  suffix: Single
+  components:
+  - type: Sprite
+    state: iron
+  - type: Stack
+    count: 1
