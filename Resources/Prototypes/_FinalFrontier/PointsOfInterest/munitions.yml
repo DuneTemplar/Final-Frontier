@@ -12,7 +12,7 @@
   gridPath: /Maps/_FinalFrontier/POI/munitions.yml
   addComponents:
   - type: IFF
-    color: "#3737F8"
+    color: "#81864A"
   - type: StationTransit
 
 - type: gameMap

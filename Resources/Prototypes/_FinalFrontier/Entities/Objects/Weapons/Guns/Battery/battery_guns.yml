@@ -99,3 +99,52 @@
           - PowerCage
   - type: PirateBountyItem # Mono
     id: StandardFactionLongarm
+    
+- type: entity
+  name: laser musket
+  parent: [BaseWeaponBattery, BaseGunWieldable]
+  id: WeaponLaserMusket
+  description: A modified laser rifle with the ability to manually charge individual shots to increase damage.
+  components:
+  - type: Battery
+    maxCharge: 500
+    startingCharge: 500
+  - type: Sprite
+    sprite: _FinalFrontier/Objects/Weapons/Guns/Battery/laser_rifle.rsi/icon.rsi
+    layers:
+    - state: base
+      map: ["enum.GunVisualLayers.Base"]
+    - state: mag-unshaded-4
+      map: ["enum.GunVisualLayers.MagUnshaded"]
+      shader: unshaded
+  - type: Item
+    sprite: _FinalFrontier/Objects/Weapons/Guns/Battery/laser_rifle.rsi
+  - type: MagazineVisuals
+    magState: mag
+    steps: 5
+    zeroVisible: false
+  - type: Appearance
+  - type: Clothing
+    sprite: _FinalFrontier/Objects/Weapons/Guns/Battery/laser_rifle.rsi
+    quickEquip: false
+    slots:
+    - Back
+    - suitStorage
+  - type: Gun
+    selectedMode: SemiAuto
+    fireRate: 0.5
+    availableModes:
+    - SemiAuto
+    soundGunshot:
+      path: /Audio/_FinalFrontier/Weapons/Guns/Gunshots/laser1.ogg
+  - type: HitscanBatteryAmmoProvider
+    proto: RedLaser
+    fireCost: 35
+  - type: HitscanManualAmmoProvider
+    proto: RedLaser
+    fireCost: 35
+    damageModifier: 1.2
+    costModifier: 2
+    maxCharges: 3
+  - type: StaticPrice
+    price: 300

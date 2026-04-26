@@ -1,5 +1,5 @@
 - type: entity
-  parent: ClothingHeadBase
+  parent: ClothingHeadHelmetBase
   id: ClothingHeadHelmetOrder
   name: order helmet
   description: An ancient helmet of military make, adorned with strange markings.
@@ -18,3 +18,23 @@
         Caustic: 0.95
   - type: ExplosionResistance
     damageCoefficient: 0.75
+    
+- type: entity
+  parent: ClothingHeadHelmetBase
+  id: ClothingHeadHelmetJackal
+  name: jackal company helmet
+  description: A robust combat helmet used by mercenaries of Jackal Company.
+  components:
+  - type: Sprite
+    sprite: _FinalFrontier/Clothing/Head/Helmets/jackal.rsi
+  - type: Clothing
+    sprite: _FinalFrontier/Clothing/Head/Helmets/jackal.rsi
+  - type: Armor
+    modifiers:
+      coefficients:
+        Blunt: 0.85
+        Slash: 0.80
+        Piercing: 0.8
+        Heat: 0.90
+  - type: ExplosionResistance
+    damageCoefficient: 0.9

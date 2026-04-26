@@ -406,7 +406,8 @@
     - SpawnPowerArmorFrameT11 # Final Frontier 
     - SpawnPowerArmorFrameMK1 # Final Frontier
     - SpawnPowerArmorFrameDM10 # Final Frontier
-    rareChance: 0.2 # Final Frontier 0.05>0.2
+    - SpawnPowerArmorFrameCage # Final Frontier
+    rareChance: 0.25 # Final Frontier 0.05>0.25
 
 - type: entity
   name: random crate
@@ -488,13 +489,14 @@
     - CrateArmoryShotgunExpedition
     - CrateArmoryPistolsExpedition
     - CrateArmoryEnergyGunExpedition
+    - CrateJackalGear # Final Frontier
 # Begin Mono Additions
     - CrateNanotrasenLootFilledT1
     - CrateNanotrasenLootFilledT1
     - CrateNanotrasenLootFilledT2
     - CrateNanotrasenLootFilledT3
 # End Mono Additions
-    rareChance: 0.65
+    rareChance: 0.4 # Final Frontier: 0.65 > 0.4
     chance: 1
     offset: 0.0
 
@@ -519,11 +521,11 @@
     chance: 1 # 0.85- > 1
     offset: 0.0
     rarePrototypes:
-    #remplaced frontier slop with non trash
     - SpawnDungeonLootCrateArmoryWeapon
+    - CrateJackalGear # Final Frontier
     # - CrateSecurityRiot
     # - CrateSecurityBiosuit
-    rareChance: 0.3 # 0.05 -> 0.3
+    rareChance: 0.2 # 0.05 -> 0.2
 
 - type: entity
   name: random crate (restock)

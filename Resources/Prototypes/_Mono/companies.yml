@@ -74,6 +74,15 @@
   name: Phoenixes
   description: phoenixes-description
   color: "#EC5800"
+  
+- type: company
+  id: JackalCompany
+  form: Antagonist
+  name: Jackal Company
+  description: jackal-description
+  color: "#81864A"
+  image: /Textures/_Mono/Companies/jackal.png
+
 
 - type: company
   id: SteelHammerManufacturing
@@ -166,13 +175,13 @@
   color: "#9573AF"
   image: /Textures/_Mono/Companies/ne_rd.png
 
-- type: company
-  id: blackhawkpmc
-  form: Protagonist
-  name: Blackhawk Military Contracting
-  description: blackhawkpmc-description
-  color: "#419E23"
-  image: /Textures/_Mono/Companies/BMC.png
+# - type: company
+  # id: blackhawkpmc
+  # form: Protagonist
+  # name: Blackhawk Military Contracting
+  # description: blackhawkpmc-description
+  # color: "#419E23"
+  # image: /Textures/_Mono/Companies/BMC.png
 
 
 # Religious groups

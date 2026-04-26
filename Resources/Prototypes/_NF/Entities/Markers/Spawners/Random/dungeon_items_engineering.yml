@@ -211,7 +211,7 @@
     - LockerChiefEngineerFilled
     - LockerChiefEngineerFilled
     - SpawnDungeonLootSuitStorageUnitsEngi
-    rareChance: 0.01
+    rareChance: 0.15 # Final Frontier 0.01>0.15
 
 - type: entity
   name: random suit storage unit
@@ -244,6 +244,7 @@
     - SuitStorageNTSRA
     - SuitStorageCE
     - SpawnPowerArmorFrameDM10 # Final Frontier
+    - SpawnPowerArmorFrameCage # Final Frontier
     rareChance: 0.15 # Final Frontier 0.05>0.15
 
 - type: entity

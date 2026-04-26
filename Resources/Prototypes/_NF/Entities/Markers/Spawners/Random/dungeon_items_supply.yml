@@ -159,7 +159,7 @@
     offset: 0.0
     rarePrototypes:
     - SpawnDungeonLootSuitStorageUnitsSalvage
-    rareChance: 0.05
+    rareChance: 0.15 # Final Frontier 0.05>0.15
 
 - type: entity
   name: random suit storage unit
@@ -191,6 +191,7 @@
     rarePrototypes:
     - SuitStorageNTSRA
     - SpawnPowerArmorFrameDM10 # Final Frontier
+    - SpawnPowerArmorFrameCage # Final Frontier
     rareChance: 0.15 # Final Frontier 0.05>0.15
 
 # Machines

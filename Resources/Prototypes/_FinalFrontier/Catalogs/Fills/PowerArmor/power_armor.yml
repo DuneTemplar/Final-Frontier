@@ -121,3 +121,31 @@
         children:
         - id: PowerArmorLeftLegMK4
           prob: 0.3
+          
+- type: entity
+  id: SpawnPowerArmorFrameCage
+  parent: BasePowerArmorFrame
+  suffix: Filled, Cage, Random
+  components:
+  - type: EntityTableContainerFill
+    containers:
+      Chestplate: !type:AllSelector
+        children:
+        - id: PowerArmorChestplateCage
+          prob: 0.5
+      RightArm: !type:AllSelector
+        children:
+        - id: PowerArmorRightArmCage
+          prob: 0.55
+      LeftArm: !type:AllSelector
+        children:
+        - id: PowerArmorLeftArmCage
+          prob: 0.55
+      RightLeg: !type:AllSelector
+        children:
+        - id: PowerArmorRightLegCage
+          prob: 0.55
+      LeftLeg: !type:AllSelector
+        children:
+        - id: PowerArmorLeftLegCage
+          prob: 0.55

@@ -186,6 +186,8 @@
         weight: 0.03
       - id: SpawnPowerArmorFrameDM10
         weight: 0.03
+      - id: SpawnPowerArmorFrameCage
+        weight: 0.045
       
 - type: entityTable
   id: MercBootsGeneric

@@ -1,5 +1,6 @@
 using System.Diagnostics.CodeAnalysis;
 using System.Numerics;
+using Content.Shared._FinalFrontier.Weapons.Hitscan.Components;
 using Content.Shared.ActionBlocker;
 using Content.Shared.Actions;
 using Content.Shared.Administration.Logs;
@@ -150,6 +151,7 @@ public abstract partial class SharedGunSystem : EntitySystem
         if (user == null || !_combatMode.IsInCombatMode(user))
             return;
 
+
         if (TryComp<MechPilotComponent>(user.Value, out var mechPilot))
             user = mechPilot.Mech;
 
@@ -273,7 +275,7 @@ public abstract partial class SharedGunSystem : EntitySystem
             gunComp = glovesGun;
             return true;
         }
-		
+
 		if (EntityManager.TryGetComponent(entity, out BuckleComponent? hands2) &&
             hands2.Buckled &&
             hands2.BuckledTo is { } held2 &&
@@ -362,6 +364,7 @@ public abstract partial class SharedGunSystem : EntitySystem
     {
         if (TryComp<AutoShootGunComponent>(gunUid, out var auto) && !auto.CanFire && auto.RemainingTime <= TimeSpan.FromSeconds(0)) // Frontier // Mono
             return; // Frontier
+
 
         if (gun.FireRateModified <= 0f ||
             !_actionBlockerSystem.CanAttack(user))
@@ -625,7 +628,7 @@ public abstract partial class SharedGunSystem : EntitySystem
 
         if (cartridge.DeleteOnSpawn) // Mono - No need to update appearance if cartridge is getting deleted anyways
             return;
-			
+
 		if (cartridge.AutoTimedDespawn != 0)
             EnsureComp<TimedDespawnComponent>(uid).Lifetime = cartridge.AutoTimedDespawn;
         // End mono

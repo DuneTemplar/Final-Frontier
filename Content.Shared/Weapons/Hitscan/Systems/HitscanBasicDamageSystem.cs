@@ -1,3 +1,4 @@
+using Content.Shared._FinalFrontier.Weapons.Hitscan.Components;
 using Content.Shared.Damage;
 using Content.Shared.Weapons.Hitscan.Components;
 using Content.Shared.Weapons.Hitscan.Events;
@@ -21,6 +22,11 @@ public sealed class HitscanBasicDamageSystem : EntitySystem
             return;
 
         var dmg = ent.Comp.Damage * _damage.UniversalHitscanDamageModifier;
+        if (TryComp<HitscanManualAmmoProviderComponent>(args.Gun, out var manual))
+        {
+            dmg *= manual.Charges * manual.DamageModifier;
+            manual.Charges = 1;
+        }
 
         var damageDealt = _damage.TryChangeDamage(args.HitEntity, dmg, origin: args.Gun);
 
