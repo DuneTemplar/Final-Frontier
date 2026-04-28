@@ -1,0 +1,11 @@
+- type: entity
+  parent: CrateBaseWeldable
+  id: CrateWoodJackal
+  name: jackal company crate
+  components:
+  - type: Icon
+    sprite: _FinalFrontier/Structures/Storage/Crates/jackal.rsi
+  - type: Sprite
+    sprite: _FinalFrontier/Structures/Storage/Crates/jackal.rsi
+  - type: StaticPrice
+    price: 120
