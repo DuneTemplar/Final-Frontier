@@ -149,3 +149,34 @@
         children:
         - id: PowerArmorLeftLegCage
           prob: 0.55
+          
+- type: entity
+  id: SpawnPowerArmorFrameScrapPlate
+  parent: BasePowerArmorFrame
+  suffix: Filled, ScrapPlate, Random
+  components:
+  - type: ConditionalSpawner
+    prototypes:
+    - ClothingHeadHelmetPowerArmorScrapPlate
+  - type: EntityTableContainerFill
+    containers:
+      Chestplate: !type:AllSelector
+        children:
+        - id: PowerArmorChestplateScrapPlate
+          prob: 0.5
+      RightArm: !type:AllSelector
+        children:
+        - id: PowerArmorRightArmScrapPlate
+          prob: 0.55
+      LeftArm: !type:AllSelector
+        children:
+        - id: PowerArmorLeftArmScrapPlate
+          prob: 0.55
+      RightLeg: !type:AllSelector
+        children:
+        - id: PowerArmorRightLegScrapPlate
+          prob: 0.55
+      LeftLeg: !type:AllSelector
+        children:
+        - id: PowerArmorLeftLegScrapPlate
+          prob: 0.55

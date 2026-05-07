@@ -192,6 +192,7 @@
     - SuitStorageNTSRA
     - SpawnPowerArmorFrameDM10 # Final Frontier
     - SpawnPowerArmorFrameCage # Final Frontier
+    - SpawnPowerArmorFrameScrapPlate # Final Frontier
     rareChance: 0.15 # Final Frontier 0.05>0.15
 
 # Machines
