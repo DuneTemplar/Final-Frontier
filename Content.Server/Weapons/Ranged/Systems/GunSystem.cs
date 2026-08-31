@@ -4,6 +4,7 @@ using Content.Server._Mono.FireControl;
 using Content.Server.Cargo.Systems;
 using Content.Server.Power.EntitySystems;
 using Content.Server.Weapons.Ranged.Components;
+using Content.Shared._FinalFrontier.Weapons.Hitscan.Components;
 using Content.Shared._Mono;
 using Content.Shared._RMC14.Weapons.Ranged.Prediction;
 using Content.Shared.Damage;

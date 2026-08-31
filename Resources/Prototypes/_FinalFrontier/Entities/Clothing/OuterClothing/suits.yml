@@ -94,7 +94,6 @@
           - Cartridge762x39mmFMJ
   - type: Clothing
     sprite: _FinalFrontier/Clothing/OuterClothing/Suits/mobile_ordnance.rsi
-    state: equipped-OUTERCLOTHING
   - type: ToggleableClothing
     clothingPrototypes:
       head:  ClothingHeadMobileOrdnance
@@ -119,7 +118,6 @@
     sprite: _FinalFrontier/Clothing/OuterClothing/Suits/mobile_ordnance.rsi/mobile_ordnance_helm.rsi
   - type: Clothing
     sprite: _FinalFrontier/Clothing/OuterClothing/Suits/mobile_ordnance.rsi/mobile_ordnance_helm.rsi
-    state: equipped-HELMET
   - type: PressureProtection
     highPressureMultiplier: 0.525
     lowPressureMultiplier: 1000
@@ -645,3 +643,108 @@
         Slash: 0.85
         Piercing: 0.85
         Heat: 0.9
+        
+# RCM Footsoldier
+        
+- type: entity
+  parent: ClothingOuterHardsuitBaseNF
+  id: ClothingOuterHardsuitRCMFootsoldier
+  name: RCM C2 footsoldier hardsuit
+  description: The standard hardsuit used by footsoldiers of the Royal Commonwealth of Man's military. An extremely fine, near perfect chainmail lines the exterior of the suit.
+  components:
+  - type: Sprite
+    sprite: _FinalFrontier/Clothing/OuterClothing/Suits/rcm_footsoldier.rsi
+  - type: Clothing
+    sprite: _FinalFrontier/Clothing/OuterClothing/Suits/rcm_footsoldier.rsi
+  - type: PressureProtection
+    highPressureMultiplier: 0.5
+    lowPressureMultiplier: 1000
+  - type: ExplosionResistance
+    damageCoefficient: 0.80
+  - type: Armor
+    modifiers:
+      coefficients: 
+        Blunt: 0.45
+        Slash: 0.45
+        Piercing: 0.5
+        Heat: 0.7
+        Radiation: 0.75
+        Caustic: 0.75
+  - type: ClothingSpeedModifier
+    walkModifier: 0.85
+    sprintModifier: 0.85
+  - type: ToggleableClothing 
+    requiredSlot: outerclothing
+    blockUnequipWhenAttached: false
+    replaceCurrentClothing: true
+    clothingPrototypes:
+      head:  ClothingHeadHelmetHardsuitRCMFootsoldier
+      helmetcover: ClothingHeadHelmetCoverBlock
+      helmetattachment: ClothingHeadHelmetAttachmentBlock
+  - type: StaminaDamageResistance
+    coefficient: 0.8
+
+- type: entity
+  parent: ClothingHeadHardsuitBase
+  id: ClothingHeadHelmetHardsuitRCMFootsoldier
+  categories: [ HideSpawnMenu ]
+  name: RCM C2 footsoldier hardsuit helmet
+  description: The rounded helmet and thick visor of the C2 footsoldier hardsuit. The visor has some flashproof, transparent material inbetween the bars.
+  components:
+  - type: BreathMask
+  - type: FlashImmunity
+  - type: IdentityBlocker
+  - type: Sprite
+    sprite: _FinalFrontier/Clothing/OuterClothing/Suits/rcm_footsoldier.rsi/rcm_footsoldier_helm.rsi
+  - type: Clothing
+    sprite: _FinalFrontier/Clothing/OuterClothing/Suits/rcm_footsoldier.rsi/rcm_footsoldier_helm.rsi
+  - type: PressureProtection
+    highPressureMultiplier: 0.525
+    lowPressureMultiplier: 10000
+  - type: Armor
+    modifiers:
+      coefficients:
+        Blunt: 0.85
+        Slash: 0.85
+        Piercing: 0.9
+        Heat: 0.9
+        
+# RCM Flagbearer
+        
+- type: entity
+  parent: ClothingOuterHardsuitBaseNF
+  id: ClothingOuterHardsuitRCMFlagbearer
+  name: RCM C2-F flagbearer hardsuit
+  description: A modification of the hardsuit used by footsoldiers of the Royal Commonwealth of Man's military. This one specifically has the RCM flag over it.
+  components:
+  - type: Sprite
+    sprite: _FinalFrontier/Clothing/OuterClothing/Suits/rcm_flagbearer.rsi
+  - type: Clothing
+    sprite: _FinalFrontier/Clothing/OuterClothing/Suits/rcm_flagbearer.rsi
+  - type: PressureProtection
+    highPressureMultiplier: 0.5
+    lowPressureMultiplier: 1000
+  - type: ExplosionResistance
+    damageCoefficient: 0.80
+  - type: Armor
+    modifiers:
+      coefficients: 
+        Blunt: 0.45
+        Slash: 0.4
+        Piercing: 0.5
+        Heat: 0.6
+        Radiation: 0.75
+        Caustic: 0.75
+  - type: ClothingSpeedModifier
+    walkModifier: 0.85
+    sprintModifier: 0.85
+  - type: ToggleableClothing 
+    requiredSlot: outerclothing
+    blockUnequipWhenAttached: false
+    replaceCurrentClothing: true
+    clothingPrototypes:
+      head:  ClothingHeadHelmetHardsuitRCMFootsoldier
+      helmetcover: ClothingHeadHelmetCoverBlock
+      helmetattachment: ClothingHeadHelmetAttachmentBlock
+  - type: StaminaDamageResistance
+    coefficient: 0.8

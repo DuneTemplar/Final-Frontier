@@ -243,10 +243,10 @@
 
 
 - type: entity
-  name: UI WT550 (4.6x30mm)
+  name: WT550 (4.6x30mm)
   parent: BaseWeaponSubMachineGun
   id: WeaponSubMachineGunWt550
-  description: An excellent SMG, produced by a Black Market Arms Company known as Ullman Industries. Uses 4.6x30mm ammo. On the receiver is a label that says 'for authorized use only.'
+  description: An excellent SMG, though noone's ever been able to pinpoint its creator. Uses 4.6x30mm ammo. On the receiver is a label that says 'for authorized use only.'
   components:
   - type: Sprite
     sprite: Objects/Weapons/Guns/SMGs/wt550.rsi

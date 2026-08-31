@@ -1,0 +1,6 @@
+- type: stack
+  id: Plutonium
+  name: stack-plutonium
+  icon: { sprite: "/Textures/Objects/Materials/ingots.rsi", state: hydrogen } # Why iron? Because I haven't gotten a spriter to make better # Mono - hydrogen instead
+  spawn: IngotPlutonium1
+  maxCount: 30

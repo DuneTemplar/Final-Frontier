@@ -9,7 +9,7 @@
     noiseChannel: Wreck
   - type: NoiseRangeCarver
     ranges:
-    - 0.4, 0.6
+    - 0.45, 0.55
     noiseChannel: Carver
   - type: PointSetDistanceCarver
 

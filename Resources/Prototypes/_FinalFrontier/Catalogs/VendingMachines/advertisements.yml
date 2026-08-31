@@ -1,0 +1,6 @@
+- type: localizedDataset
+  id: AutoMunitionsAds
+  values:
+    prefix: advertisement-automunitions-
+    count: 10
+

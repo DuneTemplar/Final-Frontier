@@ -794,6 +794,11 @@ namespace Content.Server.Database.Migrations.Sqlite
                         .IsRequired()
                         .HasColumnType("TEXT")
                         .HasColumnName("company");
+						
+					b.Property<string>("Nation")
+                        .IsRequired()
+                        .HasColumnType("TEXT")
+                        .HasColumnName("nation");
 
                     b.Property<string>("EyeColor")
                         .IsRequired()

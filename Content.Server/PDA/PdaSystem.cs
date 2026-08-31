@@ -21,7 +21,8 @@ using Robust.Shared.Utility;
 using Content.Shared._NF.Bank.Components; // Frontier
 using Content.Shared._NF.Shipyard.Components; // Frontier
 using Content.Server._NF.Shipyard.Systems; // Frontier
-using Content.Server._NF.SectorServices; // Frontier
+using Content.Server._NF.SectorServices;
+using Content.Shared._FinalFrontier.Nationality; // Frontier
 using Content.Shared._Mono.Company;
 using Robust.Shared.Prototypes;
 using Content.Shared.DeviceNetwork.Components;
@@ -221,6 +222,22 @@ namespace Content.Server.PDA
                 }
             }
 
+            string? nationName = null;
+            Color nationColor = Color.White;
+            if (id?.NationName != null && !string.IsNullOrWhiteSpace(id.NationName) && id.NationName != "Neutral")
+            {
+                if (_prototypeManager.TryIndex<NationalityPrototype>(id.NationName, out var nationProto))
+                {
+                    nationName = nationProto.Name; // Use the display name, not the ID
+                    nationColor = nationProto.Color;
+                }
+                else
+                {
+                    // Fallback to ID if prototype not found
+                    nationName = id.NationName;
+                }
+            }
+
             var state = new PdaUpdateState(
                 programs,
                 GetNetEntity(loader.ActiveProgram),
@@ -235,6 +252,8 @@ namespace Content.Server.PDA
                     JobTitle = id?.LocalizedJobTitle,
                     CompanyName = companyName,
                     CompanyColor = companyColor,
+                    NationName = nationName,
+                    NationColor = nationColor,
                     StationAlertLevel = pda.StationAlertLevel,
                     StationAlertColor = pda.StationAlertColor
                 },

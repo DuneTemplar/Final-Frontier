@@ -43,6 +43,7 @@ using Content.Shared.Access;
 using Content.Shared._NF.Bank.BUI;
 using Content.Shared._NF.ShuttleRecords;
 using Content.Server.StationEvents.Components;
+using Content.Shared._FinalFrontier.Nationality;
 using Content.Shared._Mono.Company;
 using Content.Shared.Forensics.Components;
 using Content.Shared.Shuttles.Components;
@@ -246,6 +247,30 @@ public sealed partial class ShipyardSystem : SharedShipyardSystem
             var shipCompany = EnsureComp<CompanyComponent>(shuttleUid);
             shipCompany.CompanyName = companyName;
             Dirty(shuttleUid, shipCompany);
+        }
+
+        // Add nation information to the shuttle from the ID card or voucher
+        string? nationName = null;
+
+        // First try to get nation from ID card
+        if (TryComp<IdCardComponent>(targetId, out var idCardNation) &&
+            !string.IsNullOrEmpty(idCardNation.NationName))
+        {
+            nationName = idCardNation.NationName;
+        }
+        // If no ID card nation, try to get from voucher
+        else if (TryComp<ShipyardVoucherComponent>(targetId, out var voucherNation) &&
+                 !string.IsNullOrEmpty(voucherNation.NationName))
+        {
+            nationName = voucherNation.NationName;
+        }
+
+        // Apply nation to ship if we found one
+        if (!string.IsNullOrEmpty(nationName))
+        {
+            var shipNation = EnsureComp<NationalityComponent>(shuttleUid);
+            shipNation.NationName = nationName;
+            Dirty(shuttleUid, shipNation);
         }
 
         EntityUid? shuttleStation = null;

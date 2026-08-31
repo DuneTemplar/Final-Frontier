@@ -10,6 +10,7 @@ using Content.Client.Sprite;
 using Content.Client.UserInterface.Systems.Guidebook;
 using Content.Client.UserInterface.Controls;
 using Content.Shared._Mono.Company;
+using Content.Shared._FinalFrontier.Nationality;
 using Content.Shared.CCVar;
 using Content.Shared.Clothing;
 using Content.Shared.Guidebook;
@@ -509,9 +510,73 @@ namespace Content.Client.Lobby.UI
 
             #endregion Company
 
+            #region Nation
+
+            TabContainer.SetTabTitle(4, Loc.GetString("humanoid-profile-editor-nation-tab"));
+
+            // Clear any existing items
+            NationButton.Clear();
+
+            // Add all nations from prototypes - use consistent sorting with UpdateNationControls
+            var nations = _prototypeManager.EnumeratePrototypes<NationalityPrototype>()
+                .Where(c => (username != null))
+                .ToList();
+            nations.Sort((a, b) => string.Compare(a.Name, b.Name, StringComparison.Ordinal));
+
+            // Make sure "Neutral" is first in the list
+            var neutralIndex = nations.FindIndex(c => c.ID == "Neutral");
+            if (neutralIndex != -1)
+            {
+                var neutral = nations[neutralIndex];
+                nations.RemoveAt(neutralIndex);
+                nations.Insert(0, neutral);
+            }
+
+            // Add to TSF company dropdown
+            for (var i = 0; i < nations.Count; i++)
+            {
+                NationButton.AddItem(nations[i].Name, i);
+                //Logger.Debug($"Added company to dropdown: {i} - {nations[i].ID} - {nations[i].Name}");
+            }
+
+            NationButton.OnItemSelected += args =>
+            {
+                NationButton.SelectId(args.Id);
+                if (args.Id >= 0 && args.Id < nations.Count)
+                {
+                    var nationId = nations[args.Id].ID;
+
+                    // Description of Nation (pointed-to in prototype, defined in Locale)
+                    NationDescriptionLabel.SetMessage(!string.IsNullOrEmpty(nations[args.Id].Description)
+                        ? Loc.GetString(nations[args.Id].Description)
+                        : "N/A"); // Only if there's a description. If not, then set to N/A.
+
+                    // Display nation image if available
+                    if (!string.IsNullOrEmpty(nations[args.Id].Image))
+                    {
+                        NationImage.Texture = IoCManager.Resolve<IResourceCache>().GetResource<TextureResource>(nations[args.Id].Image!).Texture;
+                        NationImage.Visible = true;
+                    }
+                    else
+                    {
+                        NationImage.Visible = false;
+                    }
+
+                    // Get the current profile for comparison
+                    var oldNation = Profile?.Nation;
+                    // Update the profile with the new nation
+                    Profile = Profile?.WithNation(nationId);
+
+                    // Explicitly call SetDirty to update save button state
+                    SetDirty();
+                }
+            };
+
+            #endregion Nation
+
             #region Markings
 
-            TabContainer.SetTabTitle(4, Loc.GetString("humanoid-profile-editor-markings-tab"));
+            TabContainer.SetTabTitle(5, Loc.GetString("humanoid-profile-editor-markings-tab"));
 
             Markings.OnMarkingAdded += OnMarkingChange;
             Markings.OnMarkingRemoved += OnMarkingChange;
@@ -548,6 +613,8 @@ namespace Content.Client.Lobby.UI
 
             UpdateSpeciesGuidebookIcon();
             UpdateCompanyControls();
+            UpdateNationControls();
+
             IsDirty = false;
         }
 
@@ -1123,7 +1190,7 @@ namespace Content.Client.Lobby.UI
             var selectedCharacter = (HumanoidCharacterProfile)_preferencesManager.Preferences.SelectedCharacter;
 
             // Check explicitly if company changed
-            if (selectedCharacter.Company != Profile.Company)
+            if (selectedCharacter.Company != Profile.Company || selectedCharacter.Nation != Profile.Nation)
             {
                 IsDirty = true;
                 return;
@@ -1199,6 +1266,7 @@ namespace Content.Client.Lobby.UI
             UpdateCMarkingsHair();
             UpdateCMarkingsFacialHair();
             UpdateCompanyControls();
+            UpdateNationControls();
 
             RefreshAntags();
             RefreshJobs();
@@ -2254,6 +2322,75 @@ namespace Content.Client.Lobby.UI
                 if (_prototypeManager.TryIndex<CompanyPrototype>(Profile.Company, out var companyProto) && companyProto.Disabled)
                 {
                     Profile = Profile.WithCompany("None");
+                }
+            }
+        }
+
+        private void UpdateNationControls()
+        {
+            if (Profile is null)
+                return;
+
+            var username = _playerManager.LocalPlayer?.Session?.Name; //Lua modified - company login support
+
+            var nations = _prototypeManager.EnumeratePrototypes<NationalityPrototype>()
+                .Where(c => (username != null))
+                .ToList();
+            nations.Sort((a, b) => string.Compare(a.Name, b.Name, StringComparison.Ordinal));
+
+            // Make sure "Neutral" is first in the list
+            var neutralIndex = nations.FindIndex(c => c.ID == "Neutral");
+            if (neutralIndex != -1)
+            {
+                var neutral = nations[neutralIndex];
+                nations.RemoveAt(neutralIndex);
+                nations.Insert(0, neutral);
+            }
+
+            //Logger.Debug($"Updating nation controls." +
+                         //$"Current profile nation: {Profile.Nation}\n");
+
+            // Find nation in the list and select it
+            bool found = false;
+            for (var i = 0; i < nations.Count; i++)
+            {
+                if (nations[i].ID != Profile.Nation)
+                    continue; // Short circuit.
+
+                //Logger.Debug($"Found nation at index {i}: {nations[i].ID} - {nations[i].Name}");
+                NationButton.SelectId(i);
+
+                // Description of nation (pointed-to in prototype, defined in Locale)
+                NationDescriptionLabel.SetMessage(!string.IsNullOrEmpty(nations[i].Description)
+                    ? Loc.GetString(nations[i].Description)
+                    : "N/A"); // Only if there's a description. If not, then set to N/A.
+
+                // Display company image if available
+                if (!string.IsNullOrEmpty(nations[i].Image))
+                {
+                    NationImage.Texture = IoCManager.Resolve<IResourceCache>().GetResource<TextureResource>(nations[i].Image!).Texture;
+                    NationImage.Visible = true;
+                }
+                else
+                {
+                    NationImage.Visible = false;
+                }
+
+                found = true;
+                break;
+            }
+
+            // If nation wasn't found, default to "Neutral" (index 0)
+            if (!found)
+            {
+                //Logger.Debug($"Company {Profile.Nation} not found in list, defaulting to Neutral");
+                NationButton.SelectId(0);
+                NationImage.Visible = false;
+
+                // Also reset the profile's company to None if the current one is disabled
+                if (_prototypeManager.TryIndex<NationalityPrototype>(Profile.Nation, out var nationProto))
+                {
+                    Profile = Profile.WithNation("Neutral");
                 }
             }
         }

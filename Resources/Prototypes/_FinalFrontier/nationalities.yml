@@ -1,0 +1,37 @@
+# All possible nation alignments.
+
+- type: nationality
+  id: Neutral
+  name: Neutral
+  color: "#FFFFFF"
+  description: neutral-description
+
+- type: nationality
+  id: TSF
+  name: Trans-Solar Federation
+  color: "#047ABD"
+  description: tsf-description
+
+- type: nationality
+  id: PDV
+  name: Phaethon Dynasty
+  color: "#D2B48C"
+  description: pdv-description
+  
+- type: nationality
+  id: USSP
+  name: Union of Soviet Socialist Planets
+  color: "#B01340"
+  description: ussp-description
+  
+- type: nationality
+  id: CORS
+  name: Coalition of Outer Rim Systems
+  color: "#27ACA5"
+  description: cors-description
+
+- type: nationality
+  id: RCM
+  name: Royal Commonwealth of Man
+  color: "#DB432C"
+  description: rcm-description

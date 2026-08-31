@@ -7,7 +7,8 @@ using Content.Shared.Weapons.Hitscan.Components;
 using Content.Shared.Weapons.Ranged.Components;
 using Robust.Shared.Prototypes;
 using Content.Server.Power.EntitySystems;
-using Content.Server.PowerCell; // Mono
+using Content.Server.PowerCell;
+using Content.Shared._FinalFrontier.Weapons.Hitscan.Components; // Mono
 
 namespace Content.Server.Weapons.Ranged.Systems;
 
@@ -135,14 +136,33 @@ public sealed partial class GunSystem
     {
         if (TryComp<BatteryComponent>(uid, out var battery))
         {
-            _battery.UseCharge(uid, component.FireCost);
+            // Final Frontier
+            if (TryComp<HitscanManualAmmoProviderComponent>(uid, out var manual) && manual.Charges > 1)
+            {
+                _battery.UseCharge(uid, component.FireCost * manual.Charges * manual.CostModifier);
+            }
+            else
+            {
+                _battery.UseCharge(uid, component.FireCost);
+            }
+            // Final Frontier end
             return;
         }
 
         if (TryComp<PowerCellSlotComponent>(uid, out var powerCellSlot))
         {
-            _powerCell.TryUseCharge(uid, component.FireCost, powerCellSlot);
+            // Final Frontier
+            if (TryComp<HitscanManualAmmoProviderComponent>(uid, out var manual) && manual.Charges > 1)
+            {
+                _powerCell.TryUseCharge(uid, component.FireCost * manual.Charges * manual.CostModifier, powerCellSlot);
+            }
+            else
+            {
+                _powerCell.TryUseCharge(uid, component.FireCost, powerCellSlot);
+            }
+            // Final Frontier end
         }
+
     }
     // Mono End
 }

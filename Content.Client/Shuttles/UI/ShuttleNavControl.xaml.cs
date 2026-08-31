@@ -3,6 +3,7 @@ using System.Numerics;
 using Content.Client._Mono.Radar;
 using Content.Client.Station; // Frontier
 using Content.Shared._Crescent.ShipShields;
+using Content.Shared._FinalFrontier.Nationality;
 using Content.Shared._Mono.Company;
 using Content.Shared._Mono.Detection;
 using Content.Shared._Mono.Radar;
@@ -337,6 +338,14 @@ public partial class ShuttleNavControl : BaseShuttleControl // Mono
         var rot = ourEntRot + _rotation.Value;
         DrawNorthLine(handle, rot);
 
+		// Mono
+        DrawAzimuthScale(handle, rot);
+
+        if (rot != Angle.Zero)
+        {
+            DrawCompassOverlay(handle, ourEntRot);
+        }
+
         // Draw our grid in detail
         var ourGridId = xform.GridUid;
         if (EntManager.TryGetComponent<MapGridComponent>(ourGridId, out var ourGrid) &&
@@ -537,6 +546,19 @@ public partial class ShuttleNavControl : BaseShuttleControl // Mono
                         }
                     }
 
+                    // Get nation color if entity has NationalityComponent
+                    var nationColor = labelColor;
+                    if (!hideLabel && EntManager.TryGetComponent(gUid, out NationalityComponent? nationComp) &&
+                        !string.IsNullOrEmpty(nationComp.NationName))
+                    {
+                        var prototypeManager = IoCManager.Resolve<IPrototypeManager>();
+                        NationalityPrototype? prototype = null;
+                        if (prototypeManager.TryIndex(nationComp.NationName, out prototype) && prototype != null)
+                        {
+                            nationColor = prototype.Color;
+                        }
+                    }
+
                     // Split label text into lines
                     var lines = labelText.Split('\n');
                     var mainLabel = lines[0];
@@ -544,16 +566,40 @@ public partial class ShuttleNavControl : BaseShuttleControl // Mono
                     // Draw main ship label with company color if available
                     handle.DrawString(Font, (uiPosition + labelOffset) * UIScale, mainLabel, UIScale * 0.9f, displayColor);
 
-                    // Draw company label if present
                     if (!hideLabel && lines.Length > 1)
                     {
-                        var companyLabel = lines[1];
-                        var companyLabelOffset = new Vector2(
+                        if (displayColor != labelColor)
+                        {
+                            var companyLabel = lines[1];
+                            var companyLabelOffset = new Vector2(
+                                labelOffset.X,
+                                labelOffset.Y + handle.GetDimensions(Font, mainLabel, 0.9f).Y
+                            );
+
+                            handle.DrawString(Font, (uiPosition + companyLabelOffset) * UIScale, companyLabel, UIScale * 0.9f, displayColor);
+                        }
+                        else
+                        {
+                            var nationLabel = lines[1];
+                            var nationLabelOffset = new Vector2(
+                                labelOffset.X,
+                                labelOffset.Y + handle.GetDimensions(Font, mainLabel, 0.9f).Y
+                            );
+
+                            handle.DrawString(Font, (uiPosition + nationLabelOffset) * UIScale, nationLabel, UIScale * 0.9f, nationColor);
+                        }
+                    }
+
+                    // Draw nation label if present
+                    if (!hideLabel && lines.Length > 2)
+                    {
+                        var nationLabel = lines[2];
+                        var nationLabelOffset = new Vector2(
                             labelOffset.X,
-                            labelOffset.Y + handle.GetDimensions(Font, mainLabel, 0.9f).Y
+                            labelOffset.Y + handle.GetDimensions(Font, mainLabel, 0.9f).Y * 2
                         );
 
-                        handle.DrawString(Font, (uiPosition + companyLabelOffset) * UIScale, companyLabel, UIScale * 0.9f, displayColor);
+                        handle.DrawString(Font, (uiPosition + nationLabelOffset) * UIScale, nationLabel, UIScale * 0.9f, nationColor);
                     }
 
                     if (isMouseOver && !HideCoords)

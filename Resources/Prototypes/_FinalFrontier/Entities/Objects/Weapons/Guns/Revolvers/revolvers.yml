@@ -27,7 +27,6 @@
     whitelist:
       tags:
         - Cartridge762x39mmFMJ
-        - SpeedLoader762x39mmFMJ
     capacity: 6
     proto: Cartridge762x39mmFMJ
     chambers: [ True, True, True, True, True, True]

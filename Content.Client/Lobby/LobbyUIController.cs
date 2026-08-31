@@ -7,6 +7,7 @@ using Content.Client.Lobby.UI;
 using Content.Client.Players.PlayTimeTracking;
 using Content.Client.Station;
 using Content.Shared._Mono.Company;
+using Content.Shared._FinalFrontier.Nationality;
 using Content.Shared.CCVar;
 using Content.Shared.Clothing;
 using Content.Shared.GameTicking;
@@ -227,6 +228,7 @@ public sealed class LobbyUIController : UIController, IOnStateEntered<LobbyState
             PreviewPanel.SetSummaryText(string.Empty);
             PreviewPanel.SetBankBalanceText(string.Empty); // Frontier
             PreviewPanel.SetCompanyText(string.Empty); // Company Display
+            PreviewPanel.SetNationText(string.Empty); // Nation Display
             PreviewPanel.SetMonoCoinsText("MonoCoins: -1"); // MonoCoins Display
             return;
         }
@@ -238,6 +240,20 @@ public sealed class LobbyUIController : UIController, IOnStateEntered<LobbyState
         {
             // Create a new profile with the company set to "None"
             humanoid = humanoid.WithCompany("None");
+
+            // Update the character in preferences
+            if (_preferencesManager.Preferences != null)
+            {
+                _preferencesManager.UpdateCharacter(humanoid, _preferencesManager.Preferences.SelectedCharacterIndex);
+            }
+        }
+        // Verify nation exists, if not set it to "Neutral"
+        if (!string.IsNullOrEmpty(humanoid.Nation) &&
+            humanoid.Nation != "Neutral" &&
+            !_prototypeManager.HasIndex<NationalityPrototype>(humanoid.Nation))
+        {
+            // Create a new profile with the nation set to "Neutral"
+            humanoid = humanoid.WithNation("Neutral");
 
             // Update the character in preferences
             if (_preferencesManager.Preferences != null)
@@ -260,6 +276,17 @@ public sealed class LobbyUIController : UIController, IOnStateEntered<LobbyState
         else
         {
             PreviewPanel.SetCompanyText($"[color=white]Company:[/color] [color=yellow]{companyId}[/color]");
+        }
+
+        // Nation Display
+        var nationId = humanoid.Nation;
+        if (_prototypeManager.TryIndex<NationalityPrototype>(nationId, out var nation))
+        {
+            PreviewPanel.SetNationText($"[color=white]Nation:[/color] [color={nation.Color.ToHex()}]{nation.Name}[/color]");
+        }
+        else
+        {
+            PreviewPanel.SetNationText($"[color=white]Nation:[/color] [color=yellow]{nationId}[/color]");
         }
 
         // MonoCoins Display - Request balance from server and update display

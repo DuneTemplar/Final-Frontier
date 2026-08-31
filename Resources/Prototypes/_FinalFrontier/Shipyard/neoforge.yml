@@ -1,0 +1,43 @@
+# Author Info
+# GitHub: Erophosea
+# Discord: Erophosea
+
+# Shuttle Notes: Apparently, we can write these??? I genuinely kinda used the corros as a frame for this because I do NOT know how he (Dune) wrote these. She's a fucking enigma. I wonder what they think sometimes. Anyways, hopefully my laziness doesn't horrifically break something!
+
+- type: vessel
+  id: Neoforge
+  parent: BaseVessel
+  name: PHX Neoforge
+  description: A large shuttle built by the Phoenixes, fitted with an industrial bay, sporting 4 of both autosmiths and metal casters, as well as a research bay, where you can make good use out of the two xenoarcheology chambers, a full bar and kitchen setup, and a mech bay! 
+  price: 275000
+  category: medium
+  group: Shipyard
+  shuttlePath: /Maps/_FinalFrontier/Shuttles/neoforge.yml
+  guidebookPage: Null
+  class:
+  - Civilian
+  - Salvage
+  - Science
+
+  engine:
+  - Uranium
+
+- type: gameMap
+  id: Neoforge
+  mapName: 'PHX Neoforge'
+  mapPath: /Maps/_FinalFrontier/Shuttles/neoforge.yml
+  minPlayers: 0
+  stations:
+    Neoforge:
+      stationProto: StandardFrontierVessel
+      components:
+        - type: StationNameSetup
+          mapNameTemplate: 'Neoforge IND{1}'
+          nameGenerator:
+            !type:NanotrasenNameGenerator
+            prefixCreator: '14'
+        - type: StationJobs
+          availableJobs:
+            Contractor: [ 0, 0 ]
+            Pilot: [ 0, 0 ]
+            Mercenary: [ 0, 0 ]

@@ -1,3 +1,4 @@
+using Content.Shared._FinalFrontier.Nationality;
 using Content.Shared.Access.Components;
 using Content.Shared.Examine;
 using Content.Shared.Inventory;
@@ -86,13 +87,28 @@ public sealed class IdExaminableSystem : EntitySystem
             }
         }
 
+		var nationSuffix = string.Empty;
+        if (!string.IsNullOrWhiteSpace(id.NationName) && id.NationName != "Neutral")
+        {
+            if (_prototypeManager.TryIndex<NationalityPrototype>(id.NationName, out var nationProto))
+            {
+                nationSuffix = $" - [color={nationProto.Color.ToHex()}]{nationProto.Name}[/color]";
+            }
+            else
+            {
+                nationSuffix = $" - {id.NationName}";
+            }
+        }
+
         var val = string.IsNullOrWhiteSpace(id.FullName)
             ? Loc.GetString(id.NameLocId,
                 ("jobSuffix", jobSuffix),
+                ("nationSuffix", nationSuffix),
                 ("companySuffix", companySuffix))
             : Loc.GetString(id.FullNameLocId,
                 ("fullName", id.FullName),
                 ("jobSuffix", jobSuffix),
+                ("nationSuffix", nationSuffix),
                 ("companySuffix", companySuffix));
 
         return val;

@@ -245,6 +245,7 @@ namespace Content.Server.Database
 
             // Get the company with fallback to default "None"
             var company = profile.Company ?? "None";
+			var nation = profile.Nation ?? "Neutral";
 
             // Validate height and width to prevent sprite scale errors
             // Database migration set default values to 0f for existing profiles
@@ -277,7 +278,8 @@ namespace Content.Server.Database
                 antags.ToHashSet(),
                 traits.ToHashSet(),
                 loadouts,
-                company);
+                company,
+                nation);
         }
 
         private static Profile ConvertProfiles(HumanoidCharacterProfile humanoid, int slot, Profile? profile = null)
@@ -311,6 +313,7 @@ namespace Content.Server.Database
             profile.Slot = slot;
             profile.PreferenceUnavailable = (DbPreferenceUnavailableMode) humanoid.PreferenceUnavailable;
             profile.Company = humanoid.Company;
+            profile.Nation = humanoid.Nation;
 
             profile.Jobs.Clear();
             profile.Jobs.AddRange(

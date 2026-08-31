@@ -1,0 +1,34 @@
+- type: vendingMachineInventory
+  id: AmmunitionVendorInventory
+  startingInventory:
+    
+    Magazine9x19mmPistolFMJ: 4294967295 # 9x19mm Pistol
+    Magazine45_ACPPistolFMJ: 4294967295 # .45 ACP Pistol
+    Magazine9x19mmSubMachineGunFMJ: 4294967295 # 9x19mm AK220
+    Magazine45_ACPSubMachineGunFMJ: 4294967295 # .45 ACP Keyboard
+    Magazine46x30mmSubMachineGunTopMountedFMJ: 4294967295 # 46x30mm WT550
+    Magazine556x45mmFMJ: 4294967295 # 556x45mm Prometheus/Lecter
+    MagazineNovaliteC1: 4294967295 #556x45mm Clip Novalite
+    Magazine762x39mmFMJ: 4294967295 # 762x39mm Gestio/AKM
+    Magazine762x51mmFMJ: 4294967295 # 762x51mm Vulcan
+    Magazine762x54mmRFMJ: 4294967295 # 762x54mmR SVS
+    SpeedLoader762x39mmFMJ: 4294967295 # 762x39mm revolvers
+    SpeedLoader762x54mmRFMJ: 4294967295 # 762x54mmR SVS
+    SpeedLoader45_magnumFMJ: 4294967295 # .45 magnum revolvers
+    SpeedLoader556x45mmFMJ: 4294967295 # 556x45mm revolvers
+    
+    AmmoBox556x45mmFMJ: 4294967295 # 556x45mm
+    AmmoBox762x39mmFMJ: 4294967295 # 762x39mm
+    AmmoBox762x51mmFMJ: 4294967295 # 762x51mm
+    AmmoBox762x54mmRFMJ: 4294967295 # 762x54mmR
+    AmmoBox46x30mmFMJ: 4294967295 # 46x30mm
+    AmmoBox9x19mmFMJ: 4294967295 # 9x19mm
+    AmmoBox45_ACPFMJ: 4294967295 # .45 ACP
+    AmmoBox45_magnumFMJ: 4294967295 # .45 magnum
+    AmmoBox12_gaugeSlug: 4294967295 # 12 gauge
+    AmmoBox12_gaugeBuckshot: 4294967295 # 12 gauge
+    AmmoBox12_gaugeBeanbag: 4294967295 # 12 gauge
+    AmmoBox23x75mmSlug: 4294967295 # 4 gauge
+    AmmoBox23x75mmBuckshot: 4294967295 # 4 gauge
+    AmmoBox23x75mmBeanbag: 4294967295 # 4 gauge
+    

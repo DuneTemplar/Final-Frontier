@@ -1,6 +1,7 @@
 using System.Buffers;
 using System.Numerics;
 using Content.Client.Shuttles.Systems;
+using Content.Shared._FinalFrontier.Nationality;
 using Content.Shared._Mono.Company;
 using Content.Shared._Mono.Detection;
 using Content.Shared.Shuttles.Components;
@@ -465,21 +466,66 @@ public sealed partial class ShuttleMapControl : BaseShuttleControl
                     }
                 }
 
+                // Get nation color if entity has NationalityComponent
+                var nationColor = adjustedColor;
+                if (hasLabel)
+                {
+                    foreach (var mapObj in viewportObjects)
+                    {
+                        if (mapObj is GridMapObject gridObj &&
+                            EntManager.TryGetComponent(gridObj.Entity, out NationalityComponent? nationComp) &&
+                            !string.IsNullOrEmpty(nationComp.NationName) &&
+                            IoCManager.Resolve<IPrototypeManager>().TryIndex<NationalityPrototype>(nationComp.NationName, out var gridNationProto))
+                        {
+                            nationColor = Color.FromSrgb(gridNationProto.Color);
+                            break;
+                        }
+                    }
+                }
+
                 // Draw main ship label with company color if available
                 handle.DrawString(_font, gridUiPos + mainTextWidth with { X = -mainTextWidth.X / 2f, Y = mainTextWidth.Y * UIScale }, mainLabel, displayColor);
 
-                // Draw company label if present
                 if (hasLabel && lines.Length > 1)
                 {
-                    var companyLabel = lines[1];
-                    var companyTextWidth = handle.GetDimensions(_font, companyLabel, 1f);
-                    var companyLabelOffset = mainTextWidth with
+                    if (displayColor != adjustedColor)
                     {
-                        X = -companyTextWidth.X / 2f,
-                        Y = mainTextWidth.Y * 2 * UIScale
+                        var companyLabel = lines[1];
+                        var companyTextWidth = handle.GetDimensions(_font, companyLabel, 1f);
+                        var companyLabelOffset = mainTextWidth with
+                        {
+                            X = -companyTextWidth.X / 2f,
+                            Y = mainTextWidth.Y * 2 * UIScale
+                        };
+
+                        handle.DrawString(_font, gridUiPos + companyLabelOffset, companyLabel, displayColor);
+                    }
+                    else
+                    {
+                        var nationLabel = lines[1];
+                        var nationTextWidth = handle.GetDimensions(_font, nationLabel, 1f);
+                        var nationLabelOffset = mainTextWidth with
+                        {
+                            X = -nationTextWidth.X / 2f,
+                            Y = mainTextWidth.Y * 2 * UIScale
+                        };
+
+                        handle.DrawString(_font, gridUiPos + nationLabelOffset, nationLabel, nationColor);
+                    }
+                }
+
+                // Draw nation label if present
+                if (hasLabel && lines.Length > 2)
+                {
+                    var nationLabel = lines[2];
+                    var nationTextWidth = handle.GetDimensions(_font, nationLabel, 1f);
+                    var nationLabelOffset = mainTextWidth with
+                    {
+                        X = -nationTextWidth.X / 2f,
+                        Y = mainTextWidth.Y * 3 * UIScale
                     };
 
-                    handle.DrawString(_font, gridUiPos + companyLabelOffset, companyLabel, displayColor);
+                    handle.DrawString(_font, gridUiPos + nationLabelOffset, nationLabel, nationColor);
                 }
             }
         }

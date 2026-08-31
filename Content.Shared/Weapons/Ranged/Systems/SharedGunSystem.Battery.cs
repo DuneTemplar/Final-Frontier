@@ -1,9 +1,13 @@
+using Content.Shared.Audio; // Final Frontier
 using Content.Shared.Examine;
 using Content.Shared.Weapons.Ranged.Components;
 using Content.Shared.Weapons.Ranged.Events;
 using Robust.Shared.GameStates;
 using Robust.Shared.Map;
 using Robust.Shared.Serialization;
+using Content.Shared._FinalFrontier.Weapons.Hitscan.Components;
+using Content.Shared.Interaction.Events;
+using Robust.Shared.Audio; // Final Frontier
 
 namespace Content.Shared.Weapons.Ranged.Systems;
 
@@ -19,6 +23,9 @@ public abstract partial class SharedGunSystem
         SubscribeLocalEvent<HitscanBatteryAmmoProviderComponent, CheckShootPrototypeEvent>(OnBatteryCheckProto); // Mono
         SubscribeLocalEvent<HitscanBatteryAmmoProviderComponent, GetAmmoCountEvent>(OnBatteryAmmoCount);
         SubscribeLocalEvent<HitscanBatteryAmmoProviderComponent, ExaminedEvent>(OnBatteryExamine);
+        SubscribeLocalEvent<HitscanManualAmmoProviderComponent, UseInHandEvent>(OnManualCharge); // Final Frontier
+        SubscribeLocalEvent<HitscanManualAmmoProviderComponent, CheckShootPrototypeEvent>(OnBatteryCheckProto); // Final Frontier
+        SubscribeLocalEvent<HitscanManualAmmoProviderComponent, TakeAmmoEvent>(OnBatteryTakeAmmo); // Final Frontier
 
         // Projectile
         SubscribeLocalEvent<ProjectileBatteryAmmoProviderComponent, ComponentGetState>(OnBatteryGetState);
@@ -27,6 +34,24 @@ public abstract partial class SharedGunSystem
         SubscribeLocalEvent<ProjectileBatteryAmmoProviderComponent, CheckShootPrototypeEvent>(OnBatteryCheckProto); // Mono
         SubscribeLocalEvent<ProjectileBatteryAmmoProviderComponent, GetAmmoCountEvent>(OnBatteryAmmoCount);
         SubscribeLocalEvent<ProjectileBatteryAmmoProviderComponent, ExaminedEvent>(OnBatteryExamine);
+    }
+
+    private void OnManualCharge(EntityUid uid, HitscanManualAmmoProviderComponent component, UseInHandEvent args)
+    {
+        if (args.Handled)
+            return;
+        if (component.Charges < component.MaxCharges)
+        {
+            if (TryComp<GunComponent>(uid, out var gun))
+            {
+                if ((Timing.CurTime - component.LastCharge).TotalSeconds < 1.25)
+                    return;
+                component.Charges++;
+                component.LastCharge = Timing.CurTime;
+                Audio.PlayPvs(component.InteractSound, uid, AudioParams.Default.WithVariation(SharedContentAudioSystem.DefaultVariation).WithVolume(-1f));
+            }
+        }
+        args.Handled = true;
     }
 
     private void OnBatteryHandleState(EntityUid uid, BatteryAmmoProviderComponent component, ref ComponentHandleState args)
@@ -75,7 +100,6 @@ public abstract partial class SharedGunSystem
             args.Ammo.Add(GetShootable(component, args.Coordinates));
             component.Shots--;
         }
-
         TakeCharge(uid, component);
         UpdateBatteryAppearance(uid, component);
         Dirty(uid, component);
@@ -94,6 +118,10 @@ public abstract partial class SharedGunSystem
                 ProtoManager.TryIndex(hitscan.HitscanEntityProto, out var hitProto);
                 args.ShootPrototype = hitProto;
                 break;
+            case HitscanManualAmmoProviderComponent manual:
+                ProtoManager.TryIndex(manual.HitscanEntityProto, out var manualProto);
+                args.ShootPrototype = manualProto;
+                break;
             default:
                 throw new ArgumentOutOfRangeException();
         }
@@ -111,6 +139,8 @@ public abstract partial class SharedGunSystem
     protected virtual void TakeCharge(EntityUid uid, BatteryAmmoProviderComponent component)
     {
         UpdateAmmoCount(uid, prediction: false);
+        if (TryComp<HitscanManualAmmoProviderComponent>(uid, out var manual))
+            manual.Charges = 1;
     }
 
     protected void UpdateBatteryAppearance(EntityUid uid, BatteryAmmoProviderComponent component)
@@ -133,6 +163,9 @@ public abstract partial class SharedGunSystem
             case HitscanBatteryAmmoProviderComponent hitscan:
                 var hitscanEnt = Spawn(hitscan.HitscanEntityProto);
                 return (hitscanEnt, EnsureShootable(hitscanEnt));
+            case HitscanManualAmmoProviderComponent manual:
+                var manualEnt = Spawn(manual.HitscanEntityProto);
+                return (manualEnt, EnsureShootable(manualEnt));
             default:
                 throw new ArgumentOutOfRangeException();
         }

@@ -57,3 +57,34 @@
   - type: Damageable
     damageContainer: Shield
   - type: RechargeableBlocking
+  
+- type: entity
+  parent: [NFClothingBeltStorageBase, ContentsExplosionResistanceBase, ClothingSlotBase]
+  id: ClothingBeltRCMWebbing
+  name: RCM 2617 pattern webbing
+  description: The Royal Commonwealth of Man's standard webbing used by their footsoldiers. Has a sabre sheath.
+  components:
+  - type: Sprite
+    sprite: _FinalFrontier/Clothing/Belt/rcm_webbing.rsi
+  - type: Clothing
+    sprite: _FinalFrontier/Clothing/Belt/rcm_webbing.rsi
+  - type: ExplosionResistance
+    damageCoefficient: 0.1
+  - type: ItemSlots
+    slots:
+      item:
+        name: Sabre
+        insertVerbText: sheath-insert-verb
+        ejectVerbText: sheath-eject-verb
+        insertSound: /Audio/Items/sheath.ogg
+        ejectSound: /Audio/Items/unsheath.ogg
+        whitelist:
+          tags:
+          - CaptainSabre
+  - type: ItemMapper
+    mapLayers:
+      sheath-sabre:
+        whitelist:
+          tags:
+          - CaptainSabre
+  - type: Appearance

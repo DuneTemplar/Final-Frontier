@@ -42,6 +42,7 @@ namespace Content.Server.NPC.Systems;
 public sealed class NPCUtilitySystem : EntitySystem
 {
     [Dependency] private readonly IPrototypeManager _proto = default!;
+    [Dependency] private readonly IEntityManager _entManager = default!;
     [Dependency] private readonly ContainerSystem _container = default!;
     [Dependency] private readonly DrinkSystem _drink = default!;
     [Dependency] private readonly EntityLookupSystem _lookup = default!;
@@ -310,6 +311,30 @@ public sealed class NPCUtilitySystem : EntitySystem
 
                 var ev = new GetAmmoCountEvent();
                 RaiseLocalEvent(targetUid, ref ev);
+
+				if (_entManager.TryGetComponent(targetUid, out BasicEntityAmmoProviderComponent? entityAmmoComp))
+				{
+					if (entityAmmoComp.Count == null || entityAmmoComp.Capacity == null)
+						return 0f;
+
+					if (entityAmmoComp.Count == 0)
+						return 0f;
+
+					if (entityAmmoComp.Capacity == 0)
+						return 1f;
+
+					return (float)entityAmmoComp.Count / (float)entityAmmoComp.Capacity;
+				}
+				if (_entManager.TryGetComponent(targetUid, out HitscanBatteryAmmoProviderComponent? hitscanAmmoComp))
+				{
+					if (hitscanAmmoComp.Shots == 0)
+						return 0f;
+
+					if (hitscanAmmoComp.Capacity == 0)
+						return 1f;
+
+					return (float)hitscanAmmoComp.Shots / (float)hitscanAmmoComp.Capacity;
+				}
 
                 if (ev.Count == 0)
                     return 0f;

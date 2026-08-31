@@ -52,6 +52,14 @@ public sealed partial class IdCardComponent : Component
     public string? CompanyName;
 
     /// <summary>
+    /// The nationality associated with this ID card
+    /// </summary>
+    [DataField]
+    [AutoNetworkedField]
+    public string? NationName;
+
+
+    /// <summary>
     /// Determines if accesses from this card should be logged by <see cref="AccessReaderComponent"/>
     /// </summary>
     [DataField]

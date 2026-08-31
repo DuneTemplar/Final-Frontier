@@ -13,6 +13,8 @@
             <Label Name="BankBalance" HorizontalAlignment="Center" Margin="3 3"/>
             <!-- Company Display -->
             <RichTextLabel Name="Company" HorizontalAlignment="Center" Margin="3 3"/>
+			<!-- Nation Display -->
+            <RichTextLabel Name="Nation" HorizontalAlignment="Center" Margin="3 3"/>
             <!-- End Frontier -->
             <BoxContainer Name="ViewBox" Orientation="Horizontal" HorizontalAlignment="Center">
 

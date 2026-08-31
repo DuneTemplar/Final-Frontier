@@ -13,6 +13,7 @@ using Content.Shared._Mono.Company;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
 using Content.Server.Kitchen.EntitySystems;
+using Content.Shared._FinalFrontier.Nationality;
 
 namespace Content.Server.Access.Systems;
 
@@ -47,6 +48,17 @@ public sealed class IdCardSystem : SharedIdCardSystem
             else
             {
                 args.PushMarkup(component.CompanyName);
+            }
+        }
+        if (!string.IsNullOrWhiteSpace(component.NationName) && component.NationName != "Neutral")
+        {
+            if (_prototypeManager.TryIndex<NationalityPrototype>(component.NationName, out var nationProto))
+            {
+                args.PushMarkup($"[color={nationProto.Color.ToHex()}]{nationProto.Name}[/color]");
+            }
+            else
+            {
+                args.PushMarkup(component.NationName);
             }
         }
     }

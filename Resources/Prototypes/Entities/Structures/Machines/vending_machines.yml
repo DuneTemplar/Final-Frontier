@@ -199,7 +199,7 @@
     - state: panel
       map: ["enum.WiresVisualLayers.MaintenancePanel"]
   - type: MarketModifier # Frontier
-    mod: 10 # Mono: Reduced from 12x to 10x
+    mod: 15 # Final Frontier: Increased to 15 to account for other vendors existance.
 
 - type: entity
   parent: VendingMachine

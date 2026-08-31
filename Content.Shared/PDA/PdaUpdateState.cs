@@ -58,6 +58,8 @@ namespace Content.Shared.PDA
         public string? JobTitle;
         public string? CompanyName;
         public Color CompanyColor;
+        public string? NationName;
+        public Color NationColor;
         public string? StationAlertLevel;
         public Color StationAlertColor;
     }

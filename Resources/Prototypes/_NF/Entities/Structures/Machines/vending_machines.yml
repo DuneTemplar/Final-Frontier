@@ -463,7 +463,7 @@
   - type: VendingMachine
     pack: NFPTechInventory
   - type: AccessReader
-    access: [["HeadOfPersonnel"]]
+    access: [["Command"]] #Monolith Change: Access change to allow DOC and Colonel to use it
   - type: MarketModifier
     mod: 5
 

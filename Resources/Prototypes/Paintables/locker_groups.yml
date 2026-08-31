@@ -37,7 +37,6 @@
     basic: ClosetSteelBase
     biohazard: ClosetL3
     biohazard-janitor: ClosetL3Janitor
-    biohazard-science: ClosetL3Science
     biohazard-security: ClosetL3Security
     biohazard-virology: ClosetL3Virology
     bomb: ClosetBomb
@@ -64,7 +63,6 @@
     green: ClosetWallGreen
     grey: ClosetWallGrey
     mixed: ClosetWallMixed
-    nitrogen: ClosetWallEmergencyN2
     orange: ClosetWallOrange
     oxygen: ClosetWallEmergency
     pink: ClosetWallPink
@@ -76,5 +74,4 @@
   cost: 2
   defaultStyle: medical
   styles:
-    evac: LockerWallEvacRepair
     medical: LockerWallMedical

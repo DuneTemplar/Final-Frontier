@@ -73,8 +73,8 @@
         - type: Item
   considerations:
     # TODO: Prefer highest DPC probably?
-    - !type:TargetAmmoCon
-      curve: !type:BoolCurve
+    #- !type:TargetAmmoCon
+    #  curve: !type:BoolCurve
     - !type:TargetDistanceCon
       curve: !type:PresetCurve
         preset: TargetDistance

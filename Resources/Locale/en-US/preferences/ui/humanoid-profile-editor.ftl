@@ -63,6 +63,10 @@ humanoid-profile-editor-flavortext-tab = Description
 humanoid-profile-editor-company-tab = Company
 humanoid-profile-editor-company-label = Company:
 
+# Nationality
+humanoid-profile-editor-nation-tab = Nationality
+humanoid-profile-editor-nation-label = Nationality:
+
 # Traits
 humanoid-profile-editor-traits-tab = Traits
 humanoid-profile-editor-no-traits = No traits available

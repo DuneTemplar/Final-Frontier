@@ -48,4 +48,7 @@ public sealed partial class ShipyardVoucherComponent : Component
     /// </summary>
     [DataField]
     public string? CompanyName;
+	
+	[DataField]
+    public string? NationName;
 }

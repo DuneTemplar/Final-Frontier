@@ -47,83 +47,10 @@ public abstract class PowerArmorSlotsSystem : EntitySystem
 		_appearance.SetData(ent, PowerArmorSlotsVisuals.ContainsLeftArm, HasItem(ent, ent.Comp.SlotLeftArm));
 		_appearance.SetData(ent, PowerArmorSlotsVisuals.ContainsRightLeg, HasItem(ent, ent.Comp.SlotRightLeg));
 		_appearance.SetData(ent, PowerArmorSlotsVisuals.ContainsLeftLeg, HasItem(ent, ent.Comp.SlotLeftLeg));
-		if (TryComp<ClothingComponent>(ent, out var clothingComp))
-		{
-			foreach (var layer in clothingComp.ClothingVisuals["outerClothing"])
-			{
-                if (layer.State == "test-chestplate")
-                {
-                    layer.Visible = HasItem(ent, ent.Comp.SlotChestplate);
-                    var slotGot = TryGetSlot(ent, "Chestplate", out var slot);
-                    if (slotGot && slot != null && slot.HasItem)
-                    {
-                        if (TryComp<PowerArmorPieceComponent>(slot.Item, out var pieceComp))
-                        {
-                            layer.RsiPath = pieceComp.Path;
-                        }
-                    }
-                }
-				else if (layer.State == "test-right-arm")
-				{
-					layer.Visible = HasItem(ent, ent.Comp.SlotRightArm);
-					var slotGot = TryGetSlot(ent, "RightArm", out var slot);
-                    if (slotGot && slot != null && slot.HasItem)
-                    {
-                        if (TryComp<PowerArmorPieceComponent>(slot.Item, out var pieceComp))
-                        {
-                            layer.RsiPath = pieceComp.Path;
-                        }
-                    }
-				}
-				else if (layer.State == "test-left-arm")
-				{
-					layer.Visible = HasItem(ent, ent.Comp.SlotLeftArm);
-					var slotGot = TryGetSlot(ent, "LeftArm", out var slot);
-                    if (slotGot && slot != null && slot.HasItem)
-                    {
-                        if (TryComp<PowerArmorPieceComponent>(slot.Item, out var pieceComp))
-                        {
-                            layer.RsiPath = pieceComp.Path;
-                        }
-                    }
-				}
-				else if (layer.State == "test-right-leg")
-				{
-					layer.Visible = HasItem(ent, ent.Comp.SlotRightLeg);
-					var slotGot = TryGetSlot(ent, "RightLeg", out var slot);
-                    if (slotGot && slot != null && slot.HasItem)
-                    {
-                        if (TryComp<PowerArmorPieceComponent>(slot.Item, out var pieceComp))
-                        {
-                            layer.RsiPath = pieceComp.Path;
-                        }
-                    }
-				}
-				else if (layer.State == "test-left-leg")
-				{
-					layer.Visible = HasItem(ent, ent.Comp.SlotLeftLeg);
-					var slotGot = TryGetSlot(ent, "LeftLeg", out var slot);
-                    if (slotGot && slot != null && slot.HasItem)
-                    {
-                        if (TryComp<PowerArmorPieceComponent>(slot.Item, out var pieceComp))
-                        {
-                            layer.RsiPath = pieceComp.Path;
-                        }
-                    }
-				}
-                if (_netManager.IsClient && _playerManager.LocalEntity != null)
-                {
-                    if (TryComp<AppearanceComponent>(_playerManager.LocalEntity.Value, out var appearanceComp))
-                        Dirty(_playerManager.LocalEntity.Value, appearanceComp);
-                }
-            }
-
-		}
     }
 
     private void OnContainerModified(EntityUid uid, PowerArmorSlotsComponent component, ContainerModifiedMessage args)
     {
-
         if (args.Container.ID == component.SlotChestplate)
             UpdateAppearance((uid, component));
 		if (args.Container.ID == component.SlotRightArm)
@@ -137,7 +64,7 @@ public abstract class PowerArmorSlotsSystem : EntitySystem
     }
 
     /// <summary>
-    /// Tries to get the cabinet's item slot.
+    /// Tries to get one of the armor's item slot.
     /// </summary>
     public bool TryGetSlot(Entity<PowerArmorSlotsComponent> ent, string limb, [NotNullWhen(true)] out ItemSlot? slot)
     {
@@ -168,7 +95,7 @@ public abstract class PowerArmorSlotsSystem : EntitySystem
     }
 
     /// <summary>
-    /// Returns true if the cabinet contains an item.
+    /// Returns true if an armor slot contains an item.
     /// </summary>
     public bool HasItem(Entity<PowerArmorSlotsComponent> ent, string limb)
     {

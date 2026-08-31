@@ -55,6 +55,17 @@ public sealed partial class LobbyCharacterPreviewPanel : Control
     }
     // End Company Display
 
+	public void SetNationText(string value)
+    {
+        if (string.IsNullOrEmpty(value))
+        {
+            Nation.SetMessage(string.Empty);
+            return;
+        }
+
+        Nation.SetMessage(FormattedMessage.FromMarkupPermissive(value));
+    }
+	
     // MonoCoins Display
     public void SetMonoCoinsText(string value)
     {

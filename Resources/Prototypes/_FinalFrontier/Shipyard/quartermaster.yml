@@ -1,0 +1,41 @@
+# Author Info
+# GitHub: dunetemplar
+# Discord: dunetemplar
+
+
+- type: vessel
+  id: Quartermaster
+  parent: BaseVessel
+  name: JKL Quartermaster
+  description: An old cargo vessel model repurposed by Jackal Company for use as a troop carrier and occasionally as an actual cargo vessel, decently equipped with combat gear and a massive cargo hold. Has a military designation.
+  price: 200000
+  category: Large
+  group: Shipyard
+  shuttlePath: /Maps/_FinalFrontier/Shuttles/quartermaster.yml
+  guidebookPage: Null
+  class:
+  - Patrol
+  - Corvette
+  - Cargo
+  engine:
+  - AME
+
+- type: gameMap
+  id: Quartermaster
+  mapName: 'JKL Quartermaster'
+  mapPath: /Maps/_FinalFrontier/Shuttles/quartermaster.yml
+  minPlayers: 0
+  stations:
+    Quartermaster:
+      stationProto: StandardFrontierVessel
+      components:
+        - type: StationNameSetup
+          mapNameTemplate: 'Quartermaster MIL{1}'
+          nameGenerator:
+            !type:NanotrasenNameGenerator
+            prefixCreator: '14'
+        - type: StationJobs
+          availableJobs:
+            Contractor: [ 0, 0 ]
+            Pilot: [ 0, 0 ]
+            Mercenary: [ 0, 0 ]

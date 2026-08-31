@@ -1,0 +1,27 @@
+- type: entity
+  id: CrateJackalGear
+  parent: CrateWoodJackal
+  name: jackal company gear crate
+  description: A shipment of combat gear, meant for usage by Jackal Company.
+  components:
+  - type: EntityTableContainerFill
+    containers:
+      entity_storage: !type:AllSelector
+        children:
+        - id: ClothingHeadHelmetJackal
+          prob: 0.5
+          rolls: !type:ConstantNumberSelector
+            value: 2
+        - id: ClothingHeadHelmetJackalTechnician
+          prob: 0.25
+          rolls: !type:ConstantNumberSelector
+            value: 2
+        - id: ClothingShoulderPlateCombatJackal
+          prob: 0.5
+          rolls: !type:ConstantNumberSelector
+            value: 4
+        - id: ClothingOuterArmorCombatPlateJackal
+          prob: 0.5
+          rolls: !type:ConstantNumberSelector
+            value: 2
+      

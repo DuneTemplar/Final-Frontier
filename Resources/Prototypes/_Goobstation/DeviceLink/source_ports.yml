@@ -62,6 +62,13 @@
   id: AutomationSlotBoard
   name: signal-port-name-automation-slot-board
   description: signal-port-description-automation-slot-board
+  
+# Disposal Unit
+
+- type: sourcePort
+  id: DisposalReady
+  name: signal-port-name-ready
+  description: signal-port-description-ready
 
 # Storage Bin
 

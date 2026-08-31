@@ -1,0 +1,63 @@
+# Empty mags
+- type: entity
+  id: BaseDrumMagazine556x45mm
+  name: "drum magazine (5.56x45mm FMJ)"
+  parent: [ BaseItem, RecyclableItemSteelTiny ]
+  abstract: true
+  components:
+  - type: Tag
+    tags:
+      - Magazine556x45mmFMJ
+  - type: Item
+    size: Normal
+  - type: BallisticAmmoProvider
+    mayTransfer: true
+    whitelist:
+      tags:
+        - Cartridge556x45mmFMJ
+    capacity: 100
+  - type: ContainerContainer
+    containers:
+      ballistic-ammo: !type:Container
+  - type: Sprite
+    sprite: _FinalFrontier/Objects/Weapons/Guns/Ammunition/Magazine/5.56x45mm/5.56x45mm_drum.rsi
+    layers:
+    - state: base
+      map: ["enum.GunVisualLayers.Base"]
+    - state: mag-1
+      map: ["enum.GunVisualLayers.Mag"]
+  - type: MagazineVisuals
+    magState: mag
+    steps: 2
+    zeroVisible: false
+  - type: Appearance
+
+# Magazines
+- type: entity
+  id: DrumMagazine556x45mmFMJ
+  name: "drum magazine (5.56x45mm FMJ)"
+  parent: BaseDrumMagazine556x45mm
+  components:
+  - type: BallisticAmmoProvider
+    proto: Cartridge556x45mmFMJ
+  - type: Sprite
+    layers:
+    - state: base
+      map: ["enum.GunVisualLayers.Base"]
+    - state: mag-1
+      map: ["enum.GunVisualLayers.Mag"]
+
+- type: entity
+  id: DrumMagazine556x45mmEmpty
+  name: "drum magazine (5.56x45mm any)"
+  suffix: empty
+  parent: DrumMagazine556x45mmFMJ
+  components:
+  - type: BallisticAmmoProvider
+    proto: null
+  - type: Sprite
+    layers:
+    - state: base
+      map: ["enum.GunVisualLayers.Base"]
+    - state: mag-1
+      map: ["enum.GunVisualLayers.Mag"]

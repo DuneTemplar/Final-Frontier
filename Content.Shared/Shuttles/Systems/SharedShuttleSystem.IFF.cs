@@ -1,3 +1,4 @@
+using Content.Shared._FinalFrontier.Nationality;
 using Content.Shared._Mono.Company;
 using Content.Shared.Shuttles.Components;
 using JetBrains.Annotations;
@@ -68,13 +69,53 @@ public abstract partial class SharedShuttleSystem
             }
         }
 
+        // Get the nation information if available
+        Color? nationColor = null;
+        string? nationName = null;
+
+        if (TryComp<NationalityComponent>(gridUid, out var nationComp) && !string.IsNullOrEmpty(nationComp.NationName))
+        {
+            if (IoCManager.Resolve<IPrototypeManager>().TryIndex<NationalityPrototype>(nationComp.NationName, out var prototype))
+            {
+                // Don't include "Neutral" nations in the IFF label
+                if (prototype.ID != "Neutral")
+                {
+                    nationName = prototype.Name;
+                    nationColor = prototype.Color;
+                }
+            }
+            else
+            {
+                // For unknown nations, still check if it's not "None"
+                if (nationComp.NationName != "Neutral")
+                {
+                    nationName = nationComp.NationName;
+                    nationColor = Color.Yellow;
+                }
+            }
+        }
+
         var labelText = string.IsNullOrEmpty(entName) ? Loc.GetString("shuttle-console-unknown") : entName;
 
         // Add company info if available
-        if (companyName != null && companyColor != null)
+        if ((companyName != null && companyColor != null) && !(nationName != null && nationColor != null))
         {
             // Return a formatted label that the client can parse properly
             return $"{labelText}\n{companyName}";
+        }
+
+        // Add nation info if available
+        if ((nationName != null && nationColor != null) && !(companyName != null && companyColor != null))
+        {
+            // Return a formatted label that the client can parse properly
+            return $"{labelText}\n{nationName}";
+        }
+		
+		// Or both.
+        if ((companyName != null && companyColor != null) && (nationName != null && nationColor != null))
+        {
+            // Return a formatted label that the client can parse properly
+            return $"{labelText}\n{companyName}\n{nationName}";
         }
 
         return labelText;

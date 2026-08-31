@@ -12,7 +12,7 @@
   - type: Item
     sprite: _FinalFrontier/Objects/Weapons/Guns/Snipers/lfd_m55.rsi
   - type: Gun
-    fireRate: 1.5
+    fireRate: 0.25
     selectedMode: SemiAuto
     availableModes:
     - SemiAuto

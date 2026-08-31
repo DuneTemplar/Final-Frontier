@@ -156,12 +156,28 @@ namespace Content.Client.PDA
                 _pdaOwner = state.PdaOwnerInfo.ActualOwnerName;
 
                 // Check if we have company information to display
-                if (!string.IsNullOrWhiteSpace(state.PdaOwnerInfo.CompanyName))
+                if (!string.IsNullOrWhiteSpace(state.PdaOwnerInfo.CompanyName) && string.IsNullOrWhiteSpace(state.PdaOwnerInfo.NationName))
                 {
                     PdaOwnerLabel.SetMarkup(Loc.GetString("comp-pda-ui-owner-with-company",
                         ("actualOwnerName", _pdaOwner),
                         ("companyName", state.PdaOwnerInfo.CompanyName),
                         ("companyColor", state.PdaOwnerInfo.CompanyColor.ToHex())));
+                }
+                else if (!string.IsNullOrWhiteSpace(state.PdaOwnerInfo.NationName) && string.IsNullOrWhiteSpace(state.PdaOwnerInfo.CompanyName))
+                {
+                    PdaOwnerLabel.SetMarkup(Loc.GetString("comp-pda-ui-owner-with-nation",
+                        ("actualOwnerName", _pdaOwner),
+                        ("nationName", state.PdaOwnerInfo.NationName),
+                        ("nationColor", state.PdaOwnerInfo.NationColor.ToHex())));
+                }
+                else if (!string.IsNullOrWhiteSpace(state.PdaOwnerInfo.NationName) && !string.IsNullOrWhiteSpace(state.PdaOwnerInfo.CompanyName))
+                {
+                    PdaOwnerLabel.SetMarkup(Loc.GetString("comp-pda-ui-owner-with-company-nation",
+                        ("actualOwnerName", _pdaOwner),
+                        ("companyName", state.PdaOwnerInfo.CompanyName),
+                        ("companyColor", state.PdaOwnerInfo.CompanyColor.ToHex()),
+                        ("nationName", state.PdaOwnerInfo.NationName),
+                        ("nationColor", state.PdaOwnerInfo.NationColor.ToHex())));
                 }
                 else
                 {

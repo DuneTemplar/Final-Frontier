@@ -10,6 +10,15 @@
             - !type:KeyExistsPrecondition
               key: IdleTime
 
+
+    - preconditions:
+        - !type:ActiveHandComponentPrecondition
+          components:
+            - type: Gun
+          invert: true
+      tasks:
+        - !type:HTNCompoundTask
+          task: PickupGunCompound
     # Pick a new spot and wait there.
     - preconditions:
         - !type:BuckledPrecondition

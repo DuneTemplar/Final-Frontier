@@ -57,7 +57,7 @@
   components:
   - type: Sprite
   - type: Item
-    size: Huge
+    size: Large # Final Frontier Huge>Large
   - type: AmmoCounter
   - type: Gun
     fireRate: 2
@@ -121,6 +121,9 @@
   components:
   - type: Item
     size: Small
+    shape: # Final Frontier
+    - 0,0,1,0
+    - 0,1,0,1
   - type: Tag
     tags:
     - Sidearm
@@ -129,6 +132,7 @@
     quickEquip: false
     slots:
     - Belt
+    - suitStorage # Final Frontier
 
 - type: entity
   name: svalinn laser pistol
@@ -155,7 +159,7 @@
 
 - type: entity
   name: retro laser blaster
-  parent: BaseWeaponBatterySmall
+  parent: BaseWeaponPowerCellSmall
   id: WeaponLaserGun
   description: A civilian grade weapon using light amplified by the stimulated emission of radiation.
   components:
@@ -177,6 +181,9 @@
   - type: Appearance
   - type: StaticPrice
     price: 190
+  - type: Gun
+    soundGunshot:
+      path: /Audio/_FinalFrontier/Weapons/Guns/Gunshots/laser2.ogg
 
 - type: entity
   name: makeshift laser pistol
@@ -242,20 +249,22 @@
   description: This modified laser rifle fires nearly harmless beams in the 40-watt range, for target practice.
   components:
   - type: Sprite
-    sprite: Objects/Weapons/Guns/Battery/laser_gun.rsi
+    sprite: _FinalFrontier/Objects/Weapons/Guns/Battery/laser_rifle.rsi/icon.rsi
     layers:
     - state: base
       map: ["enum.GunVisualLayers.Base"]
     - state: mag-unshaded-4
       map: ["enum.GunVisualLayers.MagUnshaded"]
       shader: unshaded
+  - type: Item
+    sprite: _FinalFrontier/Objects/Weapons/Guns/Battery/laser_rifle.rsi
   - type: MagazineVisuals
     magState: mag
     steps: 5
     zeroVisible: false
   - type: Appearance
   - type: Clothing
-    sprite: Objects/Weapons/Guns/Battery/laser_gun.rsi
+    sprite: _FinalFrontier/Objects/Weapons/Guns/Battery/laser_rifle.rsi
     quickEquip: false
     slots:
     - Back
@@ -264,6 +273,8 @@
     selectedMode: SemiAuto
     availableModes:
     - SemiAuto
+    soundGunshot:
+      path: /Audio/_FinalFrontier/Weapons/Guns/Gunshots/laser1.ogg
   - type: HitscanBatteryAmmoProvider
     proto: RedLaserPractice
     fireCost: 35 #Mono: 62.5 >> 35

@@ -842,6 +842,11 @@ namespace Content.Server.Database.Migrations.Postgres
                         .IsRequired()
                         .HasColumnType("text")
                         .HasColumnName("company");
+						
+					b.Property<string>("Nation")
+                        .IsRequired()
+                        .HasColumnType("text")
+                        .HasColumnName("nation");
 
                     b.Property<string>("EyeColor")
                         .IsRequired()

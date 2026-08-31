@@ -264,6 +264,40 @@ public abstract class SharedIdCardSystem : EntitySystem
     }
 
     /// <summary>
+    /// Attempts to change the nation alignment of a card.
+    /// Returns true/false.
+    /// </summary>
+    /// <remarks>
+    /// If provided with a player's EntityUid to the player parameter, adds the change to the admin logs.
+    /// </remarks>
+    public bool TryChangeNationName(EntityUid uid, string? nationName, IdCardComponent? id = null, EntityUid? player = null)
+    {
+        if (!Resolve(uid, ref id))
+            return false;
+
+        if (!string.IsNullOrWhiteSpace(nationName))
+        {
+            nationName = nationName.Trim();
+        }
+        else
+        {
+            nationName = null;
+        }
+
+        if (id.NationName == nationName)
+            return true;
+        id.NationName = nationName;
+        Dirty(uid, id);
+
+        if (player != null)
+        {
+            _adminLogger.Add(LogType.Identity, LogImpact.Low,
+                $"{ToPrettyString(player.Value):player} has changed the nation alignment of {ToPrettyString(uid):entity} to {nationName} ");
+        }
+        return true;
+    }
+
+    /// <summary>
     /// Changes the name of the id's owner.
     /// </summary>
     /// <remarks>

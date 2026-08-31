@@ -1,5 +1,6 @@
 using System.Linq;
 using System.Text.RegularExpressions;
+using Content.Shared._FinalFrontier.Nationality;
 using Content.Shared._Mono.Company;
 using Content.Shared._NF.Bank;
 using Content.Shared.CCVar;
@@ -143,6 +144,12 @@ namespace Content.Shared.Preferences
         [DataField]
         public string Company { get; private set; } = "None";
 
+		/// <summary>
+        /// The nation affiliation of the character
+        /// </summary>
+        [DataField]
+        public string Nation { get; private set; } = "Neutral";
+
         public HumanoidCharacterProfile(
             string name,
             string flavortext,
@@ -158,7 +165,8 @@ namespace Content.Shared.Preferences
             HashSet<ProtoId<AntagPrototype>> antagPreferences,
             HashSet<ProtoId<TraitPrototype>> traitPreferences,
             Dictionary<string, RoleLoadout> loadouts,
-            string company = "None")
+            string company = "None",
+            string nation = "Neutral")
         {
             Name = name;
             FlavorText = flavortext;
@@ -175,6 +183,7 @@ namespace Content.Shared.Preferences
             _traitPreferences = traitPreferences;
             _loadouts = loadouts;
             Company = company;
+            Nation = nation;
         }
 
         /// <summary>Copy constructor but with overridable references (to prevent useless copies)</summary>
@@ -185,7 +194,7 @@ namespace Content.Shared.Preferences
             HashSet<ProtoId<TraitPrototype>> traitPreferences,
             Dictionary<string, RoleLoadout> loadouts)
             : this(other.Name, other.FlavorText, other.Species, other.Age, other.Sex, other.Gender, other.BankBalance, other.Appearance, other.SpawnPriority,
-                jobPriorities, other.PreferenceUnavailable, antagPreferences, traitPreferences, loadouts, other.Company)
+                jobPriorities, other.PreferenceUnavailable, antagPreferences, traitPreferences, loadouts, other.Company, other.Nation)
         {
         }
 
@@ -205,7 +214,8 @@ namespace Content.Shared.Preferences
                 new HashSet<ProtoId<AntagPrototype>>(other.AntagPreferences),
                 new HashSet<ProtoId<TraitPrototype>>(other.TraitPreferences),
                 new Dictionary<string, RoleLoadout>(other.Loadouts),
-                other.Company)
+                other.Company,
+                other.Nation)
         {
         }
 
@@ -394,6 +404,11 @@ namespace Content.Shared.Preferences
             return new(this) { Company = company };
         }
 
+        public HumanoidCharacterProfile WithNation(string nation)
+        {
+            return new(this) { Nation = nation };
+        }
+
         public HumanoidCharacterProfile WithAntagPreferences(IEnumerable<ProtoId<AntagPrototype>> antagPreferences)
         {
             return new(this)
@@ -510,6 +525,7 @@ namespace Content.Shared.Preferences
             if (SpawnPriority != other.SpawnPriority) return false;
             if (Species != other.Species) return false;
             if (Company != other.Company) return false;
+            if (Nation != other.Nation) return false;
             if (!_jobPriorities.SequenceEqual(other._jobPriorities)) return false;
             if (!_antagPreferences.SequenceEqual(other._antagPreferences)) return false;
             if (!_traitPreferences.SequenceEqual(other._traitPreferences)) return false;
@@ -686,6 +702,14 @@ namespace Content.Shared.Preferences
                 !prototypeManager.HasIndex<CompanyPrototype>(Company))
             {
                 Company = "None";
+            }
+
+            // Check if the nation exists, if not set to "Neutral"
+            if (!string.IsNullOrEmpty(Nation) &&
+                Nation != "Neutral" &&
+                !prototypeManager.HasIndex<NationalityPrototype>(Nation))
+            {
+                Nation = "Neutral";
             }
 
             _jobPriorities.Clear();

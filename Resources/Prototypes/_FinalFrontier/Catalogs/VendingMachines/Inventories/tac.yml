@@ -6,6 +6,8 @@
     ClothingHelmetCoverScrimNet: 4294967295 # Infinite
     ClothingHelmetAttachmentGogglesCoverTan: 4294967295 # Infinite
     ClothingHelmetAttachmentGogglesCoverBlack: 4294967295 # Infinite
+    ClothingOuterArmorCombatPlate: 4294967295 # Infinite
+    ClothingShoulderPlateCombat: 4294967295 # Infinite
     ClothingOuterArmorBPVestLight: 4294967295 # Infinite
     ClothingOuterArmorBPVestMedium: 4294967295 # Infinite
     ClothingOuterArmorBPVestHeavy: 4294967295 # Infinite
@@ -13,8 +15,8 @@
     ClothingBeltWebbingsNormalTan: 4294967295 # Infinite
     ClothingBeltWebbingsBigBlack: 4294967295 # Infinite
     ClothingBeltWebbingsBigTan: 4294967295 # Infinite
-    ClothingNeckArmHolster: 4294967295 # Infinite # Final Frontier
-    ClothingNeckLegHolster: 4294967295 # Infinite # Final Frontier
+    ClothingNeckArmHolster: 4294967295 # Infinite
+    ClothingNeckLegHolster: 4294967295 # Infinite
     ClothingHandsGlovesTacticalCombatTan: 4294967295 # Infinite
     ClothingHandsGlovesTacticalCombatBlack: 4294967295 # Infinite
     ClothingShoesBootsCombat: 4294967295 # Infinite

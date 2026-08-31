@@ -90,8 +90,6 @@
   components:
   - type: ShipyardListing
     shuttles:
-    - Prowler
-    - Sable
     - Tethys
     - Spyglass
   - type: Sprite

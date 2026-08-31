@@ -1,0 +1,40 @@
+# Author Info
+# GitHub: dunetemplar
+# Discord: dunetemplar
+
+# Shuttle Notes: TALLY HO, LADS!
+
+- type: vessel
+  id: Wells
+  parent: BaseVessel
+  name: RCM Wells
+  description: One of the Royal Commonwealth of Man's lesser, more makeshift vessels, rarely seen amongst their actual military, usually found in possession of collectors or mercenaries. Has a military IFF.
+  price: 105000
+  category: medium
+  group: Shipyard
+  shuttlePath: /Maps/_FinalFrontier/Shuttles/wells.yml
+  guidebookPage: Null
+  class:
+  - pursuit
+  engine:
+  - Steam
+
+- type: gameMap
+  id: Wells
+  mapName: 'RCM Wells'
+  mapPath: /Maps/_FinalFrontier/Shuttles/wells.yml
+  minPlayers: 0
+  stations:
+    Wells:
+      stationProto: StandardFrontierVessel
+      components:
+        - type: StationNameSetup
+          mapNameTemplate: 'Wells MIL{1}'
+          nameGenerator:
+            !type:NanotrasenNameGenerator
+            prefixCreator: '14'
+        - type: StationJobs
+          availableJobs:
+            Contractor: [ 0, 0 ]
+            Pilot: [ 0, 0 ]
+            Mercenary: [ 0, 0 ]
