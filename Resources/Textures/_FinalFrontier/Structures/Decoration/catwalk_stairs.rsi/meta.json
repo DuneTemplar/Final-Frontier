@@ -1,0 +1,19 @@
+{
+    "version": 1,
+    "license": "CC-BY-SA-3.0",
+    "copyright": "Made by DuneTemplar, utilizes elements from tgstation (https://github.com/tgstation/tgstation/commit/c6e3401f2e7e1e55c57060cdf956a98ef1fefc24)",
+    "size": {
+        "x": 32,
+        "y": 32
+    },
+    "states": [
+		{
+            "name": "stairs",
+            "directions": 4
+        },
+		{
+            "name": "stairs_half",
+            "directions": 4
+        }
+    ]
+}

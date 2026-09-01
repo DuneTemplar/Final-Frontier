@@ -7,7 +7,7 @@
   parent: BaseVessel
   name: PHX Slughauler
   description: An old shuttle designed by the Phoenixes. Has everything you need to start both ore and gas mining... except for air. A pressurized room and EVA suits have been added for your convinience.
-  price: 40000
+  price: 35000
   category: small
   group: Shipyard
   shuttlePath: /Maps/_FinalFrontier/Shuttles/slughauler.yml

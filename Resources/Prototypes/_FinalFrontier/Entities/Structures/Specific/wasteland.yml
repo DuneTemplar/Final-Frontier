@@ -1,0 +1,17 @@
+- type: entity
+  parent: BaseStructureDynamic
+  id: ScrapRadioactiveWasteBarrel
+  name: radioactive waste barrel
+  description: A barrel full of something that your cells really don't like being around.
+  components:
+  - type: Sprite
+    sprite: _FinalFrontier/Structures/Specific/radioactive_waste.rsi
+    layers:
+      - state: barrel
+  - type: RadiationSource
+    intensity: 3.0
+  - type: Damageable
+    damageContainer: StructuralInorganic
+    damageModifierSet: Metallic
+  - type: StaticPrice
+    price: 3500

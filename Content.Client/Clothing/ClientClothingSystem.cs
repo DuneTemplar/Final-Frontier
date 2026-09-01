@@ -128,6 +128,8 @@ public sealed class ClientClothingSystem : ClothingSystem
             {
                 // using the $"{args.Slot}" layer key as the "bookmark" for layer ordering until layer draw depths get added
                 key = $"{args.Slot}-{i}";
+                if (item.ForcedLayer != null) // Final Frontier : this change was made exclusively for robes
+                    key = $"{item.ForcedLayer}-{i + 1}";
                 i++;
             }
 
@@ -288,6 +290,11 @@ public sealed class ClientClothingSystem : ClothingSystem
         // temporary, until layer draw depths get added. Basically: a layer with the key "slot" is being used as a
         // bookmark to determine where in the list of layers we should insert the clothing layers.
         bool slotLayerExists = sprite.LayerMapTryGet(slot, out var index);
+        if (clothingComponent.ForcedLayer != null) // Final Frontier : hey, it works.
+        {
+            slotLayerExists = sprite.LayerMapTryGet(clothingComponent.ForcedLayer, out var index2);
+            index = index2;
+        }
 
         // Select displacement maps
         var displacementData = inventory.Displacements.GetValueOrDefault(slot); //Default unsexed map

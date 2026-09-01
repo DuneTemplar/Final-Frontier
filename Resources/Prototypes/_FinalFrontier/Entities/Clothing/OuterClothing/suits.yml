@@ -748,3 +748,89 @@
       helmetattachment: ClothingHeadHelmetAttachmentBlock
   - type: StaminaDamageResistance
     coefficient: 0.8
+    
+# Ordo Mechinae suit 1
+        
+- type: entity
+  parent: ClothingOuterHardsuitBaseNF
+  id: ClothingOuterHardsuitOrdoMech1
+  name: ordo mechinae specialist hardsuit
+  description: One of the many custom-built armor suits of the Ordo Mechinae, utilized by their combat specialists.
+  components:
+  - type: Sprite
+    sprite: _FinalFrontier/Clothing/OuterClothing/Suits/ordo_mech_1.rsi
+  - type: Clothing
+    sprite: _FinalFrontier/Clothing/OuterClothing/Suits/ordo_mech_1.rsi
+  - type: PressureProtection
+    highPressureMultiplier: 0.5
+    lowPressureMultiplier: 1000
+  - type: ExplosionResistance
+    damageCoefficient: 0.70
+  - type: Armor
+    modifiers:
+      coefficients: 
+        Blunt: 0.4
+        Slash: 0.4
+        Piercing: 0.4
+        Heat: 0.25
+        Radiation: 0.05
+        Caustic: 0.75
+        Shock: 0.25
+  - type: ClothingSpeedModifier
+    walkModifier: 1.15
+    sprintModifier: 1.15
+  - type: ToggleableClothing 
+    requiredSlot: outerclothing
+    blockUnequipWhenAttached: false
+    replaceCurrentClothing: true
+    clothingPrototypes:
+      head:  ClothingHeadHelmetHardsuitOrdoMech1
+      helmetcover: ClothingHeadHelmetCoverBlock
+      helmetattachment: ClothingHeadHelmetAttachmentBlock
+  - type: StaminaDamageResistance
+    coefficient: 0.65
+
+- type: entity
+  parent: ClothingHeadHardsuitBase
+  id: ClothingHeadHelmetHardsuitOrdoMech1
+  categories: [ HideSpawnMenu ]
+  name: ordo mechinae specialist hardsuit helmet
+  description: The strange, esoteric helmet of an Ordo Mechinae hardsuit.
+  components:
+  - type: BreathMask
+  - type: IdentityBlocker
+  - type: FlashImmunity
+  - type: ShowHealthBars
+    damageContainers:
+     - Biological
+     - Inorganic
+     - Silicon
+  - type: ShowHealthIcons
+    damageContainers:
+     - Biological
+     - Inorganic
+     - Silicon
+  - type: NightVision
+    flashDurationMultiplier: 0.85
+    isEquipment: true
+  - type: ThermalVision
+    isEquipment: true
+    color: "#98EEFB"
+    lightRadius: 15
+  - type: EyeProtection
+    protectionTime: 5
+  - type: Sprite
+    sprite: _FinalFrontier/Clothing/OuterClothing/Suits/ordo_mech_1.rsi/ordo_mech_1_helm.rsi
+  - type: Clothing
+    sprite: _FinalFrontier/Clothing/OuterClothing/Suits/ordo_mech_1.rsi/ordo_mech_1_helm.rsi
+  - type: PressureProtection
+    highPressureMultiplier: 0.525
+    lowPressureMultiplier: 10000
+  - type: Armor
+    modifiers:
+      coefficients:
+        Blunt: 0.9
+        Slash: 0.9
+        Piercing: 0.9
+        Heat: 0.9
+        Shock: 0.75

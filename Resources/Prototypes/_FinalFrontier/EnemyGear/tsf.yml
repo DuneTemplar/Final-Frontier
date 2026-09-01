@@ -1,0 +1,110 @@
+# Tier 1
+- type: entity
+  id: LoadoutRandomTSF
+  abstract: true
+  components:
+  - type: EntityTableSpawner
+    deleteSpawnerAfterSpawn: false
+    table: !type:NestedSelector
+      tableId: TSFWeaponT1
+  - type: EntityTableContainerFill
+    containers:
+      jumpsuit: !type:NestedSelector
+        tableId: TSFJumpsuitGeneric
+      head: !type:NestedSelector
+        tableId: TSFHelmet
+      shoes: !type:NestedSelector
+        tableId: TSFBootsGeneric
+      outerClothing: !type:NestedSelector
+        tableId: TSFOuterClothingGeneric
+      gloves: !type:NestedSelector
+        tableId: TSFGlovesGeneric
+      mask: !type:NestedSelector
+        tableId: TSFMaskGeneric
+      pocket1: !type:NestedSelector
+        tableId: TSFPocketLoot
+      pocket2: !type:NestedSelector
+        tableId: TSFPocketLoot
+      belt: !type:NestedSelector
+        tableId: TSFBelt
+      back: !type:NestedSelector
+        tableId: TSFBack
+          
+- type: entityTable
+  id: TSFJumpsuitGeneric
+  table: !type:GroupSelector
+    children:
+      - id: ClothingUniformTSFMC
+      - id: ClothingUniformTSFMCDesert
+
+- type: entityTable
+  id: TSFOuterClothingGeneric
+  table: !type:GroupSelector
+    children:
+      - id: ClothingOuterHardsuitM82c
+      - id: ClothingOuterHardsuitM86
+      - id: ClothingOuterArmorBPVestLight
+      - id: ClothingOuterArmorBPVestMedium
+      
+- type: entityTable
+  id: TSFBootsGeneric
+  table: !type:GroupSelector
+    children:
+      - id: ClothingShoesBootsJackFilled
+      - id: ClothingShoesBootsCombatFilled
+      - id: ClothingShoesTacticalSwatBlack
+      
+- type: entityTable
+  id: TSFGlovesGeneric
+  table: !type:GroupSelector
+    children:
+      - id: ClothingHandsGlovesTacticalCombatTan
+      - id: ClothingHandsGlovesCombat
+      - id: ClothingHandsGlovesTacticalCombatBlack
+      
+- type: entityTable
+  id: TSFMaskGeneric
+  table: !type:GroupSelector
+    children:
+      - id: ClothingMaskSOM41
+      - id: ClothingMaskSOM42
+      - id: ClothingMaskGasSecurity
+      
+- type: entityTable
+  id: TSFPocketLoot
+  table: !type:GroupSelector
+    children:
+      - id: NFPouchNfsd
+      - id: WeaponPistolMk58
+      - id: SpaceCash1000
+      - id: EnergySwordNfsd
+
+- type: entityTable
+  id: TSFBelt
+  table: !type:GroupSelector
+    children:
+      - id: ClothingBeltWebbingsNormalTSFMC
+      - id: ClothingBeltWebbingsBigTSFMC
+      
+- type: entityTable
+  id: TSFBack
+  table: !type:GroupSelector
+    children:
+      - id: ClothingBackpackTsfmc
+      - id: ClothingBackpackDuffelTsfmc
+      
+- type: entityTable
+  id: TSFHelmet
+  table: !type:GroupSelector
+    children:
+      - id: ClothingHeadHelmetBasic
+      - id: ClothingHeadHelmetMercenaryBlack
+      
+- type: entityTable
+  id: TSFWeapon
+  table: !type:GroupSelector
+    children:
+      - id: WeaponPistolMk58
+      - id: CombatKnife
+      - id: WeaponRifleVulcan
+      - id: WeaponShotgunEnforcer

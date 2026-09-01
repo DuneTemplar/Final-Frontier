@@ -1,0 +1,28 @@
+# Gravel
+- type: tile
+  id: FloorPlanetGravel
+  name: tiles-gravel-floor
+  sprite: /Textures/_FinalFrontier/Tiles/planet/gravel.png
+  variants: 13
+  placementVariants:
+  - 0.8
+  - 0.0166
+  - 0.0166
+  - 0.0166
+  - 0.0166
+  - 0.0166
+  - 0.0166
+  - 0.0166
+  - 0.0166
+  - 0.0166
+  - 0.0166
+  - 0.0116
+  - 0.0116
+  isSubfloor: true
+  footstepSounds:
+    collection: FootstepSnow
+  barestepSounds:
+    collection: FootstepSnow
+  heatCapacity: 10000
+  weather: true
+  indestructible: true

@@ -20,4 +20,6 @@ public enum WeaponArcAnimation : byte
     None,
     Thrust,
     Slash,
+    HeavySlash, // Final Frontier
+    DoubleSlash, // Final Frontier
 }

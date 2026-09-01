@@ -1,0 +1,22 @@
+﻿- type: entity
+  abstract: true
+  parent: BaseItem
+  id: ItemFlagBase
+  name: flag
+  components:
+  - type: Sprite
+    layers:
+    - state: icon
+      map: [ "base" ]
+  - type: Item
+    size: Large
+  - type: Appearance
+
+- type: entity
+  parent: ItemFlagBase
+  id: ItemFlagRCM
+  name: RCM flag
+  description: "The flag of the Royal Commonwealth of Man. Tally ho, lads!"
+  components:
+  - type: Sprite
+    sprite: _FinalFrontier/Objects/Flags/rcm_flag.rsi

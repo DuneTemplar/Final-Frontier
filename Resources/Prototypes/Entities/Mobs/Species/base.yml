@@ -32,7 +32,6 @@
     - map: [ "outerClothing" ] # mono - i hate you upstream
     - map: [ "eyes" ]
     - map: [ "belt" ]
-    - map: [ "back" ]
     - map: [ "neck" ]
     - map: [ "neck2" ]
     - map: [ "neck3" ]
@@ -46,6 +45,7 @@
     - map: [ "head" ]
     - map: [ "helmetcover" ]
     - map: [ "helmetattachment" ]
+    - map: [ "back" ]
     - map: [ "pocket1" ]
     - map: [ "pocket2" ]
     - map: ["enum.HumanoidVisualLayers.Handcuffs"]

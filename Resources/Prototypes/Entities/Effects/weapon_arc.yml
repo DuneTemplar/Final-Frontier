@@ -47,6 +47,22 @@
     - type: WeaponArcVisuals
       animation: Slash
 
+- type: entity
+  id: WeaponArcHeavySlash
+  parent: WeaponArcStatic
+  categories: [ HideSpawnMenu ]
+  components:
+    - type: WeaponArcVisuals
+      animation: HeavySlash
+
+- type: entity
+  id: WeaponArcDoubleSlash
+  parent: WeaponArcStatic
+  categories: [ HideSpawnMenu ]
+  components:
+    - type: WeaponArcVisuals
+      animation: DoubleSlash
+
 
 - type: entity
   id: WeaponArcBite

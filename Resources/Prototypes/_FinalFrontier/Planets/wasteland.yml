@@ -1,0 +1,410 @@
+- type: planet
+  id: Wasteland
+  biome: FinalFrontierWasteland
+  mapName: shuttle-destination-wasteland
+  mapLight: "#A8BA72"
+  addedComponents:
+  - type: FTLDestination
+  atmosphere:
+    volume: 2500
+    temperature: 305.75 # 32.6 celsius
+    moles:
+    - 32.458
+    - 68.213
+
+# Different ore so its more worthwile
+
+- type: entityTable
+  id: WastelandOreRichSand
+  table: !type:GroupSelector
+    children:
+    - id: WallRockSand
+      weight: 0.33
+    - id: WallRockSandCoal
+      weight: 0.05
+    - id: WallRockSandTin
+      weight: 0.10
+    - id: WallRockSandQuartz
+      weight: 0.07
+    - id: WallRockSandSilver
+      weight: 0.05
+    - id: WallRockSandGold
+      weight: 0.05
+    - id: WallRockSandPlasma
+      weight: 0.05
+    - id: WallRockSandUranium
+      weight: 0.05
+
+- type: entityTable
+  id: WastelandOreRichRock
+  table: !type:GroupSelector
+    children:
+    - id: WallRockBasalt
+      weight: 0.33
+    - id: WallRockBasaltCoal
+      weight: 0.07
+    - id: WallRockBasaltTin
+      weight: 0.06
+    - id: WallRockBasaltQuartz
+      weight: 0.05
+    - id: WallRockBasaltSilver
+      weight: 0.07
+    - id: WallRockBasaltGold
+      weight: 0.08
+    - id: WallRockBasaltPlasma
+      weight: 0.03
+    - id: WallRockBasaltUranium
+      weight: 0.03
+      
+- type: entityTable
+  id: WastelandOreScrap
+  table: !type:GroupSelector
+    children:
+    - id: WallRockScrapPile
+      weight: 0.33
+    - id: WallRockScrapPileCoal
+      weight: 0.1
+    - id: WallRockScrapPileIron
+      weight: 0.10
+    - id: WallRockScrapPileQuartz
+      weight: 0.07
+    - id: WallRockScrapPileSalt
+      weight: 0.07
+    - id: WallRockScrapPileSilver
+      weight: 0.05
+    - id: WallRockScrapPileGold
+      weight: 0.05
+    - id: WallRockScrapPilePlasma
+      weight: 0.05
+    - id: WallRockScrapPileUranium
+      weight: 0.2
+    - id: WallRockScrapPileDiamond
+      weight: 0.002
+    - id: WallRockScrapPileBluespace
+      weight: 0.001
+    - id: Girder
+      weight: 0.01
+
+- type: entity
+  id: WastelandOreRichSand
+  parent: MarkerBase
+  name: planet mineral spawner
+  suffix: Soft
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    layers:
+    - state: green
+    - sprite: Objects/Weapons/Melee/pickaxe.rsi
+      state: pickaxe
+  - type: EntityTableSpawner
+    offset: 0
+    table: !type:NestedSelector
+      tableId: WastelandOreRichSand
+      
+- type: entity
+  id: WastelandOreRichRock
+  parent: MarkerBase
+  name: planet mineral spawner
+  suffix: Soft
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    layers:
+    - state: green
+    - sprite: Objects/Weapons/Melee/pickaxe.rsi
+      state: pickaxe
+  - type: EntityTableSpawner
+    offset: 0
+    table: !type:NestedSelector
+      tableId: WastelandOreRichRock
+      
+- type: entity
+  id: WastelandOreScrap
+  parent: MarkerBase
+  name: planet scrap spawner
+  suffix: Soft
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    layers:
+    - state: green
+    - sprite: Objects/Weapons/Melee/pickaxe.rsi
+      state: pickaxe
+  - type: EntityTableSpawner
+    offset: 0
+    table: !type:NestedSelector
+      tableId: WastelandOreScrap
+
+# wasteland
+
+- type: biomeTemplate
+  id: FinalFrontierWasteland
+  layers:
+  # Boulder Placement
+  - !type:BiomeEntityLayer
+    threshold: 0.9
+    noise:
+      seed: 0
+      frequency: 5
+      noiseType: OpenSimplex2
+    allowedTiles:
+    - FloorDesert
+    - FloorDesertRocky
+    - FloorDesertPlanet
+    - FloorAsteroidSandUnvariantizedPlanet
+    - FloorCave
+    - FloorPlanetGravel
+    entities:
+    - FloraRockSolidPlanet
+  # Fauna Placement
+  - !type:BiomeEntityLayer
+    threshold: 0.98
+    noise:
+      seed: 0
+      frequency: 3
+      noiseType: OpenSimplex2
+    allowedTiles:
+    - FloorDesert
+    - FloorDesertRocky
+    - FloorDesertPlanet
+    - FloorAsteroidSandUnvariantizedPlanet
+    - FloorPlanetGravel
+    entities:
+    - MonoPlanetmapFaunaDesert
+  # Flora Placement
+  # Piluma
+  - !type:BiomeEntityLayer
+    threshold: 0.975
+    noise:
+      seed: 0
+      frequency: 2
+      noiseType: OpenSimplex2
+    allowedTiles:
+    - FloorDesert
+    - FloorDesertPlanet
+    - FloorAsteroidSandUnvariantizedPlanet
+    entities:
+    - FloraPilumaPlant
+  # Orakim
+  - !type:BiomeEntityLayer
+    threshold: 0.98
+    noise:
+      seed: 0
+      frequency: 2
+      noiseType: OpenSimplex2
+    allowedTiles:
+    - FloorDesert
+    - FloorDesertPlanet
+    entities:
+    - FloraOrakimPlant
+  # Misc. Flora
+  - !type:BiomeEntityLayer
+    threshold: 0.97
+    noise:
+      seed: 1
+      frequency: 2
+      noiseType: OpenSimplex2
+    allowedTiles:
+    - FloorDesert
+    - FloorDesertPlanet
+    - FloorPlanetGravel
+    entities:
+    - FloraTreeStump
+  # Junk
+  - !type:BiomeEntityLayer
+    threshold: 0.925
+    noise:
+      seed: 2
+      frequency: 0.8
+      noiseType: OpenSimplex2
+    allowedTiles:
+    - FloorDesert
+    - FloorDesertPlanet
+    - FloorCave
+    - FloorPlanetGravel
+    entities:
+    - SalvageSpawnerScrapCommon
+    - SalvageSpawnerScrapCommon75
+    - SalvageSpawnerScrapValuable
+    - SalvageSpawnerScrapValuable75
+    - ComputerBroken
+    - SalvageCanisterSpawner
+    - RustedThruster
+    - MachineFrameDestroyed
+    - MachineFrameDestroyed2x1
+    - ScrapGeneratorUraniumLeaking
+    - ScrapOre20
+    - ScrapRadioactiveWasteBarrel
+    - RandomSpawner100
+    - RandomSpawner
+  # Rock decals
+  - !type:BiomeDecalLayer
+    allowedTiles:
+    - FloorDesert
+    - FloorDesertRocky
+    - FloorDesertPlanet
+    - FloorAsteroidSandUnvariantizedPlanet
+    - FloorAsteroidSandPlanet
+    - FloorCave
+    - FloorPlanetGravel
+    threshold: 0.9
+    divisions: 1
+    noise:
+      seed: 1
+      frequency: 5
+    decals:
+    - Basalt1
+    - Basalt2
+    - Basalt3
+    - Basalt4
+    - Basalt5
+    - Basalt6
+    - Basalt7
+    - Basalt8
+    - Basalt9
+  # Bush decals
+  - !type:BiomeDecalLayer
+    allowedTiles:
+    - FloorDesert
+    - FloorDesertPlanet
+    threshold: 0.9
+    divisions: 1
+    noise:
+      seed: 1
+      frequency: 0.9
+    decals:
+    - Bushj1
+    - Bushj2
+    - Bushj3
+  # Large rock areas
+  - !type:BiomeEntityLayer
+    allowedTiles:
+    - FloorAsteroidSandUnvariantizedPlanet
+    threshold: -0.285
+    noise:
+      seed: 0
+      noiseType: Cellular
+      frequency: 0.005
+      lacunarity: 2
+      fractalType: FBm
+      octaves: 5
+      cellularDistanceFunction: Euclidean
+      cellularReturnType: Distance2
+    entities:
+    - WastelandOreRichSand
+  - !type:BiomeEntityLayer
+    allowedTiles:
+    - FloorCave
+    threshold: -0.285
+    noise:
+      seed: 0
+      noiseType: Cellular
+      frequency: 0.005
+      lacunarity: 2
+      fractalType: FBm
+      octaves: 5
+      cellularDistanceFunction: Euclidean
+      cellularReturnType: Distance2
+    entities:
+    - WastelandOreRichRock
+  # Large scrap areas
+  - !type:BiomeEntityLayer
+    allowedTiles:
+    - FloorAsteroidSandUnvariantizedPlanet
+    - FloorCave
+    - FloorDesert
+    - FloorDesertRocky
+    - FloorDesertPlanet
+    - FloorAsteroidSandPlanet
+    - FloorPlanetGravel
+    threshold: -0.10
+    noise:
+      seed: 1
+      noiseType: Cellular
+      frequency: 0.025
+      lacunarity: 3
+      fractalType: FBm
+      octaves: 2
+      cellularDistanceFunction: Euclidean
+      cellularReturnType: Distance2
+    entities:
+    - WastelandOreScrap
+  # Other shit
+  - !type:BiomeEntityLayer
+    allowedTiles:
+    - FloorCave
+    - FloorDesert
+    - FloorDesertRocky
+    - FloorDesertPlanet
+    - FloorAsteroidSandPlanet
+    - FloorPlanetGravel
+    threshold: 0.99
+    noise:
+      seed: 2
+      frequency: 0.4
+      noiseType: OpenSimplex2
+    entities:
+    - NFSandRoomMarker
+    - PlanetWreckRoomMarker
+    - NFVGRoidInteriorRoomMarker
+    - ShuttleWreckSmallRoomMarker
+  - !type:BiomeDummyLayer
+    id: Loot
+  # Fill layer
+  # Base tiles
+  - !type:BiomeTileLayer
+    threshold: -1
+    tile: FloorAsteroidSandPlanet
+  # Apply planet desert tile as noise so it doesnt look flat and boring
+  - !type:BiomeTileLayer
+    threshold: -0.60
+    tile: FloorDesertPlanet
+    noise:
+      seed: 0
+      noiseType: Cellular
+      frequency: 0.015
+      lacunarity: 3
+      fractalType: FBm
+      octaves: 5
+      cellularDistanceFunction: Euclidean
+      cellularReturnType: Distance2
+  # Unvariantized tile for rock walls to be placed on
+  - !type:BiomeTileLayer
+    tile: FloorAsteroidSandUnvariantizedPlanet
+    threshold: -0.30
+    noise:
+      seed: 0
+      noiseType: Cellular
+      frequency: 0.005
+      lacunarity: 2
+      fractalType: FBm
+      octaves: 5
+      cellularDistanceFunction: Euclidean
+      cellularReturnType: Distance2
+  # Flooring variety.
+  - !type:BiomeTileLayer
+    tile: FloorPlanetGravel
+    threshold: -0.29
+    noise:
+      seed: 2
+      noiseType: Cellular
+      frequency: 0.01
+      lacunarity: 2
+      fractalType: FBm
+      octaves: 4
+      cellularDistanceFunction: Euclidean
+      cellularReturnType: Distance2
+  - !type:BiomeTileLayer
+    tile: FloorCave
+    threshold: -0.25
+    noise:
+      seed: 3
+      noiseType: Cellular
+      frequency: 0.035
+      lacunarity: 2
+      fractalType: FBm
+      octaves: 3
+      cellularDistanceFunction: Euclidean
+      cellularReturnType: Distance2
+

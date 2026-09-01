@@ -13,6 +13,8 @@ public sealed partial class MeleeWeaponSystem
 {
     private const string FadeAnimationKey = "melee-fade";
     private const string SlashAnimationKey = "melee-slash";
+    private const string HeavySlashAnimationKey = "melee-heavy";
+    private const string DoubleSlashAnimationKey = "melee-double";
     private const string ThrustAnimationKey = "melee-thrust";
 
     /// <summary>
@@ -71,6 +73,22 @@ public sealed partial class MeleeWeaponSystem
                 if (arcComponent.Fadeout)
                     _animation.Play(animationUid, GetFadeAnimation(sprite, 0.065f, 0.065f + 0.05f), FadeAnimationKey);
                 break;
+            // Final Frontier start
+            case WeaponArcAnimation.HeavySlash:
+                track = EnsureComp<TrackUserComponent>(animationUid);
+                track.User = user;
+                _animation.Play(animationUid, GetHeavySlashAnimation(sprite, angle, spriteRotation), HeavySlashAnimationKey);
+                if (arcComponent.Fadeout)
+                    _animation.Play(animationUid, GetFadeAnimation(sprite, 0.2f, 0.2f + 0.05f), FadeAnimationKey);
+                break;
+            case WeaponArcAnimation.DoubleSlash:
+                track = EnsureComp<TrackUserComponent>(animationUid);
+                track.User = user;
+                _animation.Play(animationUid, GetDoubleSlashAnimation(sprite, angle, spriteRotation), DoubleSlashAnimationKey);
+                if (arcComponent.Fadeout)
+                    _animation.Play(animationUid, GetFadeAnimation(sprite, 0.16f, 0.16f + 0.05f), FadeAnimationKey);
+                break;
+            // Final Frontier end
             case WeaponArcAnimation.Thrust:
                 track = EnsureComp<TrackUserComponent>(animationUid);
                 track.User = user;
@@ -180,6 +198,110 @@ public sealed partial class MeleeWeaponSystem
             }
         };
     }
+
+    // Final Frontier start
+    private Animation GetDoubleSlashAnimation(SpriteComponent sprite, Angle arc, Angle spriteRotation)
+    {
+        const float slashStart = 0.03f;
+        const float slashEnd = 0.16f;
+        const float length = slashEnd + 0.05f;
+        var startRotation = sprite.Rotation + arc / 1.5f;
+        var endRotation = sprite.Rotation - arc / 1.5f;
+        Angle midRotation = (startRotation + endRotation) / 2;
+        var startRotationOffset = startRotation.RotateVec(new Vector2(0f, -0.65f));
+        var endRotationOffset = endRotation.RotateVec(new Vector2(0f, -0.65f));
+        var midRotationOffset = midRotation.RotateVec(new Vector2(0f, -1f));
+        startRotation += spriteRotation;
+        midRotation += spriteRotation;
+        endRotation += spriteRotation;
+
+        return new Animation()
+        {
+            Length = TimeSpan.FromSeconds(length),
+            AnimationTracks =
+            {
+                new AnimationTrackComponentProperty()
+                {
+                    ComponentType = typeof(SpriteComponent),
+                    Property = nameof(SpriteComponent.Rotation),
+                    InterpolationMode =  AnimationInterpolationMode.Linear,
+                    KeyFrames =
+                    {
+                        new AnimationTrackProperty.KeyFrame(startRotation, 0f),
+                        new AnimationTrackProperty.KeyFrame(startRotation, slashStart),
+                        new AnimationTrackProperty.KeyFrame(midRotation, slashEnd * 0.25f),
+                        new AnimationTrackProperty.KeyFrame(endRotation, slashEnd * 0.25f),
+                        new AnimationTrackProperty.KeyFrame(midRotation, slashEnd * 0.25f),
+                        new AnimationTrackProperty.KeyFrame(startRotation, slashEnd * 0.25f),
+                    }
+                },
+                new AnimationTrackComponentProperty()
+                {
+                    ComponentType = typeof(SpriteComponent),
+                    Property = nameof(SpriteComponent.Offset),
+                    InterpolationMode =  AnimationInterpolationMode.Linear,
+                    KeyFrames =
+                    {
+                        new AnimationTrackProperty.KeyFrame(startRotationOffset, 0f),
+                        new AnimationTrackProperty.KeyFrame(startRotationOffset, slashStart),
+                        new AnimationTrackProperty.KeyFrame(midRotationOffset, slashEnd * 0.25f),
+                        new AnimationTrackProperty.KeyFrame(endRotationOffset, slashEnd * 0.25f),
+                        new AnimationTrackProperty.KeyFrame(midRotationOffset, slashEnd * 0.25f),
+                        new AnimationTrackProperty.KeyFrame(startRotationOffset, slashEnd * 0.25f),
+                    }
+                },
+            }
+        };
+    }
+
+    private Animation GetHeavySlashAnimation(SpriteComponent sprite, Angle arc, Angle spriteRotation)
+    {
+        const float slashStart = 0.03f;
+        const float slashEnd = 0.2f;
+        const float length = slashEnd + 0.05f;
+        var startRotation = sprite.Rotation + arc * 1.25;
+        var endRotation = sprite.Rotation - arc * 1.25;
+        Angle midRotation = (startRotation + endRotation) / 2;
+        var startRotationOffset = startRotation.RotateVec(new Vector2(-0.75f, -0.55f));
+        var almostEndRotationOffset = midRotation.RotateVec(new Vector2(-0.75f, -1f));
+        var endRotationOffset = endRotation.RotateVec(new Vector2(-0.75f, -0.15f));
+        startRotation += spriteRotation;
+        midRotation += spriteRotation;
+        endRotation += spriteRotation;
+
+        return new Animation()
+        {
+            Length = TimeSpan.FromSeconds(length),
+            AnimationTracks =
+            {
+                new AnimationTrackComponentProperty()
+                {
+                    ComponentType = typeof(SpriteComponent),
+                    Property = nameof(SpriteComponent.Rotation),
+                    KeyFrames =
+                    {
+                        new AnimationTrackProperty.KeyFrame(startRotation, 0f),
+                        new AnimationTrackProperty.KeyFrame(startRotation, slashStart),
+                        new AnimationTrackProperty.KeyFrame(midRotation, slashEnd / 3f),
+                        new AnimationTrackProperty.KeyFrame(endRotation, slashEnd),
+                    }
+                },
+                new AnimationTrackComponentProperty()
+                {
+                    ComponentType = typeof(SpriteComponent),
+                    Property = nameof(SpriteComponent.Offset),
+                    KeyFrames =
+                    {
+                        new AnimationTrackProperty.KeyFrame(startRotationOffset, 0f),
+                        new AnimationTrackProperty.KeyFrame(startRotationOffset, slashStart),
+                        new AnimationTrackProperty.KeyFrame(almostEndRotationOffset, slashEnd - 0.01f),
+                        new AnimationTrackProperty.KeyFrame(endRotationOffset, slashEnd),
+                    }
+                },
+            }
+        };
+    }
+    // Final Frontier end
 
     /// <summary>
     /// Get the sprite offset animation to use for mob lunges.

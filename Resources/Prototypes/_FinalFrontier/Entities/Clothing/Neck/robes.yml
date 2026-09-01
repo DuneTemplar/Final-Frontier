@@ -1,0 +1,99 @@
+- type: entity
+  parent: ClothingNeckBase
+  id: ClothingNeckMechinaeRobesRed
+  name: ordo mechinae long robe
+  description: The long variant of the robes typically worn by members of the Ordo Mechinae.
+  components:
+  - type: Sprite
+    sprite: _FinalFrontier/Clothing/Neck/Robes/ordo_machinae_robes_red.rsi
+  - type: Clothing
+    sprite: _FinalFrontier/Clothing/Neck/Robes/ordo_machinae_robes_red.rsi
+    forcedLayer: helmetcover
+    quickEquip: true
+    slots: [ outerClothing, neck ]
+  - type: TemperatureProtection
+    heatingCoefficient: 0.1
+    coolingCoefficient: 0.1
+  - type: Armor
+    modifiers:
+      coefficients:
+        Slash: 0.9
+        Piercing: 0.95
+        Shock: 0.7
+  - type: HideLayerClothing
+    slots:
+    - Hair
+    - Snout
+    - HeadTop
+    - HeadSide
+          
+- type: entity
+  parent: ClothingNeckMechinaeRobesRed
+  id: ClothingNeckMechinaeRobesBlue
+  name: ordo mechinae long robe
+  description: The long variant of the robes typically worn by members of the Ordo Mechinae.
+  components:
+  - type: Sprite
+    sprite: _FinalFrontier/Clothing/Neck/Robes/ordo_machinae_robes_blue.rsi
+  - type: Clothing
+    sprite: _FinalFrontier/Clothing/Neck/Robes/ordo_machinae_robes_blue.rsi
+    forcedLayer: helmetcover
+    quickEquip: true
+    slots: [ outerClothing, neck ]
+    
+- type: entity
+  parent: ClothingNeckMechinaeRobesRed
+  id: ClothingNeckMechinaeRobesPurple
+  name: ordo mechinae long robe
+  description: The long variant of the robes typically worn by members of the Ordo Mechinae.
+  components:
+  - type: Sprite
+    sprite: _FinalFrontier/Clothing/Neck/Robes/ordo_machinae_robes_purple.rsi
+  - type: Clothing
+    sprite: _FinalFrontier/Clothing/Neck/Robes/ordo_machinae_robes_purple.rsi
+    forcedLayer: helmetcover
+    quickEquip: true
+    slots: [ outerClothing, neck ]
+    
+- type: entity
+  parent: ClothingNeckMechinaeRobesRed
+  id: ClothingNeckMechinaeRobesShortRed
+  name: ordo mechinae short robe
+  description: The shortened variant of the robes typically worn by members of the Ordo Mechinae.
+  components:
+  - type: Sprite
+    sprite: _FinalFrontier/Clothing/Neck/Robes/ordo_machinae_short_robes_red.rsi
+  - type: Clothing
+    sprite: _FinalFrontier/Clothing/Neck/Robes/ordo_machinae_short_robes_red.rsi
+    forcedLayer: helmetcover
+    quickEquip: true
+    slots: [ outerClothing, neck ]
+    
+- type: entity
+  parent: ClothingNeckMechinaeRobesRed
+  id: ClothingNeckMechinaeRobesShortPurple
+  name: ordo mechinae short robe
+  description: The shortened variant of the robes typically worn by members of the Ordo Mechinae.
+  components:
+  - type: Sprite
+    sprite: _FinalFrontier/Clothing/Neck/Robes/ordo_machinae_short_robes_purple.rsi
+  - type: Clothing
+    sprite: _FinalFrontier/Clothing/Neck/Robes/ordo_machinae_short_robes_purple.rsi
+    forcedLayer: helmetcover
+    quickEquip: true
+    slots: [ outerClothing, neck ]
+    
+- type: entity
+  parent: ClothingNeckMechinaeRobesRed
+  id: ClothingNeckMechinaeRobesShortBlue
+  name: ordo mechinae short robe
+  description: The shortened variant of the robes typically worn by members of the Ordo Mechinae.
+  components:
+  - type: Sprite
+    sprite: _FinalFrontier/Clothing/Neck/Robes/ordo_machinae_short_robes_blue.rsi
+  - type: Clothing
+    sprite: _FinalFrontier/Clothing/Neck/Robes/ordo_machinae_short_robes_blue.rsi
+    forcedLayer: helmetcover
+    quickEquip: true
+    slots: [ outerClothing, neck ]
+

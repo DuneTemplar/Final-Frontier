@@ -1,0 +1,19 @@
+- type: entity
+  id: StairCatwalk
+  parent: Stairs
+  suffix: Catwalk
+  components:
+  - type: Sprite
+    sprite: _FinalFrontier/Structures/Decoration/catwalk_stairs.rsi
+    state: stairs
+    drawdepth: FloorTiles
+    
+- type: entity
+  id: StairCatwalkHalf
+  parent: Stairs
+  suffix: Catwalk, Half
+  components:
+  - type: Sprite
+    sprite: _FinalFrontier/Structures/Decoration/catwalk_stairs.rsi
+    state: stairs_half
+    drawdepth: FloorTiles

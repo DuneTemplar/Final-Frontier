@@ -1,0 +1,55 @@
+- type: dungeonRoom
+  id: ShuttleWreckSmallA
+  size: 11,11
+  atlas: /Maps/_FinalFrontier/Generation/shuttle_wreck_small.yml
+  offset: 0,0
+  ignoreTile: FloorShuttleOrange
+  tags:
+  - ShuttleWreckSmall
+
+- type: dungeonRoom
+  id: ShuttleWreckSmallB
+  size: 11,11
+  atlas: /Maps/_FinalFrontier/Generation/shuttle_wreck_small.yml
+  offset: 12,0
+  ignoreTile: FloorShuttleOrange
+  tags:
+  - ShuttleWreckSmall
+  
+- type: dungeonRoom
+  id: ShuttleWreckSmallC
+  size: 11,11
+  atlas: /Maps/_FinalFrontier/Generation/shuttle_wreck_small.yml
+  offset: 24,0
+  ignoreTile: FloorShuttleOrange
+  tags:
+  - ShuttleWreckSmall
+  
+- type: dungeonRoom
+  id: ShuttleWreckSmallD
+  size: 11,11
+  atlas: /Maps/_FinalFrontier/Generation/shuttle_wreck_small.yml
+  offset: 36,0
+  ignoreTile: FloorShuttleOrange
+  tags:
+  - ShuttleWreckSmall
+  
+- type: dungeonRoom
+  id: ShuttleWreckSmallE
+  size: 11,11
+  atlas: /Maps/_FinalFrontier/Generation/shuttle_wreck_small.yml
+  offset: 48,0
+  ignoreTile: FloorShuttleOrange
+  tags:
+  - ShuttleWreckSmall
+
+- type: entity
+  id: ShuttleWreckSmallRoomMarker
+  parent: BaseRoomMarker
+  name: small shuttle wreck room marker
+  components:
+  - type: RoomFill
+    maxSize: 25,25
+    roomWhitelist:
+      tags:
+      - ShuttleWreckSmall

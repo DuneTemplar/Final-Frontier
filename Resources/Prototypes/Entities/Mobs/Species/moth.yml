@@ -111,7 +111,6 @@
       - map: [ "eyes" ]
       - map: [ "belt" ]
       - map: [ "enum.HumanoidVisualLayers.Tail" ] #in the utopian future we should probably have a wings enum inserted here so everyhting doesn't break
-      - map: [ "back" ]
       - map: [ "neck" ]
       - map: [ "neck2" ]
       - map: [ "neck3" ]
@@ -123,6 +122,7 @@
       - map: [ "head" ]
       - map: [ "helmetcover" ]
       - map: [ "helmetattachment" ]
+      - map: [ "back" ]
       - map: [ "pocket1" ]
       - map: [ "pocket2" ]
       - map: [ "clownedon" ] # Dynamically generated

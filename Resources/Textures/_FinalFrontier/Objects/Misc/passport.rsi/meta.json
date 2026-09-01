@@ -1,0 +1,32 @@
+{
+    "version": 1,
+    "license": "CC-BY-SA-3.0",
+    "copyright": "Made by DuneTemplar",
+    "size": {
+        "x": 32,
+        "y": 32
+    },
+    "states": [
+        {
+            "name": "base"
+        },
+        {
+            "name": "base-open"
+        },
+        {
+            "name": "flag-rcm"
+        },
+        {
+            "name": "flag-cors"
+        },
+        {
+            "name": "flag-tsf"
+        },
+	{
+            "name": "flag-ussp"
+        },
+        {
+            "name": "flag-pdv"
+        }
+    ]
+}

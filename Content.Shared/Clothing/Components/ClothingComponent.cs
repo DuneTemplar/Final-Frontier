@@ -24,6 +24,12 @@ public sealed partial class ClothingComponent : Component
     [DataField]
     public string? MappedLayer;
 
+    /// <summary>
+    /// The name of the layer to force it to map to, if any.
+    /// </summary>
+    [DataField]
+    public string? ForcedLayer;
+
     [ViewVariables(VVAccess.ReadWrite)]
     [DataField("quickEquip")]
     public bool QuickEquip = true;
@@ -76,7 +82,7 @@ public sealed partial class ClothingComponent : Component
     /// </summary>
     [DataField]
     public TimeSpan StripDelay = TimeSpan.Zero;
-	
+
 	/// <summary>
     /// FinalFrontier: Draggable to equip.
     /// </summary>

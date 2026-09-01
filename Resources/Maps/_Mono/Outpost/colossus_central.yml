@@ -94,7 +94,7 @@ entities:
     - type: IFF
       readOnly: True
     - type: StationPlanetSpawner
-      planet: DesertWorld
+      planet: Wasteland
       gridPath: /Maps/_Mono/POI/surface_outpost_desert.yml
     - type: ProtectedGrid
       hostileMobKillSound: !type:SoundPathSpecifier
