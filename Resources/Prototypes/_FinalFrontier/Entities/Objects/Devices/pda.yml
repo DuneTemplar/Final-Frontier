@@ -1,0 +1,24 @@
+- type: entity
+  parent: BaseSecurityPDA
+  id: TsfSGOPDA
+  name: TSF Smart Gun Operator PDA
+  description: A standard TSFMC personal computer.
+  components:
+  - type: Pda
+    id: TsfSGOIDCard
+    bookSlot: # Frontier
+      startingItem: HyperlinkBookNfsdSop
+      priority: -2
+      whitelist:
+        tags:
+        - BookSpaceLaw
+        - BookNfsdSop
+  - type: Appearance
+    appearanceDataInit:
+      enum.PdaVisuals.PdaType:
+        !type:String
+        pda-seniorofficer
+  - type: PdaBorderColor
+    borderColor: "#48484b"
+  - type: Icon
+    state: pda-seniorofficer

@@ -30,8 +30,11 @@ using Robust.Shared.Serialization;
 using Robust.Shared.Utility;
 using Robust.Shared.Threading;
 using System.Collections.Concurrent;
+using Content.Shared._Goobstation.Weapons.SmartGun;
 using Robust.Shared.Timing;
 using Content.Shared._Mono;
+using Content.Shared.NPC.Systems;
+using Content.Shared.Physics;
 using Content.Shared.Tag;
 
 namespace Content.Shared.Projectiles;
@@ -43,6 +46,7 @@ public abstract partial class SharedProjectileSystem : EntitySystem
     [Dependency] private readonly INetManager _netManager = default!;
     [Dependency] private readonly ISharedAdminLogManager _adminLogger = default!;
     [Dependency] private readonly SharedAudioSystem _audio = default!;
+    [Dependency] private readonly NpcFactionSystem _faction = default!;
     [Dependency] private readonly SharedColorFlashEffectSystem _color = default!;
     [Dependency] private readonly DamageableSystem _damageableSystem = default!;
     [Dependency] private readonly SharedDoAfterSystem _doAfter = default!;
@@ -113,7 +117,14 @@ public abstract partial class SharedProjectileSystem : EntitySystem
 		if (args.OurFixtureId != ProjectileFixture || !args.OtherFixture.Hard
 			|| (component.DamagedEntity && !component.AlwaysReflect) || (component.ProjectileSpent && !component.AlwaysReflect) || component is { Weapon: null, OnlyCollideWhenShot: true })
 			return;
-		
+
+        // Final Frontier - smartgun IFF/targetting
+        if (TryComp(component.Weapon, out SmartGunComponent? smartGun ) && smartGun.UseFactionIff && _faction.IsMember(args.OtherEntity, smartGun.FactionIff))
+            return;
+        if (((component.IgnoreNonTarget && component.Target != args.OtherEntity)) &&
+            (args.OtherBody.CollisionLayer != 223 && args.OtherBody.CollisionLayer != 222 &&
+             args.OtherBody.CollisionLayer != 204 && args.OtherBody.CollisionLayer != 205))
+            return;
         ProjectileCollide((uid, component, args.OurBody), args.OtherEntity);
     }
 
@@ -133,8 +144,6 @@ public abstract partial class SharedProjectileSystem : EntitySystem
 
             return null;
         }
-		
-
 
         // it's here so this check is only done once before possible hit
         var attemptEv = new ProjectileReflectAttemptEvent(uid, component, false);
@@ -149,14 +158,14 @@ public abstract partial class SharedProjectileSystem : EntitySystem
 		RaiseLocalEvent(uid, ref ev);
 		if (ev.Handled && !component.AlwaysReflect)
 			return null;
-		
-		
-		
+
+
+
 
         var coordinates = collisionCoordinates != null
             ? _transform.ToCoordinates(collisionCoordinates.Value)
             : Transform(projectile).Coordinates;
-			
+
 		if (component.AlwaysReflect)
 		{
 			var coordsBetween = _transform.GetMoverCoordinates(target) - coordinates;

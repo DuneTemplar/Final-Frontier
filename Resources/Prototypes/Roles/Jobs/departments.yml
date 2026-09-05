@@ -126,6 +126,7 @@
   - PublicAffairsLiaison # Frontier
   - TsfEngineer # Mono
   - TsfBorg # Mono
+  - TSFSmartGunOperator # Final Frontier
 
 - type: department
   id: Science

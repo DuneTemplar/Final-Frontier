@@ -1,0 +1,27 @@
+- type: loadout
+  id: TsfSGOSmartgun
+  equipment:
+    id: WeaponSmartLmgTSF
+    
+- type: loadout
+  id: TsfSGOSmartgunDrum
+  equipment:
+    id: MagazineSmartLMG
+
+- type: loadoutGroup
+  id: TsfSGOFirearm
+  name: loadout-group-weapon
+  hidden: true
+  loadouts:
+  - TsfSGOSmartgun
+  fallbacks:
+  - TsfSGOSmartgun
+
+- type: loadoutGroup
+  id: TsfSGOMag
+  name: loadout-group-magazine
+  hidden: true
+  loadouts:
+  - TsfSGOSmartgunDrum
+  fallbacks:
+  - TsfSGOSmartgunDrum

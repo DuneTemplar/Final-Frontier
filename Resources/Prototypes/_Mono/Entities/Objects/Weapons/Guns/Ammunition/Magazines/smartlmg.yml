@@ -1,6 +1,6 @@
 - type: entity
   id: MagazineSmartLMG
-  name: "MlA-79 drum (.160 smart)"
+  name: "MLA-79 drum (.160 smart)"
   parent: [BaseItem, RecyclableItemSteelTiny]
   components:
   - type: Tag
@@ -10,7 +10,7 @@
     size: Small
   - type: BallisticAmmoProvider
     proto: CartridgeSmart
-    capacity: 150
+    capacity: 600
     mayTransfer: true
     whitelist:
       tags:

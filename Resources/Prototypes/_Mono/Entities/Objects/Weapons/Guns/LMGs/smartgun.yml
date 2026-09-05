@@ -1,8 +1,8 @@
 - type: entity
-  name: SKR-WS MLA-79 smart LMG (.160 smart)
+  name: MLA-79 smart LMG (.160 smart)
   parent: [BaseWeaponLightMachineGun, BaseGunWieldable]
   id: WeaponSmartLmg
-  description: A military prototype that saw rare use in front-lines field testing. This is a refined version for standard production.
+  description: A military prototype that saw extensive use in front-line combat by certain defunct military forces. This is a modified version that doesn't rely on IFF.
   components:
   - type: Sprite
     sprite: _RMC14/Objects/Weapons/Guns/SmartGuns/ml79a.rsi
@@ -13,10 +13,10 @@
       map: ["enum.GunVisualLayers.Mag"]
   - type: GunWieldBonus
     minAngle: -5
-    maxAngle: -37
+    maxAngle: -17
   - type: Gun
     minAngle: 27
-    maxAngle: 73
+    maxAngle: 42
     angleIncrease: 2
     angleDecay: 22
     fireRate: 9.5
@@ -27,6 +27,7 @@
     soundGunshot:
       path: /Audio/Weapons/Guns/Gunshots/m41.ogg
   - type: ChamberMagazineAmmoProvider
+    autoEject: true
   - type: ItemSlots
     slots:
       gun_magazine:
@@ -61,8 +62,8 @@
     price: 50000
     vendPrice: 50000
   - type: SpeedModifiedOnWield
-    walkModifier: 0.5
-    sprintModifier: 0.4
+    walkModifier: 0.7
+    sprintModifier: 0.6
   - type: GunRequiresWield
   - type: PirateBountyItem
     id: ExperimentalFactionWeapon

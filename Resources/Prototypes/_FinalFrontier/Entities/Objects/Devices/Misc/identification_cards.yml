@@ -1,0 +1,12 @@
+- type: entity
+  parent: CadetIDCard
+  id: TsfSGOIDCard
+  name: TSFMC Smart Gun Operator ID card
+  components:
+  - type: PresetIdCard
+    job: TSFSmartGunOperator
+  - type: Sprite
+    sprite: _NF/Objects/Misc/id_cards.rsi
+    layers:
+    - state: nfsd
+    - state: idtsfsgo

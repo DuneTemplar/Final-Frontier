@@ -21,6 +21,7 @@ using Robust.Shared.Player;
 using Robust.Shared.Timing;
 using System.Linq;
 using System.Numerics;
+using Content.Shared.NPC.Systems;
 
 namespace Content.Server.Projectiles;
 
@@ -30,6 +31,7 @@ public sealed class ProjectileSystem : SharedProjectileSystem
 
     [Dependency] private readonly SharedPhysicsSystem _physics = default!;
     [Dependency] private readonly SharedTransformSystem _transformSystem = default!;
+    [Dependency] private readonly NpcFactionSystem _faction = default!;
 
     // <Mono>
     private EntityQuery<PhysicsComponent> _physQuery;

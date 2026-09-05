@@ -14,6 +14,8 @@ using FancyWindow = Content.Client.UserInterface.Controls.FancyWindow;
 using Robust.Client.UserInterface;
 using Content.Shared.IdentityManagement;
 using Robust.Client.Graphics;
+using Robust.Client.ResourceManagement;
+
 
 namespace Content.Client.VendingMachines.UI
 {
@@ -38,6 +40,10 @@ namespace Content.Client.VendingMachines.UI
             VendingContents.DataFilterCondition += DataFilterCondition;
             VendingContents.GenerateItem += GenerateButton;
             VendingContents.ItemKeyBindDown += (args, data) => OnItemSelected?.Invoke(args, data);
+			DialogueSprite.Texture = IoCManager.Resolve<IResourceCache>().GetResource<TextureResource>("/Textures/_FinalFrontier/VendorSprites/AutoMunitions/vendor.png").Texture;
+            DialogueSprite.Visible = false;
+			BackgroundSprite.Texture = IoCManager.Resolve<IResourceCache>().GetResource<TextureResource>("/Textures/_FinalFrontier/VendorSprites/AutoMunitions/background.png").Texture;
+            BackgroundSprite.Visible = true;
         }
 
         protected override void Dispose(bool disposing)

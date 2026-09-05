@@ -1,0 +1,26 @@
+- type: roleLoadout
+  id: JobTSFSmartGunOperator
+  groups:
+  - TsfmcHead
+  - TsfmcNeck
+  - TsfmcJumpsuit
+  - TsfmcGloves
+  - TsfmcBackpack
+  - TsfmcOuterClothing
+  - TsfmcShoes
+  - TsfmcFace
+  - TsfmcBalaclava
+  - TsfmcGlasses
+  - TsfmcBelt
+  - TsfmcEars
+  - NfsdBoxSurvival
+  - TsfSGOPDA
+  - ContractorWallet
+  - ContractorCartridge
+  - ContractorEncryptionKey
+  - ContractorFun
+  - ContractorTrinkets
+  - NfsdSpeciesSpecific
+  - TsfSGOFirearm
+  - TsfSGOMag
+  canCustomizeName: true

@@ -1,0 +1,57 @@
+- type: job
+  id: TSFSmartGunOperator
+  name: job-name-sgo
+  description: job-description-sgo
+  playTimeTracker: JobTsfSGO
+  requirements:
+    - !type:OverallPlaytimeRequirement
+      time: 72000 # 20 hours # mono
+    - !type:DepartmentTimeRequirement
+      department: Security
+      time: 28800 # 8 hours # mono
+    - !type:RoleTimeRequirement
+      role: JobSecurityOfficer
+      time: 36000 # 10 hours # mono
+  startingGear: TsfSGOGear
+  icon: JobIconSGO
+  supervisors: job-supervisors-sheriff
+  weight: 140
+  displayWeight: 50
+  canBeAntag: false
+  guides: [ BasicLore, TransSolarFederation ] # Mono
+  access:
+  - Armory
+  - Sergeant
+  - Bailiff
+  - Medical
+  - Chemistry
+  - TsfmcEngineering
+  accessGroups:
+  - GeneralNfsdAccess
+  special:
+  - !type:AddComponentSpecial
+    components:
+    - type: NpcFactionMember
+      factions:
+      - TSFMC
+  - !type:AddImplantSpecial
+    implants: [ MindShieldImplant, TrackingImplant ]
+  - !type:AddLanguageSpecial # Monolith - Languages
+    languagesSpoken:
+    - SolCommon
+    languagesUnderstood:
+    - SolCommon
+  - !type:GiveItemOnHolidaySpecial
+    holiday: FrontierBirthday
+    prototype: FrontierBirthdayGift
+
+- type: startingGear
+  id: TsfSGOGear
+  equipment:
+    pocket1: MagazineSmartLMG
+    pocket2: MagazineSmartLMG
+  storage:
+    back:
+    - BaseSecurityUplinkRadioOfficer
+#    - ShipVoucherNfsdSergeant # Mono
+    - RadioHandheldNF # Mono

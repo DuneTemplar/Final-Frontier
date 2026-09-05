@@ -1,0 +1,78 @@
+- type: entity
+  name: MLA-81 smart LMG (.160 smart)
+  parent: [BaseWeaponLightMachineGun, BaseGunWieldable]
+  id: WeaponSmartLmgTSF
+  description: A refined version of the MLA-79, used exclusively by the TSFMC's smart gun operators.
+  components:
+  - type: Sprite
+    sprite: _FinalFrontier/Objects/Weapons/Guns/LMGs/mla81.rsi
+    layers:
+    - state: base
+      map: ["enum.GunVisualLayers.Base"]
+    - state: mag-0
+      map: ["enum.GunVisualLayers.Mag"]
+  - type: GunWieldBonus
+    minAngle: -5
+    maxAngle: -17
+  - type: Gun
+    minAngle: 27
+    maxAngle: 42
+    angleIncrease: 2
+    angleDecay: 22
+    fireRate: 9.5
+    cameraRecoilScalar: 0
+    selectedMode: FullAuto
+    availableModes:
+    - FullAuto
+    soundGunshot:
+      path: /Audio/Weapons/Guns/Gunshots/m41.ogg
+  - type: ChamberMagazineAmmoProvider
+    autoEject: true
+  - type: ItemSlots
+    slots:
+      gun_magazine:
+        name: Magazine
+        startingItem: MagazineSmartLMG
+        insertSound: /Audio/Weapons/Guns/MagIn/sfrifle_magin.ogg
+        ejectSound: /Audio/Weapons/Guns/MagOut/hpistol_magout.ogg
+        priority: 2
+        whitelist:
+          tags:
+          - MagazineSmartLMG
+        whitelistFailPopup: gun-magazine-whitelist-fail
+      gun_chamber:
+        name: Chamber
+        startingItem: CartridgeSmart
+        priority: 1
+        whitelist:
+          tags:
+          - CartridgeSmart
+  - type: ContainerContainer
+    containers:
+      gun_magazine: !type:ContainerSlot
+      gun_chamber: !type:ContainerSlot
+  - type: MagazineVisuals
+    magState: mag
+    steps: 1
+    zeroVisible: true
+  - type: Appearance
+  - type: Clothing
+    sprite: _FinalFrontier/Objects/Weapons/Guns/LMGs/mla81.rsi
+  - type: StaticPrice
+    price: 50000
+    vendPrice: 50000
+  - type: SpeedModifiedOnWield
+    walkModifier: 0.7
+    sprintModifier: 0.6
+  - type: GunRequiresWield
+  - type: PirateBountyItem
+    id: ExperimentalFactionWeapon
+  - type: SmartGun
+    requiresWield: true
+    useFactionIff: true
+    factionIff: "TSFMC"
+  - type: LaserPointer
+  - type: WieldedCrosshair
+    rsi:
+      sprite: _RMC14/Interface/MousePointer/smartgun_mouse.rsi
+      state: all

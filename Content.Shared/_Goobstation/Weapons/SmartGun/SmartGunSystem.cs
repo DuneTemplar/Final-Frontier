@@ -1,4 +1,5 @@
 using Content.Shared._Goobstation.Wizard.Projectiles;
+using Content.Shared.Projectiles;
 using Content.Shared.Weapons.Ranged.Components;
 using Content.Shared.Weapons.Ranged.Events;
 using Content.Shared.Wieldable.Components;
@@ -32,6 +33,15 @@ public sealed class SmartGunSystem : EntitySystem
             if (!TryComp(projectile, out HomingProjectileComponent? homing))
                 continue;
 
+            if (!TryComp(projectile, out ProjectileComponent? proj))
+                continue;
+            if (comp.UseFactionIff)
+            {
+                proj.FactionIff = comp.FactionIff;
+                proj.UseFactionIff = true;
+            }
+            proj.IgnoreNonTarget = true;
+            proj.Target = gun.Target.Value;
             homing.Target = gun.Target.Value;
             Dirty(projectile, homing);
         }

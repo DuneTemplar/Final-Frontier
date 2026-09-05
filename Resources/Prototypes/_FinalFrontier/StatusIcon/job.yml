@@ -1,0 +1,8 @@
+- type: jobIcon
+  parent: JobIcon
+  id: JobIconSGO
+  icon:
+    sprite: /Textures/_FinalFrontier/Interface/Misc/job_icons.rsi
+    state: tsfmcsmartgun
+  jobName: job-name-sgo
+

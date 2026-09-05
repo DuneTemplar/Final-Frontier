@@ -40,6 +40,21 @@ public sealed partial class ProjectileComponent : Component
     public bool IgnoreShooter = true;
 
     /// <summary>
+    ///     Used for Smartguns. - Final Frontier
+    /// </summary>
+    [DataField, AutoNetworkedField]
+    public bool IgnoreNonTarget = false;
+
+    [DataField, AutoNetworkedField]
+    public bool UseFactionIff = false;
+
+    [DataField, AutoNetworkedField]
+    public string FactionIff = " ";
+
+    [ViewVariables(VVAccess.ReadOnly), AutoNetworkedField]
+    public EntityUid? Target;
+
+    /// <summary>
     ///     The amount of damage the projectile will do.
     /// </summary>
     [DataField(required: true)] [ViewVariables(VVAccess.ReadWrite)]
@@ -119,7 +134,7 @@ public sealed partial class ProjectileComponent : Component
     // Mono
     [DataField]
     public float LinearDampening = 0f;
-	
+
 	// Final Frontier
 	[DataField]
     public bool AlwaysReflect = false;

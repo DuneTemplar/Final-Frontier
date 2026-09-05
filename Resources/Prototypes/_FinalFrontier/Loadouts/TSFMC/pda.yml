@@ -1,0 +1,13 @@
+- type: loadout
+  id: TsfSGOPDA
+  equipment:
+    id: TsfSGOPDA
+
+- type: loadoutGroup
+  id: TsfSGOPDA
+  name: loadout-group-contractor-id
+  hidden: true # No point in showing this, it gets auto-selected.
+  loadouts:
+  - TsfSGOPDA
+  fallbacks:
+  - TsfSGOPDA
