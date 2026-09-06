@@ -55,6 +55,8 @@
     magState: mag
     steps: 1
     zeroVisible: true
+  - type: GunRequiresClothing
+    requiredClothingName: ClothingBeltTSFSGOHarness
   - type: Appearance
   - type: Clothing
     sprite: _FinalFrontier/Objects/Weapons/Guns/LMGs/mla81.rsi

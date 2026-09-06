@@ -1,12 +1,17 @@
 - type: loadout
   id: TsfSGOSmartgun
-  equipment:
-    id: WeaponSmartLmgTSF
+  inhand:
+  - WeaponSmartLmgTSF
     
 - type: loadout
   id: TsfSGOSmartgunDrum
   equipment:
     id: MagazineSmartLMG
+    
+- type: loadout
+  id: TsfSGOBelt
+  equipment:
+    belt: ClothingBeltTSFSGOHarness
 
 - type: loadoutGroup
   id: TsfSGOFirearm
@@ -25,3 +30,13 @@
   - TsfSGOSmartgunDrum
   fallbacks:
   - TsfSGOSmartgunDrum
+  
+- type: loadoutGroup
+  id: TsfSGOBelt
+  name: loadout-group-contractor-belt
+  hidden: true
+  loadouts:
+  - TsfSGOBelt
+  fallbacks:
+  - TsfSGOBelt
+

@@ -1,7 +1,7 @@
 - type: entity
   parent: BaseSecurityPDA
   id: TsfSGOPDA
-  name: TSF Smart Gun Operator PDA
+  name: TSF smart gun operator PDA
   description: A standard TSFMC personal computer.
   components:
   - type: Pda

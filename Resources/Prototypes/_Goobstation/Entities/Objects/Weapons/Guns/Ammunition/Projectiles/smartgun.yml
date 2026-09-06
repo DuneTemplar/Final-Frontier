@@ -7,14 +7,14 @@
   - type: Projectile
     damage:
       types:
-        Piercing: 12
+        Piercing: 14
   - type: Sprite
     sprite: _Goobstation/Objects/Weapons/Guns/Projectiles/smartgun.rsi
     layers:
     - state: smartgun
       shader: unshaded
   - type: HomingProjectile
-    homingSpeed: 900
+    homingSpeed: 1100
   - type: Tracer
     color: "#2897c9ff"
     length: 1

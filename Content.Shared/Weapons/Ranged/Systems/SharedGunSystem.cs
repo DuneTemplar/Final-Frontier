@@ -1,6 +1,7 @@
 using System.Diagnostics.CodeAnalysis;
 using System.Numerics;
 using Content.Shared._FinalFrontier.Weapons.Hitscan.Components;
+using Content.Shared._FinalFrontier.Weapons.Ranged.Components;
 using Content.Shared.ActionBlocker;
 using Content.Shared.Actions;
 using Content.Shared.Administration.Logs;
@@ -150,6 +151,7 @@ public abstract partial class SharedGunSystem : EntitySystem
 
         if (user == null || !_combatMode.IsInCombatMode(user))
             return;
+
 
 
         if (TryComp<MechPilotComponent>(user.Value, out var mechPilot))
@@ -376,6 +378,16 @@ public abstract partial class SharedGunSystem : EntitySystem
 
         if (toCoordinates == null)
             return;
+
+        // Final Frontier - this is here because it was refusing to work before and this is easier :3
+        if (TryComp<GunRequiresClothingComponent>(gunUid, out var requiresClothingComp) &&
+            ((_inventory.TryGetSlotEntity(user, "belt", out var belt) &&
+            TryComp<MetaDataComponent>(belt, out var beltMetaDataComponent) &&
+            beltMetaDataComponent.EntityPrototype?.ID != requiresClothingComp.RequiredClothingName) ||
+            !_inventory.TryGetSlotEntity(user, "belt", out _)))
+        {
+            return;
+        }
 
         var curTime = Timing.CurTime;
 

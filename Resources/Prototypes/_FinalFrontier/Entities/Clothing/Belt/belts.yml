@@ -88,3 +88,27 @@
           tags:
           - CaptainSabre
   - type: Appearance
+  
+- type: entity
+  parent: [NFClothingBeltStorageBase, ContentsExplosionResistanceBase]
+  id: ClothingBeltTSFSGOHarness
+  name: MLA-81 smart LMG harness
+  description: A harness worn by TSFMC smart gun operators that contains a few systems for the MLA-81 smart LMG. The shoulder mounted flashlight is broken.
+  components:
+  - type: StaticPrice
+    price: 1500
+    vendPrice: 2500
+  - type: Sprite
+    sprite: _FinalFrontier/Clothing/Belt/sgo_harness_tsf.rsi
+  - type: Clothing
+    sprite: _FinalFrontier/Clothing/Belt/sgo_harness_tsf.rsi
+    stripDelay: 40
+    equipDelay: 10
+    unequipDelay: 10
+  - type: ExplosionResistance
+    damageCoefficient: 0.5
+  - type: Storage
+    grid:
+    - 0,0,11,1
+  - type: ClothingSpeedModifier
+    sprintModifier: 0.9
